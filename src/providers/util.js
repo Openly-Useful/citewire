@@ -6,7 +6,7 @@
 // each provider module stand alone. The shapes are identical to the core's
 // toolJson / toolError so results drop straight onto the MCP wire.
 
-const USER_AGENT = 'citewire/0.1.0 (+https://github.com/MeekPhills/citewire)';
+const USER_AGENT = 'citewire/0.2.0 (+https://github.com/MeekPhills/citewire)';
 
 // A successful tool result. structuredContent carries the machine-readable
 // payload; content mirrors it as text for clients that only read text blocks.

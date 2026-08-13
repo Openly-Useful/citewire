@@ -1,0 +1,185 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact version already set in package.json and server.json
+        required: true
+        type: string
+      publish_npm:
+        description: Publish the package to npm with provenance
+        required: true
+        default: false
+        type: boolean
+      publish_mcp_registry:
+        description: Publish server.json to the official MCP Registry
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify release inputs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+          package-manager-cache: false
+
+      - name: Check versions, name, and release ref
+        shell: bash
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+          PUBLISH_NPM: ${{ inputs.publish_npm }}
+          PUBLISH_MCP_REGISTRY: ${{ inputs.publish_mcp_registry }}
+        run: |
+          set -euo pipefail
+
+          if [[ ! "$RELEASE_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$ ]]; then
+            echo "version must be an exact semantic version without a leading v" >&2
+            exit 1
+          fi
+
+          package_version="$(node -p "require('./package.json').version")"
+          server_version="$(node -p "require('./server.json').version")"
+          registry_package_version="$(node -p "require('./server.json').packages[0].version")"
+          package_name="$(node -p "require('./package.json').name")"
+          registry_package="$(node -p "require('./server.json').packages[0].identifier")"
+          mcp_name="$(node -p "require('./package.json').mcpName")"
+          server_name="$(node -p "require('./server.json').name")"
+
+          [[ "$RELEASE_VERSION" == "$package_version" ]] || {
+            echo "input version does not match package.json" >&2
+            exit 1
+          }
+          [[ "$package_version" == "$server_version" ]] || {
+            echo "package.json and server.json versions differ" >&2
+            exit 1
+          }
+          [[ "$package_version" == "$registry_package_version" ]] || {
+            echo "package.json and server.json package versions differ" >&2
+            exit 1
+          }
+          [[ "$package_name" == "$registry_package" ]] || {
+            echo "npm package identifiers differ" >&2
+            exit 1
+          }
+          [[ "$mcp_name" == "$server_name" ]] || {
+            echo "package.json mcpName and server.json name differ" >&2
+            exit 1
+          }
+
+          if [[ "$PUBLISH_NPM" == "true" || "$PUBLISH_MCP_REGISTRY" == "true" ]]; then
+            expected_ref="refs/tags/v${RELEASE_VERSION}"
+            [[ "$GITHUB_REF" == "$expected_ref" ]] || {
+              echo "publishing requires dispatching from ${expected_ref}" >&2
+              exit 1
+            }
+            git merge-base --is-ancestor "$GITHUB_SHA" origin/main || {
+              echo "release tag must point to a commit on main" >&2
+              exit 1
+            }
+          fi
+
+      - name: Run tests
+        run: npm test
+
+      - name: Inspect package contents
+        run: npm pack --dry-run --json
+
+  publish:
+    name: Publish selected registries
+    if: ${{ inputs.publish_npm || inputs.publish_mcp_registry }}
+    needs: verify
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js for trusted publishing
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Refuse an existing npm version
+        if: ${{ inputs.publish_npm }}
+        shell: bash
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          package_name="$(node -p "require('./package.json').name")"
+          published_versions="$(npm view "$package_name" versions --json)"
+          if node -e 'const all = JSON.parse(process.argv[2]); process.exit((Array.isArray(all) ? all : [all]).includes(process.argv[1]) ? 0 : 1)' "$RELEASE_VERSION" "$published_versions"; then
+            echo "${package_name}@${RELEASE_VERSION} already exists and cannot be overwritten" >&2
+            exit 1
+          fi
+
+      - name: Publish package to npm
+        if: ${{ inputs.publish_npm }}
+        run: npm publish --access public
+
+      - name: Verify published MCP ownership metadata
+        if: ${{ inputs.publish_mcp_registry }}
+        shell: bash
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          package_name="$(node -p "require('./package.json').name")"
+          expected_name="$(node -p "require('./package.json').mcpName")"
+          published_name="$(npm view "${package_name}@${RELEASE_VERSION}" mcpName)"
+          [[ "$published_name" == "$expected_name" ]] || {
+            echo "the published npm package does not contain the expected mcpName" >&2
+            exit 1
+          }
+
+      - name: Install pinned MCP publisher
+        if: ${{ inputs.publish_mcp_registry }}
+        shell: bash
+        env:
+          MCP_PUBLISHER_VERSION: v1.8.1
+          MCP_PUBLISHER_SHA256: a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc
+        run: |
+          set -euo pipefail
+          archive="${RUNNER_TEMP}/mcp-publisher.tar.gz"
+          binary="${RUNNER_TEMP}/mcp-publisher"
+          url="https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}/mcp-publisher_linux_amd64.tar.gz"
+          curl --fail --location --silent --show-error --output "$archive" "$url"
+          echo "${MCP_PUBLISHER_SHA256}  ${archive}" | sha256sum --check --strict
+          tar -xzf "$archive" -C "$RUNNER_TEMP" mcp-publisher
+          chmod +x "$binary"
+          "$binary" --help >/dev/null
+
+      - name: Validate official MCP Registry metadata
+        if: ${{ inputs.publish_mcp_registry }}
+        run: "${RUNNER_TEMP}/mcp-publisher validate"
+
+      - name: Authenticate to the MCP Registry with GitHub OIDC
+        if: ${{ inputs.publish_mcp_registry }}
+        run: "${RUNNER_TEMP}/mcp-publisher login github-oidc"
+
+      - name: Publish to the official MCP Registry
+        if: ${{ inputs.publish_mcp_registry }}
+        run: "${RUNNER_TEMP}/mcp-publisher publish"

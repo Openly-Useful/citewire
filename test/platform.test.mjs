@@ -47,6 +47,7 @@ test('news.about works with no fetch injected at all', async () => {
   const about = byName(tools, 'news.about');
   const res = await about.handler({});
   assert.equal(res.isError, false);
+  assert.equal(res.structuredContent.server.version, '0.2.0');
   assert.equal(res.content[0].type, 'text');
   assert.match(res.content[0].text, /Example News|news\.example/);
 });
@@ -58,6 +59,10 @@ test('news.list passes only provided args as query params', async () => {
   const res = await list.handler({ q: 'energy', topic: 'markets' });
   assert.equal(res.isError, false);
   assert.equal(fetch.calls.length, 1);
+  assert.equal(
+    fetch.calls[0].init.headers['User-Agent'],
+    'citewire/0.2.0 (+https://github.com/MeekPhills/citewire)',
+  );
   const requested = new URL(fetch.calls[0].url);
   assert.equal(requested.searchParams.get('q'), 'energy');
   assert.equal(requested.searchParams.get('topic'), 'markets');
@@ -118,8 +123,11 @@ test('every platform tool has name, description, inputSchema, and a handler', ()
   const tools = platformTools({ platform: PLATFORM });
   for (const t of tools) {
     assert.equal(typeof t.name, 'string');
+    assert.equal(typeof t.title, 'string');
     assert.equal(typeof t.description, 'string');
     assert.ok(t.inputSchema);
+    assert.equal(t.annotations.readOnlyHint, true);
+    assert.equal(t.annotations.destructiveHint, false);
     assert.equal(typeof t.handler, 'function');
   }
 });

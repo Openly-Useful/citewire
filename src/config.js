@@ -11,7 +11,7 @@
 import { readFileSync } from 'node:fs';
 
 export const DEFAULT_CONFIG = {
-  serverInfo: { name: 'citewire', version: '0.1.0' },
+  serverInfo: { name: 'citewire', version: '0.2.0' },
   instructions:
     'Read-only, attribution-first tools over free news sources and free article APIs. ' +
     'Every item credits its original publisher and links to the original article.',

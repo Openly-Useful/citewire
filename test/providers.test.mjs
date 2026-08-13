@@ -48,6 +48,8 @@ test('enabling openalex yields at least one openalex.* tool', () => {
     tools.some((t) => t.name.startsWith('openalex.')),
     `expected an openalex.* tool, got ${tools.map((t) => t.name).join(', ')}`,
   );
+  assert.ok(tools.every((t) => t.annotations.readOnlyHint === true));
+  assert.ok(tools.every((t) => typeof t.title === 'string' && t.title.length > 0));
 });
 
 test('a disabled provider contributes nothing even when another is enabled', () => {
@@ -62,6 +64,10 @@ test('openalex.search with injected fake fetch returns 1 structured result, isEr
   assert.ok(search, `expected openalex.search, got ${tools.map((t) => t.name).join(', ')}`);
   const res = await search.handler({ query: 'x' });
   assert.equal(res.isError, false);
+  assert.equal(
+    fetch.calls[0].init.headers['User-Agent'],
+    'citewire/0.2.0 (+https://github.com/MeekPhills/citewire)',
+  );
   assert.ok(res.structuredContent, 'structuredContent present');
   const sc = res.structuredContent;
   const items = Array.isArray(sc) ? sc : sc.results ?? sc.items ?? sc.data;

@@ -1,8 +1,10 @@
 {
   "name": "citewire",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "mcpName": "io.github.MeekPhills/citewire",
   "description": "Attribution-first MCP server for free news sources and free article APIs.",
   "license": "MIT",
+  "author": "Karaya Group",
   "type": "module",
   "main": "src/index.js",
   "exports": {
@@ -12,10 +14,45 @@
     "./transports/stdio": "./src/transports/stdio.js",
     "./transports/http": "./src/transports/http.js"
   },
-  "bin": { "citewire": "bin/citewire.js" },
-  "engines": { "node": ">=18" },
-  "scripts": { "test": "node --test" },
-  "repository": { "type": "git", "url": "git+https://github.com/MeekPhills/citewire.git" },
-  "keywords": ["mcp", "model-context-protocol", "news", "rss", "attribution", "gdelt", "arxiv", "openalex"],
-  "files": ["src", "bin", "README.md", "LICENSE"]
+  "bin": {
+    "citewire": "bin/citewire.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "release:check": "node --test test/release-metadata.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeekPhills/citewire.git"
+  },
+  "homepage": "https://github.com/MeekPhills/citewire#readme",
+  "bugs": {
+    "url": "https://github.com/MeekPhills/citewire/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "news",
+    "rss",
+    "attribution",
+    "gdelt",
+    "arxiv",
+    "openalex"
+  ],
+  "files": [
+    "src",
+    "bin",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "server.json"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
 }

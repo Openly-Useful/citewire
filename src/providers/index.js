@@ -21,6 +21,13 @@ import dblp from './dblp.js';
 import hackernews from './hackernews.js';
 import devto from './devto.js';
 
+const READ_ONLY_EXTERNAL = Object.freeze({
+  readOnlyHint: true,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint: true,
+});
+
 export const PROVIDERS = [
   gdeltDoc,
   gdeltContext,
@@ -43,7 +50,13 @@ export function providerTools(config) {
   for (const provider of PROVIDERS) {
     const entry = providersCfg[provider.key];
     if (!entry || entry.enabled !== true) continue;
-    for (const tool of provider.tools(config)) tools.push(tool);
+    for (const tool of provider.tools(config)) {
+      tools.push({
+        ...tool,
+        title: tool.title || `${provider.title}: ${tool.name.split('.').at(-1)}`,
+        annotations: tool.annotations || READ_ONLY_EXTERNAL,
+      });
+    }
   }
   return tools;
 }
