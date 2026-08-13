@@ -10,12 +10,17 @@
 import { fetchJson, buildUrl, toolJson, toolError, clampLimit } from './util.js';
 
 const ENDPOINT = 'https://www.ebi.ac.uk/europepmc/webservices/rest/search';
+const ATTRIBUTION = Object.freeze({
+  name: 'Europe PMC',
+  url: 'https://europepmc.org/',
+});
+const CITATION = `${ATTRIBUTION.name}: ${ATTRIBUTION.url}`;
 
 export const key = 'europepmc';
 export const title = 'Europe PMC (biomedical literature search)';
 export const docsUrl = 'https://europepmc.org/RestfulWebService';
 export const termsNote =
-  'Metadata open; article reuse follows each record license.';
+  'Official REST API metadata only; article reuse follows each record license. Do not crawl the Europe PMC website.';
 
 export function tools(config) {
   return [
@@ -49,7 +54,18 @@ export function tools(config) {
           pubYear: r.pubYear,
           doi: r.doi,
         }));
-        return toolJson({ provider: key, query, count: items.length, items, termsNote });
+        return toolJson(
+          {
+            provider: key,
+            query,
+            count: items.length,
+            items,
+            attribution: ATTRIBUTION,
+            citation: CITATION,
+            termsNote,
+          },
+          ATTRIBUTION,
+        );
       },
     },
   ];

@@ -7,6 +7,19 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+### Fixed
+
+- Added stable GDELT Project and Semantic Scholar attribution to their provider
+  result payloads and text content, plus Europe PMC source acknowledgment.
+- Enforced process-local arXiv request serialization and a 3000ms minimum
+  interval between request starts, and process-local dblp serialization with a
+  1000ms minimum start interval.
+- Required a deployer-owned Crossref `mailto` contact, added canonical Hacker
+  News item links, and limited Semantic Scholar abstracts to short excerpts.
+- Updated OpenAlex access guidance to its current metered allowance.
+- Documented the Node 18+ ESM-only Community runtime and pinned release action
+  revisions to reviewed commits.
+
 ## [0.2.0] - 2026-08-13
 
 ### Added

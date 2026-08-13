@@ -10,6 +10,11 @@
 import { fetchJson, buildUrl, toolJson, toolError, clampLimit } from './util.js';
 
 const ENDPOINT = 'https://api.gdeltproject.org/api/v2/doc/doc';
+const ATTRIBUTION = Object.freeze({
+  name: 'GDELT Project',
+  url: 'https://www.gdeltproject.org/',
+});
+const CITATION = `${ATTRIBUTION.name}: ${ATTRIBUTION.url}`;
 
 export const key = 'gdelt-doc';
 export const title = 'GDELT DOC 2.0 (news article search)';
@@ -57,7 +62,19 @@ export function tools(config) {
           seendate: a.seendate,
           language: a.language,
         }));
-        return toolJson({ provider: key, query, timespan, count: items.length, items, termsNote });
+        return toolJson(
+          {
+            provider: key,
+            query,
+            timespan,
+            count: items.length,
+            items,
+            attribution: ATTRIBUTION,
+            citation: CITATION,
+            termsNote,
+          },
+          ATTRIBUTION,
+        );
       },
     },
   ];

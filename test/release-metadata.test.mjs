@@ -5,11 +5,13 @@ import { DEFAULT_CONFIG } from '../src/config.js';
 import { createCitewire } from '../src/index.js';
 
 const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+const packageLock = JSON.parse(await readFile(new URL('../package-lock.json', import.meta.url), 'utf8'));
 const serverJson = JSON.parse(await readFile(new URL('../server.json', import.meta.url), 'utf8'));
 const releaseWorkflow = await readFile(
   new URL('../.github/workflows/release.yml', import.meta.url),
   'utf8',
 );
+const ciWorkflow = await readFile(new URL('../.github/workflows/ci.yml', import.meta.url), 'utf8');
 
 test('release versions and MCP ownership metadata stay aligned', async () => {
   assert.equal(packageJson.version, '0.2.0');
@@ -57,6 +59,9 @@ test('package remains public, provenance-enabled, MIT, and dependency-free', () 
   ]) {
     assert.equal(packageJson[field], undefined, `${field} must remain absent`);
   }
+
+  assert.equal(packageLock.lockfileVersion, 3);
+  assert.deepEqual(Object.keys(packageLock.packages), ['']);
 });
 
 test('release workflow is manual and defaults to a non-publishing preflight', () => {
@@ -68,4 +73,18 @@ test('release workflow is manual and defaults to a non-publishing preflight', ()
   assert.match(releaseWorkflow, /id-token: write/);
   assert.match(releaseWorkflow, /Refuse an existing npm version/);
   assert.doesNotMatch(releaseWorkflow, /NPM_TOKEN|secrets\./);
+});
+
+test('release workflow pins reviewed v6 action commits', () => {
+  for (const workflow of [ciWorkflow, releaseWorkflow]) {
+    assert.match(
+      workflow,
+      /# actions\/checkout v6\.1\.0\s+uses: actions\/checkout@d23441a48e516b6c34aea4fa41551a30e30af803/,
+    );
+    assert.match(
+      workflow,
+      /# actions\/setup-node v6\.5\.0\s+uses: actions\/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38/,
+    );
+    assert.doesNotMatch(workflow, /actions\/(?:checkout|setup-node)@v\d/);
+  }
 });

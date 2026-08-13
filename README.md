@@ -36,7 +36,8 @@ terms for your use case.
 
 ## Quick start
 
-Requirements: Node.js 18 or newer.
+Requirements: Node.js 18 or newer. Community is an ESM-only Node package; it
+does not provide a CommonJS entry point.
 
 Create `citewire.config.json` with one provider enabled:
 
@@ -127,10 +128,18 @@ provider becomes active only when its config entry sets `enabled` to `true`.
   "providers": {
     "gdelt-doc": { "enabled": true },
     "arxiv": { "enabled": true },
-    "crossref": { "enabled": true }
+    "crossref": {
+      "enabled": true,
+      "mailto": "operator@example.com"
+    }
   }
 }
 ```
+
+Crossref requires the deployer's own contact email so requests can identify the
+operator to its polite pool. citewire sends that address only to Crossref in
+the request `mailto` parameter and `User-Agent`. Do not copy the example
+address.
 
 The current adapters are:
 
@@ -180,6 +189,8 @@ A deployment can combine a platform and provider tools:
 
 - **MIT and zero dependency.** The package uses Node built-ins and has no
   runtime or development dependencies.
+- **Node ESM.** Community supports Node.js 18 or newer through ESM. It does not
+  provide CommonJS compatibility or a CommonJS build.
 - **Read only.** The included tools query platform and provider read surfaces.
 - **Stateless.** The Community server has no accounts, sessions, saved searches,
   or retained history.

@@ -31,15 +31,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        # actions/checkout v6.1.0
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        # actions/setup-node v6.5.0
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version: 24.x
           package-manager-cache: false
+
+      - name: Verify clean zero-dependency install
+        run: npm ci --ignore-scripts --no-audit --no-fund
 
       - name: Check versions, name, and release ref
         shell: bash
@@ -113,10 +118,12 @@ jobs:
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        # actions/checkout v6.1.0
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
 
       - name: Setup Node.js for trusted publishing
-        uses: actions/setup-node@v6
+        # actions/setup-node v6.5.0
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version: 24.x
           registry-url: https://registry.npmjs.org

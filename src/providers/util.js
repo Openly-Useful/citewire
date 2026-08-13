@@ -6,13 +6,27 @@
 // each provider module stand alone. The shapes are identical to the core's
 // toolJson / toolError so results drop straight onto the MCP wire.
 
-const USER_AGENT = 'citewire/0.2.0 (+https://github.com/MeekPhills/citewire)';
+const PROJECT_URL = 'https://github.com/MeekPhills/citewire';
+
+export function citewireUserAgent(mailto) {
+  const contact = mailto ? `; mailto:${mailto}` : '';
+  return `citewire/0.2.0 (+${PROJECT_URL}${contact})`;
+}
+
+const USER_AGENT = citewireUserAgent();
 
 // A successful tool result. structuredContent carries the machine-readable
 // payload; content mirrors it as text for clients that only read text blocks.
-export function toolJson(payload) {
+export function toolJson(payload, textAttribution) {
+  const content = [{ type: 'text', text: JSON.stringify(payload) }];
+  if (textAttribution) {
+    content.push({
+      type: 'text',
+      text: `Attribution: ${textAttribution.name} (${textAttribution.url})`,
+    });
+  }
   return {
-    content: [{ type: 'text', text: JSON.stringify(payload) }],
+    content,
     structuredContent: payload,
     isError: false,
   };
@@ -56,7 +70,11 @@ export async function fetchText(url, { fetchImpl, timeoutMs = 15000, headers } =
       headers: { 'User-Agent': USER_AGENT, ...(headers || {}) },
     });
     if (!res.ok) {
-      throw new Error(`request failed: ${res.status} ${res.statusText || ''}`.trim());
+      const retryAfter = res.headers?.get?.('retry-after');
+      const retryNote = retryAfter ? `; retry after ${retryAfter}` : '';
+      throw new Error(
+        `request failed: ${res.status} ${res.statusText || ''}${retryNote}`.trim(),
+      );
     }
     return await res.text();
   } finally {

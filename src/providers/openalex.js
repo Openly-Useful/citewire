@@ -2,7 +2,9 @@
 //
 // Queries: the OpenAlex /works endpoint — a fully open index of scholarly
 // works (papers, datasets, etc.) and their metadata.
-// Free-access basis: OpenAlex is free and keyless; its core metadata is CC0.
+// Free-access basis: OpenAlex has a metered daily allowance; this adapter is
+// keyless and therefore cannot incur paid usage; it stops when the keyless
+// allowance is exhausted. Its core metadata is CC0.
 // Full text of the underlying works keeps its own license.
 // Enabling this provider is the deployer's own act. Reachability is not
 // permission: the deployer must review OpenAlex's terms before turning it on.
@@ -15,7 +17,7 @@ export const key = 'openalex';
 export const title = 'OpenAlex (scholarly works search)';
 export const docsUrl = 'https://docs.openalex.org/';
 export const termsNote =
-  'Core metadata is CC0; underlying full text keeps its own license.';
+  'Core metadata is CC0; underlying full text keeps its own license. This keyless adapter cannot incur charges and stops at the keyless allowance.';
 
 export function tools(config) {
   return [
