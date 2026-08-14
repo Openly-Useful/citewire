@@ -1,0 +1,81 @@
+/*
+ * Openly Useful design-system family tokens.
+ * Source: Openly-Useful/openlyuseful.org, design system 3.0.1,
+ * commit 65b16c4cc0b844cae7a4d36790098e3d8807c3cb.
+ * Citewire adds only the project-level wire colors below.
+ */
+:root {
+  color-scheme: light;
+  --ou-color-shell-0: #fffdf8;
+  --ou-color-shell-50: #f7f3e9;
+  --ou-color-shell-100: #eee8db;
+  --ou-color-ink-900: #171a18;
+  --ou-color-ink-700: #3d443f;
+  --ou-color-ink-500: #69716b;
+  --ou-color-terminal-700: #185f39;
+  --ou-color-terminal-600: #247a4b;
+  --ou-color-terminal-300: #7ec693;
+  --ou-color-terminal-100: #dce7db;
+  --ou-color-process-700: #28558e;
+  --ou-color-process-600: #3568a8;
+  --ou-color-process-100: #dce7f5;
+  --ou-color-warning-600: #9a5b15;
+  --ou-color-warning-100: #f5e4c9;
+  --ou-color-danger-600: #a33b35;
+  --ou-color-danger-100: #f4ddda;
+  --ou-color-canvas: var(--ou-color-shell-50);
+  --ou-color-surface: var(--ou-color-shell-0);
+  --ou-color-text: var(--ou-color-ink-900);
+  --ou-color-text-muted: var(--ou-color-ink-700);
+  --ou-color-border: color-mix(in srgb, var(--ou-color-ink-900) 22%, transparent);
+  --ou-color-brand: var(--ou-color-terminal-600);
+  --ou-color-brand-strong: var(--ou-color-terminal-700);
+  --ou-color-focus: var(--ou-color-process-600);
+  --ou-color-selection: var(--ou-color-terminal-100);
+  --ou-font-sans: "Atkinson Hyperlegible Next", Atkinson Hyperlegible, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ou-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --ou-text-00: .75rem;
+  --ou-text-10: .875rem;
+  --ou-text-20: 1rem;
+  --ou-text-30: clamp(1.125rem, 1rem + .4vw, 1.375rem);
+  --ou-text-40: clamp(1.5rem, 1.15rem + 1.1vw, 2.125rem);
+  --ou-text-50: clamp(2.25rem, 1.4rem + 3vw, 4.5rem);
+  --ou-text-60: clamp(3.75rem, 2rem + 7vw, 9.5rem);
+  --ou-leading-tight: .92;
+  --ou-leading-body: 1.58;
+  --ou-tracking-tight: -.045em;
+  --ou-tracking-label: .1em;
+  --ou-space-1: .25rem;
+  --ou-space-2: .5rem;
+  --ou-space-3: .75rem;
+  --ou-space-4: 1rem;
+  --ou-space-5: 1.5rem;
+  --ou-space-6: 2rem;
+  --ou-space-7: 3rem;
+  --ou-space-8: 4rem;
+  --ou-space-9: 6rem;
+  --ou-space-10: 8rem;
+  --ou-radius-1: .5rem;
+  --ou-radius-2: .875rem;
+  --ou-radius-3: 1.5rem;
+  --ou-radius-round: 999px;
+  --ou-shadow-1: 0 1px 2px rgb(23 26 24 / .08), 0 8px 24px rgb(23 26 24 / .06);
+  --ou-shadow-2: 0 4px 8px rgb(23 26 24 / .08), 0 20px 48px rgb(23 26 24 / .1);
+  --ou-duration-fast: 120ms;
+  --ou-duration-base: 200ms;
+  --ou-duration-slow: 360ms;
+  --ou-ease-standard: cubic-bezier(.2, .8, .2, 1);
+  --ou-focus-ring: 0 0 0 2px var(--ou-color-canvas), 0 0 0 5px var(--ou-color-focus);
+  --cw-wire: #b7552d;
+  --cw-wire-dark: #81391f;
+  --cw-wire-soft: #f1d8ca;
+  --cw-grid: rgb(23 26 24 / .055);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ou-duration-fast: 1ms;
+    --ou-duration-base: 1ms;
+    --ou-duration-slow: 1ms;
+  }
+}
