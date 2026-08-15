@@ -1,285 +1,119 @@
-schema_version: 1
-artifact: recovery-ledger
-program: citewire-open-source
-captured_at: "2026-08-15T00:00:00-04:00"
-scope:
-  - "MeekPhills/citewire Community candidate and citewire.org landing"
-  - "MeekPhills/citewire-cloud private-alpha candidate"
-  - "Openly-Useful/openlyuseful.org project-card link"
-  - "MeekPhills/karayagroup Industry News consumer link"
-authority_order:
-  - "Luis's explicit live approval"
-  - "current implementation and reproducible behavior"
-  - "fresh test, CI, deployment, and direct HTTP evidence"
-  - "reviewed git history and pull-request diffs"
-  - "current GitHub and Linear state"
-  - "current repository documentation, including CLAUDE.md"
-  - "CITEWIRE_CODEX_HANDOFF.md, CITEWIRE_EXECUTION_CHECKPOINT.md, older instructions, and historical prompts"
-claim_statuses:
-  Verified: "Direct local or live evidence recorded in this recovery pass."
-  Historical: "Recorded in a dated handoff or checkpoint; not re-executed in this pass."
-  Inferred: "Reasonable relationship drawn from verified evidence; needs a focused check before action."
-  Unknown: "No sufficient evidence for action."
-  Contradicted: "Sources conflict; the higher-trust or fresher source governs."
-sources:
-  - id: S1
-    path: "/Users/luismorrobel/karayagroup/CITEWIRE_CODEX_HANDOFF.md"
-    trust: high
-    freshness: "2026-08-13 historical handoff, with 2026-08-14 website continuation"
-  - id: S2
-    path: "/Users/luismorrobel/karayagroup/CITEWIRE_EXECUTION_CHECKPOINT.md"
-    trust: high
-    freshness: "2026-08-13 checkpoint, with 2026-08-14 website continuation"
-  - id: S3
-    path: "/Users/luismorrobel/karayagroup/citewire/.git"
-    trust: high
-    freshness: "local Git refs inspected 2026-08-15"
-  - id: S4
-    path: "/Users/luismorrobel/karayagroup/citewire-cloud/package.json"
-    trust: high
-    freshness: "current local package manifest inspected 2026-08-15"
-  - id: S5
-    path: "/Users/luismorrobel/karayagroup/citewire-cloud/package-lock.json"
-    trust: high
-    freshness: "current local lockfile inspected 2026-08-15"
-  - id: S6
-    path: "/Users/luismorrobel/karayagroup/karayagroup-brand/site/handoff/redesign/"
-    trust: high
-    freshness: "tracked and untracked file count inspected 2026-08-15"
-  - id: S7
-    path: "/Users/luismorrobel/karayagroup/karayagroup-brand/site/api/_lib/publish-policy.js"
-    trust: medium
-    freshness: "checked-in historical runtime policy inspected 2026-08-15"
-  - id: S8
-    path: "/Users/luismorrobel/karayagroup/karayagroup-brand/supabase/seed/source_registry.verified.yaml"
-    trust: medium
-    freshness: "checked-in historical source evidence inspected 2026-08-15"
-  - id: S9
-    path: "https://karaya.group/industry-news/feed.json"
-    trust: high
-    freshness: "live JSON Feed fetched and independently summarized 2026-08-15"
-last_good_state:
-  citewire_community:
+schema_version: 2
+artifact: citewire-orchestration-recovery-ledger
+as_of: "2026-08-15"
+program: "CiteWire open-source and Karaya safety program"
+
+claim_status_legend:
+  Verified: "Observed locally in the current controlled workspace."
+  Historical: "Recorded dated evidence that requires fresh remote revalidation before action."
+  Inferred: "Bounded interpretation, not execution authority."
+  Unknown: "Not established."
+  Contradicted: "A lower-trust claim conflicts with a governing recorded fact."
+
+current_control_baseline:
+  - id: "REC-001"
     claim_status: Verified
-    branch: agent/citewire-product-launch
-    head: 10aee95ac95bb437b4607723cd20fa5c8f9d1879
-    draft_pr: "https://github.com/MeekPhills/citewire/pull/1"
-    verified_properties:
-      - "head/ref and mergeable draft state were freshly read on 2026-08-15"
-      - "zero runtime and development dependencies; Node 18+ ESM; providers disabled by default"
-    historical_validation:
-      - "66/66 tests, 5/5 release checks, 22 syntax checks, package and secret gates passed in historical evidence"
-    provenance: [S1, S2, S3]
-    trust: high
-  citewire_cloud:
+    claim: "CiteWire orchestration current local head is 7e816c5b2900cb04309f751e5d93bab79752128a. Initial handoff package commit 80017d60c4396d704e0be55af4cd9cb1dc548b94 is historical evidence only."
+    action_boundary: "Do not represent 80017d6 as the current head."
+  - id: "REC-002"
     claim_status: Verified
-    branch: agent/cloud-alpha-http
-    head: 69068275ca0e332e36304533aa0f6b5d2e291405
-    implementation_base: ad7e58fb2ac3f6ebc4c7d0247c105955dd9696b0
-    draft_pr: "https://github.com/MeekPhills/citewire-cloud/pull/1"
-    community_archive_pin: 10aee95ac95bb437b4607723cd20fa5c8f9d1879
-    pin_locations:
-      - package.json
-      - package-lock.json
-    properties:
-      - "15/15 fresh committed test gate, syntax, direct HTTP, and concurrent account-isolation checks passed after the docs-only synchronization"
-      - "Node 18/22 CI runs 31893670759 and 31893673430 passed at 69068275ca0e332e36304533aa0f6b5d2e291405"
-      - "one-way Community import and fail-closed account-scoped service composition documented"
-      - "draft, unpublished, and undeployed"
-    provenance: [S1, S2, S4, S5]
-    trust: high
-  citewire_landing:
+    claim: "Visible brand is CiteWire, technical token is citewire, and project parent is Openly Useful."
+    action_boundary: "These facts do not authorize repository, package, registry, DNS, hosting, deployment, or Cloud actions."
+  - id: "REC-003"
     claim_status: Verified
-    branch: agent/citewire-landing-site
-    head: ff09b68ed811531eb0ca630b65daeaf06cc3304c
-    base: 10aee95ac95bb437b4607723cd20fa5c8f9d1879
-    draft_pr: "https://github.com/MeekPhills/citewire/pull/2"
-    verified_properties:
-      - "20-file stacked landing and website-metadata diff"
-      - "70/70 committed tests, 5/5 release checks, package dry run, and diff/secret checks passed freshly on the exact head"
-    historical_validation:
-      - "Node 18/22 green runs 31849200115 and 31849291099; 31 syntax and routine browser checks recorded"
-    provenance: [S1, S2, S3]
-    trust: high
-  openly_useful_link:
+    claim: "Openly-Useful/citewire is authenticated absent and unapproved."
+    action_boundary: "Do not create, transfer, mirror, archive, rename, or infer a route."
+  - id: "REC-004"
+    claim_status: Verified
+    claim: "citewire/.project-status/manifest.json is a controlled untracked proposal. The CiteWire repository is not Git-clean until it is separately dispositioned."
+    action_boundary: "Preserve it unstaged and exclude it from orchestration commits."
+  - id: "REC-005"
+    claim_status: Verified
+    claim: "citewire-public-platform is a dirty parked prototype at 7e816c5 and karayagroup-editorial-shadow is a dirty preserved proposal at 9c150632."
+    action_boundary: "Neither receives WS completion credit, may be staged/merged/cleaned, or may replace a clean implementation worktree."
+  - id: "REC-006"
+    claim_status: Verified
+    claim: "karayagroup-production-audit is absent and is a hard WS-012 precondition."
+    action_boundary: "Create a fresh clean isolated worktree from verified origin/main before WS-012; never substitute live, brand, or editorial-shadow."
+  - id: "REC-007"
+    claim_status: Verified
+    claim: "Karaya owner screenshot inventory is protected at 49 files: 8 tracked and 41 untracked."
+    action_boundary: "Never edit, stage, clean, move, delete, or use as a baseline."
+
+recorded_historical_work:
+  - id: "REC-101"
     claim_status: Historical
-    branch: agent/citewire-site-link
-    head: 28af5c7a5fdd0425ced2fe45f5c50e05946758de
-    base_main: cf137f9b77d68d16c41cd90f1af8d2df3b9972f4
-    draft_pr: "https://github.com/Openly-Useful/openlyuseful.org/pull/8"
-    properties:
-      - "exact two-file diff: index.html and scripts/validate_site.py"
-      - "validation runs 31849408964 and 31849412743 and Vercel preview recorded green"
-    provenance: [S1, S2]
-    trust: high
-  karaya_link:
-    claim_status: Verified
-    branch: agent/citewire-site-link
-    head: 3a90e43d8797af9e7c0bc02d4c1ae6f51ebd19a6
-    base_main: 9c1506320771faf177f3675ef5ea1c1eff36fe81
-    draft_pr: "https://github.com/MeekPhills/karayagroup/pull/17"
-    verified_properties:
-      - "exact three-file diff: bridge document, existing About-page link target, and committed regression"
-      - "CI run 31849281233 and preview recorded green"
-    historical_validation:
-      - "16-page build, 409/409 tests, registry, audit, compliance, diff, and secret gates recorded"
-    provenance: [S1, S2, S3]
-    trust: high
-  karaya_production:
-    claim_status: Verified
-    main: 9c1506320771faf177f3675ef5ea1c1eff36fe81
-    properties:
-      - "https://karaya.group, /industry-news, /industry-news/about, and /api/v1/news/topics returned 200 in routine smoke evidence"
-      - "topics API returned nine topics"
-      - "MCP initialize reported protocol 2025-06-18 and karaya-news-mcp 1.0.0"
-      - "live About page retains the working GitHub Citewire link until citewire.org is healthy"
-    provenance: [S1, S2]
-    trust: high
-completed:
-  - id: REC-001
-    claim_status: Verified
-    claim: "Community provider-compliance repair is present at 10aee95ac95bb437b4607723cd20fa5c8f9d1879 and remains a draft PR #1 candidate."
-    provenance: [S1, S2, S3]
-    trust: high
-  - id: REC-002
-    claim_status: Verified
-    claim: "Cloud implementation base ad7e58fb2ac3f6ebc4c7d0247c105955dd9696b0 pins Community archive 10aee95ac95bb437b4607723cd20fa5c8f9d1879 in package.json and package-lock.json. Docs-only head 69068275ca0e332e36304533aa0f6b5d2e291405 reconciles all four active narrative references and preserves the future ^0.2.0 gate."
-    provenance: [S1, S2, S4, S5]
-    trust: high
-  - id: REC-003
+    claim: "CiteWire Community candidate is recorded at 10aee95 in draft PR #1. Cloud docs-only reconciliation is recorded at 6906827 and its archive pin is 10aee95."
+    action_boundary: "Fresh remote/CI evidence is required before release, deployment, or dependency action."
+  - id: "REC-102"
     claim_status: Historical
-    claim: "The Community landing branch, Openly Useful link branch, and Karaya link branch were pushed as green, mergeable draft PRs without production deployment."
-    provenance: [S1, S2]
-    trust: high
-  - id: REC-004
-    claim_status: Verified
-    claim: "Karaya production is live and healthy under its verified routine smoke contract; it has not been switched to citewire.org."
-    provenance: [S1, S2]
-    trust: high
-  - id: REC-005
-    claim_status: Verified
-    claim: "Owner screenshot inventory under karayagroup-brand/site/handoff/redesign totals 49 files: 8 tracked and 41 untracked. The 41 untracked files are unstaged and must be preserved."
-    provenance: [S6]
-    trust: high
-  - id: REC-006
+    claim: "CiteWire landing PR #2, Openly Useful PR #8, Karaya PR #17, CiteWire PR #5, and Cloud PR #1 are recorded as drafts."
+    action_boundary: "Do not infer current mergeability, CI, preview, deployment, or PR-head state without a fresh remote read."
+  - id: "REC-103"
     claim_status: Historical
-    claim: "KAR-66 was created for the dedicated open-source program and linked to completed KAR-48 and KAR-36; the complete Karaya Launch Log received the decision entry."
-    provenance: [S1, S2]
-    trust: high
-partial:
-  - id: REC-101
-    claim_status: Verified
-    claim: "Citewire landing implementation is complete in draft PR #2, but the public domain is not ready for it."
-    blocking_condition: "citewire.org is parked over HTTP and its HTTPS handshake fails; no Citewire Vercel project was found."
-    provenance: [S1, S2]
-    trust: high
-  - id: REC-102
+    claim: "citewire.org recorded a parked HTTP response and failed HTTPS TLS. It is not a verified live CiteWire destination."
+    action_boundary: "Do not merge downstream links or publish metadata pointing there until WS-005 verifies live HTTPS."
+  - id: "REC-104"
     claim_status: Historical
-    claim: "Openly Useful PR #8 and Karaya PR #17 are code-complete draft link changes, held until citewire.org resolves to verified HTTPS content."
-    blocking_condition: "Merging now would point a production-visible link to a broken destination."
-    provenance: [S1, S2]
-    trust: high
-  - id: REC-103
+    claim: "Karaya public smoke showed 50 feed items, 16 over the provisional cap, and one POWER Magazine trailer. Current code includes the intended gate."
+    action_boundary: "Treat this as stored-corpus drift pending WS-012, not proof of a current ingest bypass."
+  - id: "REC-105"
     claim_status: Historical
-    claim: "Community and Cloud candidate code is verified for owner review but immutable release setup and owner release actions remain incomplete."
-    blocking_condition: "release environment, private vulnerability reporting, npm trusted-publishing verification, final merge, tag, publication, registry, and catalog actions are separately gated."
-    provenance: [S1, S2]
-    trust: high
-  - id: REC-104
-    claim_status: Inferred
-    claim: "The open-source program command is a governed design and execution framework, not a completed migration or deployed hosted runtime."
-    blocking_condition: "canonical organization/repository identity, legacy disposition, provider/model choice, cost cap, migration path, and publishing authority remain undecided."
-    provenance: [S1, S2]
-    trust: high
-superseded:
-  - id: REC-201
+    claim: "KAR-66 is parent; KAR-67, KAR-68, KAR-69, and KAR-70 are the recorded work items; KAR-53 is related console context."
+    action_boundary: "KAR-71 and KAR-77 remain context-only and must not become stream mappings or dependencies."
+  - id: "REC-106"
     claim_status: Historical
-    claim: "Cloud's former Community archive pin 6c89b6ea4c8b080fe2ffa166c41eb3113059c894 was superseded by 10aee95ac95bb437b4607723cd20fa5c8f9d1879."
-    replacement: "ad7e58fb2ac3f6ebc4c7d0247c105955dd9696b0 package.json and package-lock.json, with narrative reconciliation at 69068275ca0e332e36304533aa0f6b5d2e291405"
-    provenance: [S1, S2, S4, S5]
-    trust: high
-  - id: REC-202
-    claim_status: Historical
-    claim: "The initial Karaya base-repair sequencing is complete: PR #16 merged into agent/fix-fuzzy-candidate-test at b45af558ec0ebea3a2f9d692b2ce087e92a2379b, then PR #15 merged to main at f3610e4e3eddfaa1c89a398f369ac6c1386662ed; the later approved bridge reached main at 9c1506320771faf177f3675ef5ea1c1eff36fe81."
-    provenance: [S1, S2]
-    trust: high
-  - id: REC-203
-    claim_status: Historical
-    claim: "The previous live About-page destination was GitHub Community, not citewire.org; it remains the correct live destination until the domain gate is satisfied."
-    provenance: [S1, S2]
-    trust: high
-contradicted:
-  - id: REC-301
-    claim_status: Contradicted
-    topic: "Karaya root deployment description"
-    lower_trust_claim: "Root AGENTS.md describes an undeployed one-page Astro site with no news application."
-    governing_resolution: "Repository-local Karaya CLAUDE.md and SESSION_HANDOFF.md, plus fresh production smoke evidence, establish a live Industry News system. Do not use the stale root description for execution decisions."
-    provenance: [S1, S2]
-    trust: high
-  - id: REC-302
-    claim_status: Contradicted
-    topic: "Cloud dependency pin"
-    lower_trust_claim: "Earlier checkpoint sections name archive commit 6c89b6e as current."
-    governing_resolution: "Current package.json and package-lock.json verify the 10aee95 archive pin at Cloud head ad7e58f."
-    provenance: [S1, S2, S4, S5]
-    trust: high
-  - id: REC-303
-    claim_status: Contradicted
-    topic: "Citewire public-site availability"
-    lower_trust_claim: "Local landing branch and passing preview/CI can be read as a public-site launch."
-    governing_resolution: "The local site artifact and drafts are not the live domain. citewire.org is parked over HTTP and HTTPS fails; treat public landing availability as not ready."
-    provenance: [S1, S2]
-    trust: high
-  - id: REC-304
-    claim_status: Contradicted
-    topic: "Missing Claude-specific handoff"
-    lower_trust_claim: "A requested file named CITEWIRE_CLAUDE_CODE_HANDOFF.md was expected by a continuation instruction."
-    governing_resolution: "CITEWIRE_CODEX_HANDOFF.md exists; CITEWIRE_CLAUDE_CODE_HANDOFF.md is absent from the workspace. This recovery ledger and PROJECT_HANDOFF.md are the durable replacement, not a claim that the missing file was found."
-    provenance: [S1]
-    trust: high
-unknowns:
-  - id: REC-401
+    claim: "KAR-48 and KAR-36 are Done provenance/history. KAR-24 is Todo; linked PR #16 does not establish completion of the Astro-major-upgrade dependency."
+    action_boundary: "These are context-only and do not map to an active CiteWire stream or authorize product work."
+  - id: "REC-107"
     claim_status: Unknown
-    topic: "Canonical identity and migration"
-    detail: "No Openly-Useful/citewire repository is verified as created. The legacy repository disposition, package and registry identity, migration plan, and compatibility commitment have not been approved."
-    action_boundary: "Do not create or rename repositories, alter visibility, migrate code or issues, or publish packages without explicit owner authorization."
-    provenance: [S1, S2]
-    trust: high
-  - id: REC-402
-    claim_status: Unknown
-    topic: "Hosted runtime and operations"
-    detail: "Cloud has no deployment. Participants, credentials and rotation, domain and Origin policy, persistence, retention, OAuth, billing, quotas, support, terms, privacy, provider/model selection, and cost cap are unresolved."
-    action_boundary: "No provider activation, paid service, production deployment, account creation, or credential delivery is authorized."
-    provenance: [S1, S2]
-    trust: high
-  - id: REC-403
+    claim: "No verified CiteWire Cowork/plugin manifest or GitHub/Linear work item maps to a required stream."
+    action_boundary: "Studio/plugin work remains speculative and outside the required graph."
+
+parked_prototype_findings:
+  public_platform:
     claim_status: Verified
-    topic: "Feed signal: 50 / 16-over-cap / one trailer"
-    detail: "A fresh live JSON Feed fetch returned 50 items. Mechanical inspection found 16 content_text values longer than the current 480-character provisional cap and one item whose content_text contains 'appeared first on POWER Magazine'. Current code contains the intended gate, so this proves stored-corpus policy drift and does not by itself prove the present ingest path bypasses policy."
-    action_boundary: "Inventory affected rows and production migration/runtime truth read-only before proposing any revision-aware remediation. Do not alter production data, thresholds, sources, or migrations without exact owner approval."
-    provenance: [S7, S9]
-    trust: high
-  - id: REC-404
+    finding: "Runtime changes precede WS-013 design; Studio trusts caller-supplied accountId; pause does not gate all writes; nested sensitive values can survive cleanup; active classifier creates a publish seam; registry input lacks schema validation; package excludes Studio; resource compatibility is not yet Node-18/22 verified."
+    action_boundary: "Park the entire diff. WS-017 must implement from approved WS-013 schemas in a clean worktree and excludes Studio/plugins."
+  editorial_shadow:
+    claim_status: Verified
+    finding: "Executable migration is present; fingerprint lacks as-of/window semantics; corpus query lacks deterministic pagination; retries/partial writes are not safely convergent; tests do not prove database/RLS/race behavior; provenance asserts 0.1.0 against upstream 6c89b6e package version 0.2.0. Focused verification stopped after 21 passing tests when one test file could not load @supabase/supabase-js because dependencies were absent; the shell was Node v24.18.0 rather than required Node 22. No install, rerun, build, audit, commit, migration, or deployment followed."
+    action_boundary: "Preserve without credit. WS-012 reconciles vendor provenance; WS-014 starts only after production truth and schema sufficiency."
+
+graph_corrections:
+  - "The graph contains exactly 17 streams."
+  - "WS-008 depends on WS-003, WS-004, and WS-005."
+  - "WS-011 depends on WS-002 and WS-009."
+  - "Karaya direct sequence is WS-012 to WS-014 to WS-015 to WS-016."
+  - "WS-017 depends on WS-004 and WS-013 and is the only new required stream."
+  - "Studio/plugin work is speculative and not a required stream."
+  - "No exclusive path lease overlaps another active mutable lease."
+
+unknowns_and_stops:
+  - id: "REC-401"
     claim_status: Unknown
-    topic: "Fresh remote PR, CI, Vercel, GitHub, and Linear state"
-    detail: "Historical IDs are recorded above, but any mutation or merge decision needs a fresh read-only remote check at execution time."
-    action_boundary: "Do not infer a green check, mergeability, deployment, issue status, or repository availability from historical evidence alone."
-    provenance: [S1, S2]
-    trust: high
+    topic: "Repository route and immutable public identity"
+    action_boundary: "WS-002 and WS-003 require separate owner decisions and fresh authority evidence."
+  - id: "REC-402"
+    claim_status: Unknown
+    topic: "CiteWire website/DNS/hosting"
+    action_boundary: "WS-005 requires separate owner approval and independent live HTTPS evidence."
+  - id: "REC-403"
+    claim_status: Unknown
+    topic: "Cloud operator, tenancy, credentials, support, privacy, billing, deployment, and retention"
+    action_boundary: "WS-011 remains blocked; no default Community/Karaya trust."
+  - id: "REC-404"
+    claim_status: Unknown
+    topic: "Karaya production migrations, source/circuit-breaker state, cron, queue, and exact corpus truth"
+    action_boundary: "WS-012 read-only production-truth packet is required before shadow, UI, or rollout."
+
 safety_state:
-  claim_status: Verified
-  no_secret_detected: true
-  no_irreversible_action_in_recovery: true
-  preserved_owner_assets:
-    total: 49
-    tracked: 8
-    untracked: 41
-    rule: "Never edit, stage, delete, clean, or include the untracked owner screenshots in a broad commit."
-  prohibited_without_explicit_owner_approval:
-    - "repository creation, visibility, organization, or legacy-history changes"
-    - "merge, deploy, domain attachment, DNS, provider activation, migration, or outbound email"
-    - "tag, GitHub release, npm publication, MCP Registry or catalog submission"
-    - "paid-service, model, or provider decision"
-    - "visible Karaya copy change without read-aloud approval"
-  provenance: [S1, S2, S6]
-  trust: high
+  no_secret_or_private_transcript: true
+  no_external_mutation_authorized_by_this_ledger: true
+  no_plugin_or_connector_delivery_requirement: true
+  hard_stops:
+    - "repository create, transfer, archive, rename, visibility, or history change"
+    - "DNS, domain, certificate, hosting, deployment, merge, tag, publication, registry, catalog, or paid service"
+    - "provider/source activation, migration, data/configuration mutation, corpus rewrite, canary, or automatic publication"
+    - "visible Karaya copy without Luis read-aloud approval"
+    - "protected screenshots or controlled dirty exception paths"
