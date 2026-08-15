@@ -13,8 +13,8 @@ claim_status_legend:
 current_control_baseline:
   - id: "REC-001"
     claim_status: Verified
-    claim: "CiteWire orchestration current local head is 7e816c5b2900cb04309f751e5d93bab79752128a. Initial handoff package commit 80017d60c4396d704e0be55af4cd9cb1dc548b94 is historical evidence only."
-    action_boundary: "Do not represent 80017d6 as the current head."
+    claim: "CiteWire orchestration pre-sync baseline is 7e816c5b2900cb04309f751e5d93bab79752128a; first reviewed 17-stream sync is 4b04c4c448f44b07f8fc10a4e2211274d7c55ee8. Initial handoff package 80017d60c4396d704e0be55af4cd9cb1dc548b94 is historical evidence only."
+    action_boundary: "Read the live branch/PR head before action; do not represent 80017d6 or 7e816c5 as current."
   - id: "REC-002"
     claim_status: Verified
     claim: "Visible brand is CiteWire, technical token is citewire, and project parent is Openly Useful."
@@ -88,6 +88,15 @@ graph_corrections:
   - "WS-017 depends on WS-004 and WS-013 and is the only new required stream."
   - "Studio/plugin work is speculative and not a required stream."
   - "No exclusive path lease overlaps another active mutable lease."
+
+fresh_synchronization:
+  claim_status: Verified
+  evidence:
+    - "Draft PR #5 re-read at 4b04c4c, draft and mergeable, before the final metadata follow-up."
+    - "Node 18/22 CI passed in runs 31906699682 and 31906701652."
+    - "GitHub synchronization comments re-read on CiteWire #3/#4 and Karaya #18/#19."
+    - "KAR-66 through KAR-70 re-read after updates; Launch Log preserved and extended once."
+  action_boundary: "Tracking synchronization only; no product, release, deployment, DNS, provider, migration, or production mutation."
 
 unknowns_and_stops:
   - id: "REC-401"

@@ -13,10 +13,12 @@ canonical_orchestration_repository:
   path: "/Users/luismorrobel/karayagroup/citewire"
   repository: "MeekPhills/citewire"
   branch: "agent/citewire-orchestration-handoff"
-  current_verified_head: "7e816c5b2900cb04309f751e5d93bab79752128a"
+  pre_synchronization_head: "7e816c5b2900cb04309f751e5d93bab79752128a"
+  first_17_stream_sync_commit: "4b04c4c448f44b07f8fc10a4e2211274d7c55ee8"
+  live_head_resolution: "Read the live branch and draft PR #5 head before action; this metadata commit cannot embed its own resulting SHA."
   historical_initial_package_commit: "80017d60c4396d704e0be55af4cd9cb1dc548b94"
   base_commit: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
-  state: "The initial handoff package was committed at 80017d6. The current local orchestration head is 7e816c5. No product or external-system mutation is represented by this graph."
+  state: "The initial handoff package was committed at 80017d6; 7e816c5 is the pre-sync baseline; 4b04c4c is the first reviewed 17-stream sync. No product mutation is represented by this graph."
 
 source_of_truth_order:
   - "latest explicit owner direction"
@@ -57,7 +59,9 @@ repositories:
     repository: "MeekPhills/citewire"
     path: "/Users/luismorrobel/karayagroup/citewire"
     current_branch: "agent/citewire-orchestration-handoff"
-    current_head: "7e816c5b2900cb04309f751e5d93bab79752128a"
+    pre_synchronization_head: "7e816c5b2900cb04309f751e5d93bab79752128a"
+    first_17_stream_sync_commit: "4b04c4c448f44b07f8fc10a4e2211274d7c55ee8"
+    live_head_resolution: "Read the live branch and draft PR #5 head before action."
   - name: "CiteWire Community parked prototype"
     repository: "MeekPhills/citewire"
     path: "/Users/luismorrobel/karayagroup/citewire-public-platform"
@@ -164,7 +168,7 @@ initial_parallel_execution_wave:
   mutation_boundary: "No repository creation, transfer, archive, DNS, deployment, merge, tag, publication, registry action, migration, source toggle, corpus rewrite, or visible Karaya copy change."
 
 two_hour_schedule:
-  t_plus_0_to_15: "Fable L0 confirms 7e816c5, records the controlled exceptions, and Sonnet independently checks paths and recorded refs."
+  t_plus_0_to_15: "Fable L0 confirms the live head and the 7e816c5 pre-sync baseline, records controlled exceptions, and Sonnet independently checks paths and refs."
   t_plus_15_to_40: "Fable prepares WS-001 graph synchronization while Opus prepares the no-mutation WS-002 identity packet and Sonnet checks recorded mappings."
   t_plus_40_to_60: "Independent Opus review of dependencies, exclusive leases, historical claims, and hard stops. Only focused documentation may be integrated after review."
   t_plus_60_to_75: "Conditional future action: create and record the fresh production-audit worktree from verified origin/main, or record that WS-012 remains blocked."
@@ -189,7 +193,7 @@ work_streams:
     status: "active_documentation_only"
     current_verified_state:
       claim_status: "Verified"
-      state: "The current local orchestration head is 7e816c5. Initial handoff-package commit 80017d6 is historical evidence only. The worktree is not Git-clean because the controlled untracked .project-status manifest remains separately undispositioned."
+      state: "Pre-sync baseline is 7e816c5; first reviewed 17-stream sync is 4b04c4c; the live head must be read before action. Initial handoff-package commit 80017d6 is historical only. The worktree is not Git-clean because the controlled untracked .project-status manifest remains separately undispositioned."
     repository: "/Users/luismorrobel/karayagroup/citewire"
     exclusive_ownership_paths:
       - "/Users/luismorrobel/karayagroup/citewire/PROJECT_HANDOFF.md"
@@ -210,7 +214,7 @@ work_streams:
     linear_mapping: "Recorded historical KAR-66 In Progress."
     execution_label: "Fable L0 integration."
     independent_reviewer: "Opus graph reviewer with Sonnet exact-reference check."
-    first_safe_action: "Establish the 7e816c5 baseline, preserve controlled exceptions, then parse and cross-check the graph."
+    first_safe_action: "Resolve the live head, confirm the 7e816c5 pre-sync baseline and 4b04c4c sync evidence, preserve controlled exceptions, then parse and cross-check the graph."
     escalation_condition: "Stop for conflicting evidence, secret/private transcript, owner overlap, or any claim needing fresh remote verification."
 
   - id: "WS-002"

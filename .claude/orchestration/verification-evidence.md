@@ -7,8 +7,11 @@ before an action is taken.
 
 ## Current local facts
 
-- CiteWire orchestration head is
-  7e816c5b2900cb04309f751e5d93bab79752128a.
+- CiteWire pre-synchronization orchestration baseline is
+  7e816c5b2900cb04309f751e5d93bab79752128a. The first reviewed 17-stream
+  synchronization commit is 4b04c4c448f44b07f8fc10a4e2211274d7c55ee8.
+  The live branch/PR head must be re-read because this metadata commit cannot
+  embed its own resulting SHA.
 - 80017d60c4396d704e0be55af4cd9cb1dc548b94 is the historical initial
   handoff-package commit, not the current head.
 - The settled identity facts are visible CiteWire, technical citewire, and
@@ -60,6 +63,20 @@ The prior recorded observations remain:
 - The recorded 50-item Karaya feed had 16 summaries over the provisional cap
   and one POWER Magazine trailer. This is stored-corpus drift pending WS-012,
   not proof of a current ingest bypass.
+
+## Fresh synchronization verification
+
+- Draft PR #5 was re-read at first 17-stream sync 4b04c4c, still draft and
+  mergeable, before this final metadata follow-up.
+- Node 18 and Node 22 CI passed in runs 31906699682 and 31906701652.
+- Synchronization comments were re-read on CiteWire issues #3/#4 and Karaya
+  issues #18/#19.
+- KAR-66 through KAR-70 were re-read after update. Their statuses remained
+  In Progress for KAR-66 and Todo for KAR-67 through KAR-70.
+- The complete Launch Log was re-read at 124831 characters with exactly one
+  CiteWire 17-stream synchronization marker.
+
+These are tracking-only results, not product completion or action authority.
 
 ## Parked worktree findings
 

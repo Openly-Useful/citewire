@@ -9,8 +9,11 @@ database change, or visible Karaya copy change.
 
 ## Current control facts
 
-- Current CiteWire orchestration head is
-  7e816c5b2900cb04309f751e5d93bab79752128a.
+- Pre-synchronization CiteWire orchestration baseline is
+  7e816c5b2900cb04309f751e5d93bab79752128a. The first reviewed 17-stream
+  synchronization commit is 4b04c4c448f44b07f8fc10a4e2211274d7c55ee8.
+  Read the live draft PR #5 head before acting; this metadata cannot embed its
+  own resulting commit SHA.
 - 80017d60c4396d704e0be55af4cd9cb1dc548b94 is historical initial-package
   evidence only.
 - Visible brand: CiteWire. Technical token: citewire. Project parent: Openly
@@ -56,7 +59,8 @@ behavior/terms delta before WS-014.
 
 ## Recorded repository and tracker state
 
-- CiteWire orchestration: agent/citewire-orchestration-handoff at 7e816c5.
+- CiteWire orchestration: pre-sync baseline 7e816c5; first reviewed 17-stream
+  sync 4b04c4c; live branch head must be re-read.
 - Community candidate: agent/citewire-product-launch at 10aee95, recorded
   CiteWire PR #1 draft.
 - Landing: agent/citewire-landing-site at ff09b68, recorded CiteWire PR #2
@@ -78,6 +82,13 @@ behavior/terms delta before WS-014.
   These are context-only, not active CiteWire stream mappings.
 - No verified CiteWire Cowork/plugin manifest or GitHub/Linear work item maps
   to a required stream. Studio/plugin work remains speculative.
+
+Fresh synchronization evidence on 2026-08-15: draft PR #5 was verified at
+4b04c4c with Node 18/22 CI green in runs 31906699682 and 31906701652; CiteWire
+issues #3/#4 and Karaya issues #18/#19 contain the synchronization comments;
+KAR-66 through KAR-70 were re-read after their updates; and the complete
+Launch Log was re-read with exactly one appended 17-stream marker. These are
+tracking-only changes, not product completion evidence.
 
 ## Product boundary
 
@@ -151,7 +162,8 @@ After WS-001, WS-002 may build a documentation-only identity packet. In
 parallel only after a fresh clean production-audit worktree exists, WS-012 may
 collect public/local read-only evidence. No other stream may begin.
 
-- Minutes 0–15: confirm 7e816c5 and controlled exceptions; independent
+- Minutes 0–15: confirm the live head and the 7e816c5 pre-sync baseline plus
+  controlled exceptions; independent
   path/ref check.
 - Minutes 15–40: synchronize WS-001 and prepare WS-002 decision record.
 - Minutes 40–60: independent review of dependencies, leases, historical

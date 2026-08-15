@@ -7,7 +7,9 @@ orchestration:
   repository_path: "/Users/luismorrobel/karayagroup/citewire"
   repository: "MeekPhills/citewire"
   branch: "agent/citewire-orchestration-handoff"
-  current_verified_head: "7e816c5b2900cb04309f751e5d93bab79752128a"
+  pre_synchronization_head: "7e816c5b2900cb04309f751e5d93bab79752128a"
+  first_17_stream_sync_commit: "4b04c4c448f44b07f8fc10a4e2211274d7c55ee8"
+  live_head_resolution: "Read the live branch and draft PR #5 head before action; this metadata commit cannot embed its own resulting SHA."
   historical_initial_package_commit: "80017d60c4396d704e0be55af4cd9cb1dc548b94"
   based_on: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
   mode: "17-stream controlled handoff; documentation synchronization only until explicit gates release later streams"
@@ -65,6 +67,15 @@ recorded_historical_mappings:
     program_parent: "KAR-66 In Progress"
     console_context: "KAR-53 context only"
     context_only: ["KAR-71", "KAR-77"]
+
+fresh_synchronization_evidence:
+  observed_on: "2026-08-15"
+  draft_pr_5: "Verified draft and mergeable at first 17-stream sync 4b04c4c; re-read live head after any later metadata commit."
+  ci: "Node 18 and Node 22 passed in runs 31906699682 and 31906701652."
+  github: "Synchronization comments were re-read on CiteWire issues #3/#4 and Karaya issues #18/#19."
+  linear: "KAR-66 through KAR-70 were re-read after update; statuses remained In Progress/Todo as recorded."
+  launch_log: "The full document was re-read at 124831 characters with exactly one CiteWire 17-stream synchronization marker."
+  claim_status: Verified
 
 external_observations:
   citewire_org:
@@ -124,7 +135,7 @@ initial_parallel_execution_wave:
     - "Any use of parked prototypes as a baseline"
 
 two_hour_schedule:
-  t_plus_0_to_15: "Confirm 7e816c5 and controlled exceptions; independent exact-ref/path review."
+  t_plus_0_to_15: "Resolve live head, confirm 7e816c5 pre-sync baseline and controlled exceptions; independent exact-ref/path review."
   t_plus_15_to_40: "Synchronize WS-001 documentation while preparing WS-002 decision packet without external action."
   t_plus_40_to_60: "Independent review of graph, direct dependencies, exclusive leases, historical labels, and stops."
   t_plus_60_to_75: "Conditional future worktree creation/recording for WS-012, otherwise preserve its blocked status."

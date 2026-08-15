@@ -31,8 +31,11 @@ Last synchronized: 2026-08-15.
 
 ### Current authority facts
 
-- Current local CiteWire orchestration head is
-  7e816c5b2900cb04309f751e5d93bab79752128a.
+- Pre-synchronization CiteWire orchestration baseline is
+  7e816c5b2900cb04309f751e5d93bab79752128a. The first reviewed 17-stream
+  synchronization commit is 4b04c4c448f44b07f8fc10a4e2211274d7c55ee8.
+  Resolve the live branch/PR head before acting; a metadata commit cannot
+  truthfully embed its own SHA.
 - 80017d60c4396d704e0be55af4cd9cb1dc548b94 is only historical
   initial-package evidence.
 - Visible brand is CiteWire. Technical token is citewire. Project parent is
