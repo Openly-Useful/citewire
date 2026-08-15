@@ -1,0 +1,1033 @@
+schema_version: 1
+artifact: citewire-orchestration-work-graph
+as_of: "2026-08-15"
+claim_status: Verified
+canonical_orchestration_repository:
+  path: "/Users/luismorrobel/karayagroup/citewire"
+  repository: "MeekPhills/citewire"
+  branch: "agent/citewire-orchestration-handoff"
+  head: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
+  base_commit: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
+  state: "orchestration artifacts are being prepared locally; no commit or push is represented by this file"
+
+source_of_truth_order:
+  - "latest explicit owner direction"
+  - "current implementation and reproducible behavior"
+  - "fresh test, CI, deployment, and direct HTTP evidence"
+  - "reviewed git history and pull-request diffs"
+  - "current GitHub and Linear state"
+  - "repository documentation"
+  - "historical handoffs and chat claims"
+
+repositories:
+  - name: "Citewire Community"
+    repository: "MeekPhills/citewire"
+    path: "/Users/luismorrobel/karayagroup/citewire"
+    current_branch: "agent/citewire-orchestration-handoff"
+    current_head: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
+    main_head: "14eb968fd2da80b7a1adc3078cc1ba514b8bcfa5"
+  - name: "Citewire Cloud"
+    repository: "MeekPhills/citewire-cloud"
+    path: "/Users/luismorrobel/karayagroup/citewire-cloud"
+    current_branch: "agent/cloud-alpha-http"
+    current_head: "69068275ca0e332e36304533aa0f6b5d2e291405"
+    main_head: "7157df992b2877f0b1ca1f552b80f52d246e5730"
+  - name: "Openly Useful website"
+    repository: "Openly-Useful/openlyuseful.org"
+    path: "/Users/luismorrobel/karayagroup/openlyuseful.org"
+    current_branch: "agent/citewire-site-link"
+    current_head: "28af5c7a5fdd0425ced2fe45f5c50e05946758de"
+    main_head: "cf137f9b77d68d16c41cd90f1af8d2df3b9972f4"
+  - name: "Karaya Citewire-link worktree"
+    repository: "MeekPhills/karayagroup"
+    path: "/Users/luismorrobel/karayagroup/karayagroup-citewire-site-link"
+    current_branch: "agent/citewire-site-link"
+    current_head: "3a90e43d8797af9e7c0bc02d4c1ae6f51ebd19a6"
+    main_head: "9c1506320771faf177f3675ef5ea1c1eff36fe81"
+  - name: "Historical Karaya live worktree, never use for new production work"
+    repository: "MeekPhills/karayagroup"
+    path: "/Users/luismorrobel/karayagroup/karayagroup-live"
+    current_branch: "gmorrobel15/kar-35-wire-industry-news-pages-feeds-and-detail-routes-to-live"
+    current_head: "1c63a3897317273d97c7bb4e71b0d283c5ff1bd6"
+    main_head: "9c1506320771faf177f3675ef5ea1c1eff36fe81"
+  - name: "Required fresh Karaya production-audit worktree"
+    repository: "MeekPhills/karayagroup"
+    path: "/Users/luismorrobel/karayagroup/karayagroup-production-audit"
+    required_base: "fresh verified origin/main"
+    state: "must be created as a clean isolated worktree and recorded by Level 0 before WS-012 or any Karaya implementation stream begins"
+  - name: "Karaya owner-screenshot worktree"
+    repository: "MeekPhills/karayagroup"
+    path: "/Users/luismorrobel/karayagroup/karayagroup-brand"
+    current_branch: "agent/citewire-product-bridge"
+    current_head: "60130c88a3c89098736839bbd5e82c4af6ff9958"
+    main_head: "9c1506320771faf177f3675ef5ea1c1eff36fe81"
+    protected_untracked_path: "/Users/luismorrobel/karayagroup/karayagroup-brand/site/handoff/redesign/"
+    protected_untracked_count: 41
+
+current_pull_requests:
+  - repository: "MeekPhills/citewire"
+    number: 1
+    title: "Prepare citewire 0.2.0 Community release candidate"
+    url: "https://github.com/MeekPhills/citewire/pull/1"
+    draft: true
+    mergeable: "MERGEABLE"
+    base: "main"
+    head_branch: "agent/citewire-product-launch"
+    head: "10aee95ac95bb437b4607723cd20fa5c8f9d1879"
+  - repository: "MeekPhills/citewire"
+    number: 2
+    title: "Add the citewire.org landing site"
+    url: "https://github.com/MeekPhills/citewire/pull/2"
+    draft: true
+    mergeable: "MERGEABLE"
+    base: "agent/citewire-product-launch"
+    head_branch: "agent/citewire-landing-site"
+    head: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
+  - repository: "MeekPhills/citewire-cloud"
+    number: 1
+    title: "Add authenticated private-alpha MCP HTTP entry point"
+    url: "https://github.com/MeekPhills/citewire-cloud/pull/1"
+    draft: true
+    mergeable: "MERGEABLE"
+    base: "main"
+    head_branch: "agent/cloud-alpha-http"
+    head: "69068275ca0e332e36304533aa0f6b5d2e291405"
+  - repository: "Openly-Useful/openlyuseful.org"
+    number: 8
+    title: "Link the Citewire project website"
+    url: "https://github.com/Openly-Useful/openlyuseful.org/pull/8"
+    draft: true
+    mergeable: "MERGEABLE"
+    base: "main"
+    head_branch: "agent/citewire-site-link"
+    head: "28af5c7a5fdd0425ced2fe45f5c50e05946758de"
+  - repository: "MeekPhills/karayagroup"
+    number: 17
+    title: "Link Industry News to citewire.org"
+    url: "https://github.com/MeekPhills/karayagroup/pull/17"
+    draft: true
+    mergeable: "MERGEABLE"
+    base: "main"
+    head_branch: "agent/citewire-site-link"
+    head: "3a90e43d8797af9e7c0bc02d4c1ae6f51ebd19a6"
+
+critical_paths:
+  identity_and_immutable_release: ["WS-001", "WS-002", "WS-003", "WS-004", "WS-008", "WS-010"]
+  secure_website_and_downstream_links: ["WS-001", "WS-002", "WS-004", "WS-005", "WS-006"]
+  karaya_corpus_and_automation: ["WS-001", "WS-012", "WS-014", "WS-015", "WS-016"]
+  cloud_private_alpha: ["WS-001", "WS-009", "WS-011"]
+
+dependency_unlocks:
+  WS-002: ["WS-003", "WS-004", "WS-013"]
+  WS-003: ["WS-008"]
+  WS-004: ["WS-005", "WS-008"]
+  WS-005: ["WS-006", "WS-007"]
+  WS-008: ["WS-010"]
+  WS-009: ["WS-011"]
+  WS-012: ["WS-014", "WS-015", "WS-016"]
+  WS-014: ["WS-015"]
+  WS-015: ["WS-016"]
+
+independent_parallel_branches:
+  - ["WS-009", "WS-012"]
+  - ["WS-013", "WS-012"]
+  - ["WS-006", "WS-007"]
+  - ["WS-010", "WS-011"]
+
+shared_mutable_state:
+  - resource: "Citewire canonical GitHub, npm, MCP Registry, and website identity"
+    serialized_by: "WS-002"
+    affected_streams: ["WS-003", "WS-004", "WS-005", "WS-006", "WS-007", "WS-008", "WS-010"]
+  - resource: "Karaya production database and source/circuit-breaker configuration"
+    serialized_by: "WS-014"
+    affected_streams: ["WS-014", "WS-015", "WS-016"]
+  - resource: "Karaya public copy and visual labels"
+    serialized_by: "WS-015"
+    affected_streams: ["WS-007", "WS-015", "WS-016"]
+    owner_gate: "Luis read-aloud approval before merge of visible copy"
+
+serialized_changes:
+  - "Canonical identity and repository/history decisions precede any merge, transfer, archive, or public release action."
+  - "A verified HTTPS destination precedes either downstream citewire.org link merge."
+  - "Community npm publication and registry submission precede Cloud conversion from the immutable archive pin to an npm range."
+  - "Read-only Karaya production truth precedes any policy, corpus, source, database, or automated-publication change."
+  - "Shadow evaluation and measured calibration precede a visible Adjacent signal label, exceptions-only console, canary, or production rollout."
+  - "WS-012 owns read-only production evidence output only. WS-014 owns policy/state-machine paths, WS-015 owns admin/UI/console paths, and WS-016 owns rollout/configuration/runbook paths. Any shared path requires predecessor completion and a recorded Level 0 ownership transfer before a later write."
+
+cross_repository_integration_points:
+  - source: "Citewire Community"
+    consumer: "Citewire Cloud"
+    contract: "Community HTTP transport imported through the immutable archive pin at 10aee95ac95bb437b4607723cd20fa5c8f9d1879; replace only after published npm provenance is verified."
+  - source: "Citewire website"
+    consumer: "Openly Useful website"
+    contract: "Downstream CTA/link must resolve to the canonical, live HTTPS destination before PR #8 merge."
+  - source: "Citewire website"
+    consumer: "Karaya Industry News"
+    contract: "Downstream source attribution/link must resolve to the canonical, live HTTPS destination before PR #17 merge."
+  - source: "Citewire Community provider adapters"
+    consumer: "Karaya Industry News"
+    contract: "Karaya remains a customized consumer; Karaya editorial state, provider credentials, policy, voice, source rights, and redactions do not enter the MIT Community package."
+
+manual_only_blockers:
+  - "Owner selects and authenticates the canonical GitHub organization, repository disposition, npm ownership, MCP Registry namespace, and citewire.org DNS/deployment authority."
+  - "Owner approves any repository create, transfer, archive, DNS change, deployment, merge, tag, npm publication, registry/catalog submission, provider activation, or paid-service decision."
+  - "Luis reads and approves any visible Karaya label or copy before merge."
+  - "Owner authorizes any production database migration, corpus rewrite, source toggle, threshold change, automated publishing, canary, or rollback drill."
+
+work_streams:
+  - id: "WS-001"
+    parent_cluster: "Program orchestration and durable Claude handoff"
+    objective: "Create a verified, executable orchestration package without changing product behavior or external systems."
+    priority: "P0"
+    status: "in_progress"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "The orchestration branch is agent/citewire-orchestration-handoff at ff09b68ed811531eb0ca630b65daeaf06cc3304c; no orchestration commit or push is represented yet."
+      evidence: ["git status and HEAD inspection on 2026-08-15"]
+    production_readiness_category: "governance, traceability, and handoff"
+    risk:
+      level: "high"
+      statement: "An incomplete or stale graph can cause an irreversible action to be taken in the wrong order."
+    complexity: "medium"
+    uncertainty: "low"
+    repository: "/Users/luismorrobel/karayagroup/citewire"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/citewire/PROJECT_HANDOFF.md"
+      - "/Users/luismorrobel/karayagroup/citewire/CLAUDE.md"
+      - "/Users/luismorrobel/karayagroup/citewire/.claude/orchestration/"
+    dependencies: []
+    dependents: ["WS-002", "WS-009", "WS-012"]
+    binary_definition_of_done: "All required handoff and orchestration artifacts parse, cross-reference exactly these 16 streams, contain no secrets or private transcripts, have an inspected focused diff, and are committed only after independent review."
+    acceptance_criteria:
+      - "Every active stream has stable ownership, dependency, binary DoD, verification, rollback, GitHub/Linear mapping, Claude tier, reviewer, and escalation rule."
+      - "No artifact claims an external mutation that has not been independently verified."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/citewire"
+      commands: ["ruby -e 'require \"yaml\"; YAML.load_file(\".claude/orchestration/work-graph.yaml\")'", "git diff --check", "git status --short"]
+    focused_implementation_checks:
+      - "Validate all YAML artifacts mechanically."
+      - "Cross-check every WS identifier, dependency, repository path, current SHA, GitHub URL, and Linear identifier."
+    integration_checks:
+      - "Independent Luna identifier/path review."
+      - "Independent Terra architecture, work-graph, and Claude-hierarchy review."
+    expected_artifact: "/Users/luismorrobel/karayagroup/citewire/.claude/orchestration/work-graph.yaml"
+    rollback_boundary: "Documentation-only artifact commit; revert the dedicated orchestration commit without altering product code or external state."
+    github_mapping:
+      repository: "MeekPhills/citewire"
+      branch: "agent/citewire-orchestration-handoff"
+      pull_request: null
+      status: "No dedicated GitHub issue or pull request exists yet; a focused draft PR is required before this artifact is merged."
+    linear_mapping:
+      issue: "KAR-66"
+      status: "In Progress"
+      role: "Program parent"
+    claude_execution_tier: "Fable L0 master orchestrator"
+    independent_reviewer: "Terra work-graph reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Read the durable artifacts, validate their YAML and references, then inspect the exact diff before any commit."
+    escalation_condition: "Stop if any artifact introduces a secret, a private transcript, a conflicting source-of-truth claim, or an unverified external-state assertion."
+
+  - id: "WS-002"
+    parent_cluster: "Canonical Citewire identity, authority, and public release"
+    objective: "Obtain an explicit, authenticated owner decision for Citewire's canonical GitHub organization/repository, npm identity, MCP Registry identity, citewire.org authority, and legacy-repository disposition."
+    priority: "P0"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "Citewire Community remains MeekPhills/citewire; citewire.org serves a parked page over HTTP and its HTTPS TLS handshake fails. No authenticated authority proof, canonical-identity decision, repository transfer, archive, DNS change, or deployment is recorded."
+      evidence: ["fresh HTTP/TLS observation on 2026-08-15", "GitHub issue #3", "Linear KAR-67"]
+    production_readiness_category: "identity, ownership, domain, and release authority"
+    risk:
+      level: "critical"
+      statement: "An incorrect canonical identity or unproven authority can make links, immutable packages, registry records, and repository history permanently inconsistent."
+    complexity: "high"
+    uncertainty: "high"
+    repository: "/Users/luismorrobel/karayagroup/citewire"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/citewire/docs/canonical-identity-decision.md"
+    dependencies: ["WS-001"]
+    dependents: ["WS-003", "WS-004", "WS-005", "WS-013"]
+    binary_definition_of_done: "Luis records one explicit canonical identity and repository disposition; authenticated authority is independently verified; the decision names the sole allowed public GitHub, npm, MCP Registry, and website identities; no irreversible action is performed without separate exact approval."
+    acceptance_criteria:
+      - "The decision says whether MeekPhills/citewire is retained, transferred, or archived after history preservation."
+      - "The decision names the canonical organization and public repository before metadata, links, or release records change."
+      - "Authority evidence is retained without credentials."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/citewire"
+      commands: ["git remote -v", "git log -1 --format=%H", "npm view citewire versions --json"]
+    focused_implementation_checks:
+      - "Read-only proof that the selected GitHub organization, domain/DNS account, npm package ownership, and MCP Registry namespace are reachable by the owner."
+      - "Independent review of exact public names before editing manifest, documentation, or links."
+    integration_checks:
+      - "Verify citewire.org resolves over HTTPS only after a separately approved deployment/DNS action."
+      - "Verify any selected public identity is consistent across Community, Cloud, Openly Useful, and Karaya."
+    expected_artifact: "/Users/luismorrobel/karayagroup/citewire/docs/canonical-identity-decision.md"
+    rollback_boundary: "Decision and evidence only until an owner separately approves the chosen external action; no external change is authorized by this stream."
+    github_mapping:
+      repository: "MeekPhills/citewire"
+      issue: "https://github.com/MeekPhills/citewire/issues/3"
+      status: "open"
+    linear_mapping:
+      issue: "KAR-67"
+      status: "Todo"
+      url: "https://linear.app/lgam/issue/KAR-67/citewire-canonical-identity-history-migration-website-and-release"
+    claude_execution_tier: "Fable L1 identity-and-release orchestrator with Opus authority review"
+    independent_reviewer: "Opus release and identity reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Request the explicit owner decision and read-only authenticated authority evidence; do not create, transfer, archive, deploy, or change DNS."
+    escalation_condition: "Stop for an ambiguous identity, unavailable authority, a paid-service decision, any DNS/provider action, or a request to infer repository disposition."
+
+  - id: "WS-003"
+    parent_cluster: "Canonical Citewire identity, authority, and public release"
+    objective: "Resolve either a retain-in-place route or an owner-approved, history-preserving canonical repository migration, and verify the selected route before public metadata or immutable release."
+    priority: "P0"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Inferred"
+      state: "The owner requested an Openly Useful public repository ready for open source and forking, while retaining the legacy project as historical. The selected organization, target repository, transfer-versus-mirror mechanism, and archive setting are not decided."
+      evidence: ["latest owner direction", "GitHub issue #3", "Linear KAR-67"]
+    production_readiness_category: "repository history, maintainability, and public governance"
+    risk:
+      level: "critical"
+      statement: "A transfer, archive, or rewrite without an approved method can lose discoverability, change package provenance, or break downstream links."
+    complexity: "high"
+    uncertainty: "high"
+    repository: "/Users/luismorrobel/karayagroup/citewire"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/citewire/docs/history-migration-runbook.md"
+      - "/private/tmp/citewire-history-verification-clone"
+    dependencies: ["WS-002"]
+    dependents: ["WS-008"]
+    binary_definition_of_done: "Phase A records the owner-selected retain-in-place or move route. For retain-in-place, canonical refs and legacy disposition are explicitly recorded and reverified. For a move, Phase B executes only under a separate exact owner approval, preserves full verified history, validates source/destination refs through an isolated fresh clone, records legacy disposition, and proves rollback before public metadata or release action. A plan alone does not unblock WS-008."
+    acceptance_criteria:
+      - "No force-push, history rewrite, repository deletion, or archive occurs without exact owner approval."
+      - "The chosen method preserves commit reachability and the destination's default branch policy."
+      - "Existing PRs, npm provenance, registry references, and downstream links are explicitly reconciled."
+      - "WS-003 completes only after the selected route itself is verified: recorded retain-in-place state or independently checked owner-approved migration execution."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/citewire"
+      commands: ["git fsck --full", "git log --all --decorate --oneline", "git remote -v"]
+    focused_implementation_checks:
+      - "Compare commit counts and named release-candidate commits before and after the approved operation."
+      - "Clone the selected destination into an isolated temporary directory and verify refs and remotes."
+    integration_checks:
+      - "Re-verify PR #1, PR #2, Openly Useful PR #8, Karaya PR #17, npm provenance, and documentation URLs against the chosen identity."
+    expected_artifact: "/Users/luismorrobel/karayagroup/citewire/docs/history-migration-runbook.md"
+    rollback_boundary: "No active remote/ref mutation until a dry-run plan and separate owner approval exist; preserve the legacy remote and isolated verified clone until the owner accepts the result."
+    github_mapping:
+      repository: "MeekPhills/citewire"
+      issue: "https://github.com/MeekPhills/citewire/issues/3"
+      status: "open; same composite identity issue as WS-002"
+    linear_mapping:
+      issue: "KAR-67"
+      status: "Todo"
+    claude_execution_tier: "Opus cross-repository migration owner under Fable L1 identity-and-release orchestration"
+    independent_reviewer: "Opus git-history reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Produce a read-only source/destination/ref inventory after WS-002; do not alter remotes or repository settings."
+    escalation_condition: "Stop if the owner has not selected the destination or legacy disposition, or if a command would rewrite history, transfer, archive, or delete a repository."
+
+  - id: "WS-004"
+    parent_cluster: "Canonical Citewire identity, authority, and public release"
+    objective: "Re-verify the existing Community 0.2.0 candidate and reconcile its package, MCP, provider, documentation, security, and release metadata with the selected canonical identity before immutable release."
+    priority: "P0"
+    status: "completed_but_reverification_required"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "Draft PR #1 is mergeable from agent/citewire-product-launch at 10aee95ac95bb437b4607723cd20fa5c8f9d1879. Fresh stacked-branch verification passed 70/70 committed tests, 5/5 release checks, package inspection, and diff/secret checks; fresh GitHub reads show Node 18/22 green on PR #1. Identity-sensitive re-verification remains required after WS-002 and before release action."
+      evidence: ["fresh local committed-suite verification on 2026-08-15", "GitHub PR #1 and CI metadata on 2026-08-15"]
+    production_readiness_category: "package correctness, security, protocol compatibility, and release preflight"
+    risk:
+      level: "high"
+      statement: "A stale candidate could publish invalid immutable metadata or move provider conditions into the wrong public identity."
+    complexity: "medium"
+    uncertainty: "medium"
+    repository: "/Users/luismorrobel/karayagroup/citewire"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/citewire/package.json"
+      - "/Users/luismorrobel/karayagroup/citewire/package-lock.json"
+      - "/Users/luismorrobel/karayagroup/citewire/server.json"
+      - "/Users/luismorrobel/karayagroup/citewire/src/"
+      - "/Users/luismorrobel/karayagroup/citewire/test/"
+      - "/Users/luismorrobel/karayagroup/citewire/docs/providers.md"
+      - "/Users/luismorrobel/karayagroup/citewire/docs/releasing.md"
+      - "/Users/luismorrobel/karayagroup/citewire/.github/workflows/release.yml"
+    dependencies: ["WS-002"]
+    dependents: ["WS-005", "WS-008"]
+    binary_definition_of_done: "The exact candidate passes clean isolated install, committed Community tests, release metadata checks, syntax checks, package inspection, secret scan, and Node 18/22 CI; all public identity fields match the owner-approved canonical decision; the PR remains draft unless separately approved."
+    acceptance_criteria:
+      - "Community remains zero-dependency, ESM, Node 18+, provider-disabled-by-default, and provider-neutral."
+      - "No Karaya editorial policy, credentials, source configuration, or redactions enter Community."
+      - "package.json, server.json, release workflow, SECURITY.md, SUPPORT.md, docs, and changelog agree on public identity and version."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/citewire"
+      commands: ["npm ci --cache /private/tmp/citewire-npm-cache", "npm test", "npm run release:check", "npm pack --dry-run --json", "git diff --check"]
+    focused_implementation_checks:
+      - "Run committed HTTP, stdio, RPC, provider, platform, and release-metadata suites."
+      - "Validate server.json with the documented MCP publisher preflight without publishing."
+      - "Search candidate diff and tracked files for secrets before any release action."
+    integration_checks:
+      - "Confirm PR #1 remains draft, mergeable, and green on Node 18 and 22."
+      - "Confirm Cloud's immutable archive pin points to this exact reviewed candidate until WS-010."
+    expected_artifact: "/Users/luismorrobel/karayagroup/citewire/docs/community-release-preflight-2026-08-15.md"
+    rollback_boundary: "Revert only the focused candidate/preflight commit before merge; do not tag, publish, release, or submit a registry record."
+    github_mapping:
+      repository: "MeekPhills/citewire"
+      pull_request: "https://github.com/MeekPhills/citewire/pull/1"
+      issue: "https://github.com/MeekPhills/citewire/issues/3"
+      status: "open draft PR; open identity issue"
+    linear_mapping:
+      issue: "KAR-67"
+      status: "Todo"
+    claude_execution_tier: "Opus release-preflight owner under Fable L1 identity-and-release orchestration"
+    independent_reviewer: "Opus security and MCP compatibility reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Run the committed preflight suite against the exact PR #1 head after WS-002; do not change release metadata before the identity decision."
+    escalation_condition: "Stop on any failed test, unexpected package file, public-contract regression, secret, version collision, or release-action prompt."
+
+  - id: "WS-005"
+    parent_cluster: "Canonical Citewire identity, authority, and public release"
+    objective: "Make the landing implementation and citewire.org canonical identity converge only after authority and HTTPS deployment are explicitly approved."
+    priority: "P0"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "Draft PR #2 is mergeable from agent/citewire-landing-site at ff09b68ed811531eb0ca630b65daeaf06cc3304c. citewire.org returns a parked page over HTTP; HTTPS fails TLS."
+      evidence: ["GitHub PR #2 metadata on 2026-08-15", "fresh citewire.org HTTP/TLS observation on 2026-08-15"]
+    production_readiness_category: "website correctness, HTTPS, DNS, and public discoverability"
+    risk:
+      level: "critical"
+      statement: "Merging or linking a landing page before the canonical secure destination is live could direct users to a parked or insecure page."
+    complexity: "high"
+    uncertainty: "high"
+    repository: "/Users/luismorrobel/karayagroup/citewire"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/citewire/site/index.html"
+      - "/Users/luismorrobel/karayagroup/citewire/site/styles.css"
+      - "/Users/luismorrobel/karayagroup/citewire/site/styles/"
+      - "/Users/luismorrobel/karayagroup/citewire/site/brand/"
+      - "/Users/luismorrobel/karayagroup/citewire/site/vercel.json"
+      - "/Users/luismorrobel/karayagroup/citewire/test/site.test.mjs"
+    dependencies: ["WS-002", "WS-004"]
+    dependents: ["WS-006", "WS-007"]
+    binary_definition_of_done: "The owner-approved canonical website is deployed at citewire.org with valid HTTPS, expected page content and canonical URLs, no parked response, and independent HTTP/TLS/browser evidence; PR #2 is merged only with separate owner approval."
+    acceptance_criteria:
+      - "The public landing reflects the selected repository/organization and does not claim unavailable service, publication, registry acceptance, or deployment."
+      - "HTTP redirects safely to HTTPS or serves the owner-approved canonical behavior; HTTPS has a valid certificate and correct host."
+      - "The committed landing regression suite and deployment smoke checks pass."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/citewire"
+      commands: ["npm test", "node --test test/site.test.mjs", "git diff --check"]
+    focused_implementation_checks:
+      - "Run direct HTTP and TLS checks against citewire.org after an approved deployment/DNS action."
+      - "Verify title, canonical URL, robots, sitemap, and outbound links from the deployed response."
+    integration_checks:
+      - "Confirm PR #2 remains draft, mergeable, and green before any owner-approved merge."
+      - "Only then re-check the exact targets in Openly Useful PR #8 and Karaya PR #17."
+    expected_artifact: "/Users/luismorrobel/karayagroup/citewire/site/README.md"
+    rollback_boundary: "Revert the hosting/DNS deployment through the provider only after explicit owner approval; no automatic fallback, DNS mutation, or preview disclosure."
+    github_mapping:
+      repository: "MeekPhills/citewire"
+      pull_request: "https://github.com/MeekPhills/citewire/pull/2"
+      issue: "https://github.com/MeekPhills/citewire/issues/3"
+      status: "open draft PR; open identity issue"
+    linear_mapping:
+      issue: "KAR-67"
+      status: "Todo"
+    claude_execution_tier: "Fable L1 identity-and-release orchestrator with Opus deployment review"
+    independent_reviewer: "Opus web deployment and identity reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Compare the draft landing's declared canonical URLs with the owner-selected identity and collect read-only DNS/TLS evidence."
+    escalation_condition: "Stop for an absent authority proof, DNS/provider activation, a certificate failure, a paid-service choice, or any deploy/merge action without exact owner approval."
+
+  - id: "WS-006"
+    parent_cluster: "Downstream Citewire web integrations"
+    objective: "Safely land the Openly Useful Citewire link only after the canonical live HTTPS destination is independently verified."
+    priority: "P1"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "Openly Useful draft PR #8 is mergeable at 28af5c7a5fdd0425ced2fe45f5c50e05946758de and changes the Citewire link plus site validation; it remains draft because citewire.org is parked and HTTPS fails."
+      evidence: ["GitHub PR #8 metadata on 2026-08-15", "Linear KAR-67"]
+    production_readiness_category: "downstream public-link integrity"
+    risk:
+      level: "high"
+      statement: "A merged downstream link can send users to the parked or insecure Citewire domain."
+    complexity: "low"
+    uncertainty: "low"
+    repository: "/Users/luismorrobel/karayagroup/openlyuseful.org"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/openlyuseful.org/index.html"
+      - "/Users/luismorrobel/karayagroup/openlyuseful.org/scripts/validate_site.py"
+    dependencies: ["WS-005"]
+    dependents: []
+    binary_definition_of_done: "PR #8's exact two-file diff passes the committed validation, points at the owner-approved live HTTPS Citewire destination, remains factual, and is merged only with separate owner approval."
+    acceptance_criteria:
+      - "The link uses the canonical URL selected in WS-002 and verified in WS-005."
+      - "No launch, registry, service, or availability claim exceeds verified state."
+      - "The diff remains limited to index.html and scripts/validate_site.py unless independently re-scoped."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/openlyuseful.org"
+      commands: ["python3 scripts/validate_site.py", "git diff --check"]
+    focused_implementation_checks:
+      - "Resolve and fetch the exact destination over HTTPS."
+      - "Run the committed Openly Useful site validation without adding temporary test artifacts."
+    integration_checks:
+      - "Reconfirm PR #8 draft/mergeable state and Vercel preview status after the target is live."
+    expected_artifact: "/Users/luismorrobel/karayagroup/openlyuseful.org/index.html"
+    rollback_boundary: "Revert the focused link commit or use the host's prior deployment only with owner approval; do not redirect to an unverified alternative."
+    github_mapping:
+      repository: "Openly-Useful/openlyuseful.org"
+      pull_request: "https://github.com/Openly-Useful/openlyuseful.org/pull/8"
+      related_issue: "https://github.com/MeekPhills/citewire/issues/3"
+      status: "open draft PR"
+    linear_mapping:
+      issue: "KAR-67"
+      status: "Todo"
+    claude_execution_tier: "Sonnet bounded downstream-link owner under Fable L1 identity-and-release orchestration"
+    independent_reviewer: "Luna link and exact-diff reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Re-run the committed validator and verify the destination with direct HTTPS only after WS-005 succeeds."
+    escalation_condition: "Stop if citewire.org is not valid HTTPS, the diff expands, CI fails, or a merge/deploy action lacks owner approval."
+
+  - id: "WS-007"
+    parent_cluster: "Downstream Citewire web integrations"
+    objective: "Safely land the Karaya Industry News citewire.org bridge only after the canonical live HTTPS destination and approved visible copy are independently verified."
+    priority: "P1"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "Karaya draft PR #17 is mergeable at 3a90e43d8797af9e7c0bc02d4c1ae6f51ebd19a6 and contains the downstream Citewire link, bridge documentation, and a committed compliance regression; it remains draft because citewire.org is parked and HTTPS fails."
+      evidence: ["GitHub PR #17 metadata on 2026-08-15", "fresh citewire.org HTTP/TLS observation on 2026-08-15"]
+    production_readiness_category: "public-copy integrity, downstream link integrity, and Karaya compliance"
+    risk:
+      level: "high"
+      statement: "A public Karaya link to a noncanonical or broken site is a visible correctness failure; unapproved visible wording would bypass the read-aloud gate."
+    complexity: "medium"
+    uncertainty: "medium"
+    repository: "/Users/luismorrobel/karayagroup/karayagroup-citewire-site-link"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/karayagroup-citewire-site-link/docs/citewire-product-bridge.md"
+      - "/Users/luismorrobel/karayagroup/karayagroup-citewire-site-link/site/src/pages/industry-news/about.astro"
+      - "/Users/luismorrobel/karayagroup/karayagroup-citewire-site-link/site/test/news-compliance.test.mjs"
+    dependencies: ["WS-005"]
+    dependents: []
+    binary_definition_of_done: "PR #17's exact three-file diff passes the committed Karaya tests and build, the target is live HTTPS, Luis approves every changed visible word by read-aloud, and the PR is merged only with separate owner approval."
+    acceptance_criteria:
+      - "Karaya's custom editorial policy, data, credentials, voice, source rights, redactions, and approval gates stay outside the Community package."
+      - "No owner screenshots under karayagroup-brand/site/handoff/redesign/ are changed, staged, cleaned, or included."
+      - "The bridge does not make unverified Citewire deployment, registry, or availability claims."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/karayagroup-citewire-site-link/site"
+      commands: ["npm test", "npm run build", "git -C .. diff --check"]
+    focused_implementation_checks:
+      - "Run site/test/news-compliance.test.mjs and the normal MCP regression suite."
+      - "Fetch the exact Citewire target over HTTPS and inspect rendered visible copy before asking for read-aloud approval."
+    integration_checks:
+      - "Confirm PR #17 remains draft, mergeable, and green after rebasing only if independently required."
+      - "Confirm a production smoke test only after a separately approved merge and automatic deployment."
+    expected_artifact: "/Users/luismorrobel/karayagroup/karayagroup-citewire-site-link/docs/citewire-product-bridge.md"
+    rollback_boundary: "Revert only the bridge commit after owner approval; never touch the protected owner screenshot worktree."
+    github_mapping:
+      repository: "MeekPhills/karayagroup"
+      pull_request: "https://github.com/MeekPhills/karayagroup/pull/17"
+      related_issue: "https://github.com/MeekPhills/citewire/issues/3"
+      status: "open draft PR"
+    linear_mapping:
+      issue: "KAR-67"
+      status: "Todo"
+    claude_execution_tier: "Sonnet bounded Karaya bridge owner under Fable L1 identity-and-release orchestration"
+    independent_reviewer: "Opus Karaya copy/compliance reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Re-run existing compliance and build checks; defer any visible copy review until WS-005 verifies the target."
+    escalation_condition: "Stop if visible copy changes, the target lacks HTTPS, screenshots appear in the diff, a test fails, or approval/merge/deploy authority is absent."
+
+  - id: "WS-008"
+    parent_cluster: "Canonical Citewire identity, authority, and public release"
+    objective: "Complete the owner-gated immutable Community release and registry sequence only after identity, history, candidate, and release-environment preflight are independently verified."
+    priority: "P0"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "citewire@0.1.0 is the only published npm version; 0.2.0 is unpublished. No release environment, tag, GitHub release, npm 0.2.0 publication, MCP Registry record, or catalog entry is verified."
+      evidence: ["CITEWIRE_CODEX_HANDOFF.md", "docs/releasing.md", "GitHub issue #3", "Linear KAR-67"]
+    production_readiness_category: "immutable release, supply chain, registry, and rollback"
+    risk:
+      level: "critical"
+      statement: "npm packages and public registry records are immutable or difficult to correct; incorrect release identity cannot be repaired by overwriting."
+    complexity: "high"
+    uncertainty: "medium"
+    repository: "/Users/luismorrobel/karayagroup/citewire"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/citewire/.github/workflows/release.yml"
+      - "/Users/luismorrobel/karayagroup/citewire/package.json"
+      - "/Users/luismorrobel/karayagroup/citewire/server.json"
+      - "/Users/luismorrobel/karayagroup/citewire/CHANGELOG.md"
+      - "/Users/luismorrobel/karayagroup/citewire/docs/releasing.md"
+      - "/Users/luismorrobel/karayagroup/citewire/docs/distribution.md"
+    dependencies: ["WS-003", "WS-004"]
+    dependents: ["WS-010"]
+    binary_definition_of_done: "A separate explicit owner approval authorizes each irreversible step; the approved main commit is tagged once, a manual preflight runs with publication toggles false, npm publication is independently verified with provenance, the MCP Registry entry is independently verified, and a GitHub release occurs only after both public records are correct."
+    acceptance_criteria:
+      - "GitHub release environment has the owner-required reviewer and v* tag restriction."
+      - "npm trusted publishing points to the selected canonical repository, release workflow, and environment."
+      - "Private vulnerability reporting and maintenance contacts are configured according to the approved identity."
+      - "The release workflow refuses an occupied version and package/registry identities agree exactly."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/citewire"
+      commands: ["npm test", "npm run release:check", "npm pack --dry-run --json", "npm view citewire@0.2.0 version", "git diff --check"]
+    focused_implementation_checks:
+      - "Run the manual release workflow preflight with both publication toggles false from the exact approved tag."
+      - "After separately approved publication, verify npm version, mcpName, integrity, provenance, and the official MCP Registry record."
+    integration_checks:
+      - "Verify Cloud's transition plan only after npm publishes the exact approved version."
+      - "Verify no downstream URL or release documentation points to an obsolete identity."
+    expected_artifact: "/Users/luismorrobel/karayagroup/citewire/docs/distribution.md"
+    rollback_boundary: "Before publication, revert the focused release change; after publication, do not overwrite or retag, instead use the documented deprecation/fixed-patch path under separate owner approval."
+    github_mapping:
+      repository: "MeekPhills/citewire"
+      pull_request: "https://github.com/MeekPhills/citewire/pull/1"
+      issue: "https://github.com/MeekPhills/citewire/issues/3"
+      status: "open draft candidate and open identity/release issue"
+    linear_mapping:
+      issue: "KAR-67"
+      status: "Todo"
+    claude_execution_tier: "Fable L1 identity-and-release orchestrator with Opus release owner"
+    independent_reviewer: "Opus supply-chain and registry reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Verify all owner setup entries and run no-publication preflight only after an exact approval for the selected tag/ref."
+    escalation_condition: "Stop on any requested merge, tag, publish, GitHub release, registry submission, version collision, missing release protection, or unsupported provenance evidence."
+
+  - id: "WS-009"
+    parent_cluster: "Citewire Cloud private-alpha foundation"
+    objective: "Reconcile Cloud documentation with the verified immutable Community archive pin and preserve the explicit private-alpha owner gates."
+    priority: "P1"
+    status: "completed_freshly_verified"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "Cloud documentation was reconciled in commit 69068275ca0e332e36304533aa0f6b5d2e291405 on agent/cloud-alpha-http. The focused four-file docs-only diff updates README.md plus docs/ALPHA-DEPLOYMENT-CHECKLIST.md, docs/ARCHITECTURE.md, and docs/OWNER-DECISIONS.md from 6c89b6ea4c8b080fe2ffa166c41eb3113059c894 to 10aee95ac95bb437b4607723cd20fa5c8f9d1879."
+      evidence: ["fresh git show and status inspection on 2026-08-15", "isolated install, syntax/diff checks, and 15/15 committed tests reported passed"]
+    production_readiness_category: "operational documentation and dependency traceability"
+    risk:
+      level: "medium"
+      statement: "Stale operator documentation can cause a reviewer to validate, replace, or deploy against the wrong Community candidate."
+    complexity: "low"
+    uncertainty: "low"
+    repository: "/Users/luismorrobel/karayagroup/citewire-cloud"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/README.md"
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/docs/ARCHITECTURE.md"
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/docs/OWNER-DECISIONS.md"
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/docs/ALPHA-DEPLOYMENT-CHECKLIST.md"
+    dependencies: ["WS-001"]
+    dependents: ["WS-011"]
+    binary_definition_of_done: "Every Cloud document names the verified 10aee95 archive pin or accurately states its replacement condition; no document claims deployment, public availability, or approved operator decisions; committed documentation checks pass."
+    acceptance_criteria:
+      - "The archive pin, its integrity evidence, and the later npm replacement condition agree across all Cloud docs."
+      - "Account isolation, fail-closed composition, owner gates, and no-deployment posture remain explicit."
+      - "No credential, participant, customer, or provider detail enters documentation."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/citewire-cloud"
+      commands: ["npm test", "npm run check", "git diff --check"]
+    focused_implementation_checks:
+      - "Search all tracked Cloud documentation for 6c89b6ea4c8b080fe2ffa166c41eb3113059c894 and reconcile every occurrence."
+      - "Review docs against package.json and package-lock.json only; do not change runtime behavior."
+    integration_checks:
+      - "Independent reviewer confirms no documentation implies Community publication or Cloud deployment."
+      - "Reconfirm Cloud PR #1 remains draft and does not absorb an unrelated documentation rewrite without review."
+    expected_artifact: "/Users/luismorrobel/karayagroup/citewire-cloud/docs/ALPHA-DEPLOYMENT-CHECKLIST.md"
+    rollback_boundary: "Revert the focused documentation commit; no runtime, provider, deployment, or registry state changes occur."
+    github_mapping:
+      repository: "MeekPhills/citewire-cloud"
+      pull_request: "https://github.com/MeekPhills/citewire-cloud/pull/1"
+      head: "69068275ca0e332e36304533aa0f6b5d2e291405"
+      status: "open draft private-alpha candidate; the focused documentation reconciliation is included and the PR remains undeployed"
+    linear_mapping:
+      issue: "KAR-66"
+      status: "In Progress"
+      role: "Program-level Cloud documentation follow-up; no distinct Linear child issue exists"
+    claude_execution_tier: "Sonnet bounded documentation owner under Fable L1 Cloud orchestration"
+    independent_reviewer: "Luna exact-pin and documentation reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Keep the verified docs-only commit in the draft PR and re-check its exact four-file boundary if the PR changes."
+    escalation_condition: "Stop if a document change asks for a provider, participant, credential, domain, paid service, deployment, or runtime behavior decision."
+
+  - id: "WS-010"
+    parent_cluster: "Citewire Cloud private-alpha foundation"
+    objective: "Replace the temporary immutable Community archive pin with the verified published Community npm range only after WS-008 completes and exact package provenance is independently verified."
+    priority: "P0"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "Cloud currently imports Community from the exact 10aee95 archive and has committed regression coverage for direct HTTP and concurrent account isolation. The npm 0.2.0 release required for the documented range replacement is not published."
+      evidence: ["citewire-cloud/package.json and package-lock.json", "CITEWIRE_CODEX_HANDOFF.md", "docs/ALPHA-DEPLOYMENT-CHECKLIST.md"]
+    production_readiness_category: "dependency provenance, compatibility, and account isolation"
+    risk:
+      level: "critical"
+      statement: "Prematurely using a package range can consume an absent, wrong, or unverified immutable artifact and weaken the Community-to-Cloud compatibility boundary."
+    complexity: "medium"
+    uncertainty: "medium"
+    repository: "/Users/luismorrobel/karayagroup/citewire-cloud"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/package.json"
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/package-lock.json"
+    dependencies: ["WS-008"]
+    dependents: []
+    binary_definition_of_done: "npm independently reports the approved Community version with expected mcpName, integrity, and provenance; Cloud package.json and lockfile use the documented npm range; clean isolated install, full committed tests, syntax checks, direct HTTP smoke, concurrent account-isolation smoke, diff check, and Node 18/22 CI pass; the PR remains draft and undeployed."
+    acceptance_criteria:
+      - "Community remains a one-way import and Cloud does not copy or fork its transport implementation."
+      - "Authentication precedes MCP dispatch; request account context remains immutable and filters unexpected caller fields."
+      - "Stateful entitled tools remain fail-closed when services are absent."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/citewire-cloud"
+      commands: ["npm ci --cache /private/tmp/citewire-cloud-npm-cache", "npm test", "npm run check", "git diff --check"]
+    focused_implementation_checks:
+      - "Run committed direct HTTP smoke tests for missing, malformed, invalid, and valid bearer handling."
+      - "Run committed concurrent account-isolation regression tests; do not create ad hoc test artifacts."
+      - "Inspect package-lock integrity and the Community import boundary."
+    integration_checks:
+      - "Confirm GitHub Node 18/22 CI is green on the exact draft PR head."
+      - "Confirm no deployment, provider activation, persistence, billing, OAuth, quota, or external account mutation occurred."
+    expected_artifact: "/Users/luismorrobel/karayagroup/citewire-cloud/package-lock.json"
+    rollback_boundary: "Revert the focused dependency change before merge; retain the exact archive pin until the published replacement passes all checks."
+    github_mapping:
+      repository: "MeekPhills/citewire-cloud"
+      pull_request: "https://github.com/MeekPhills/citewire-cloud/pull/1"
+      status: "open draft candidate; the npm-range replacement requires a separate reviewed change after publication"
+    linear_mapping:
+      issue: "KAR-66"
+      status: "In Progress"
+      role: "Program-level Cloud compatibility stream; no distinct Linear child issue exists"
+    claude_execution_tier: "Opus dependency and account-isolation owner under Fable L1 Cloud orchestration"
+    independent_reviewer: "Terra account-isolation and supply-chain reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Read npm provenance for the exact released Community version only after WS-008; leave the archive pin untouched until that evidence exists."
+    escalation_condition: "Stop on absent/wrong provenance, a failed test, unexpected lockfile diff, secret, npm publication request, deploy request, or account-boundary regression."
+
+  - id: "WS-011"
+    parent_cluster: "Citewire Cloud private-alpha foundation"
+    objective: "Resolve the documented private-alpha readiness gaps without deploying, choosing paid services, or expanding the account/data surface before owner authorization."
+    priority: "P1"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "Cloud draft PR #1 is mergeable at 69068275ca0e332e36304533aa0f6b5d2e291405 with fresh clean-install, direct HTTP, concurrent account-isolation, and Node 18/22 evidence while retaining the exact 10aee95 archive pin. It has zero verified deployments and lacks owner decisions for participants, credentials, domain/origin policy, persistence, retention, OAuth, billing, quotas, support, terms, privacy, and deployment. This archive-pinned readiness path is separate from the later WS-010 npm-range migration."
+      evidence: ["GitHub PR #1 metadata on 2026-08-15", "CITEWIRE_CODEX_HANDOFF.md", "docs/OWNER-DECISIONS.md"]
+    production_readiness_category: "security, privacy, operations, and private-alpha governance"
+    risk:
+      level: "critical"
+      statement: "A private-alpha deployment without identities, revocation, retention, origin, and operational decisions can expose tenant data or create unsupported commitments."
+    complexity: "high"
+    uncertainty: "high"
+    repository: "/Users/luismorrobel/karayagroup/citewire-cloud"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/.env.example"
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/api/mcp.js"
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/src/auth.js"
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/src/http.js"
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/src/plans.js"
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/docs/OWNER-DECISIONS.md"
+      - "/Users/luismorrobel/karayagroup/citewire-cloud/docs/ALPHA-DEPLOYMENT-CHECKLIST.md"
+    dependencies: ["WS-009"]
+    dependents: []
+    binary_definition_of_done: "The owner has approved the exact private-alpha operating decisions, a reviewed implementation satisfies the documented fail-closed and isolation checks, and a separate explicit deployment approval governs any deployment; no public availability claim is made."
+    acceptance_criteria:
+      - "Credentials are generated and distributed outside the repository; only intended non-secret hashes/configuration are used."
+      - "Origin policy, proxy duplicate-Authorization handling, account isolation, error behavior, revocation, retention, and incident handling are explicit and tested."
+      - "Persistence, billing, OAuth, provider activation, and paid infrastructure remain absent unless separately selected and approved."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/citewire-cloud"
+      commands: ["npm ci --cache /private/tmp/citewire-cloud-npm-cache", "npm test", "npm run check", "git diff --check"]
+    focused_implementation_checks:
+      - "Use committed HTTP and account-isolation regressions plus static secret scan."
+      - "Review exact configured Origin behavior and duplicate Authorization proxy invariant without writing real credentials."
+    integration_checks:
+      - "Verify exact deployment identifier, environment owner, and rollback procedure only after a separate deployment approval."
+      - "Verify Cloud remains private and undeployed before that approval."
+    expected_artifact: "/Users/luismorrobel/karayagroup/citewire-cloud/docs/ALPHA-DEPLOYMENT-CHECKLIST.md"
+    rollback_boundary: "No deployment or service activation is within this stream without an owner-approved rollback; code changes revert by focused commit only."
+    github_mapping:
+      repository: "MeekPhills/citewire-cloud"
+      pull_request: "https://github.com/MeekPhills/citewire-cloud/pull/1"
+      status: "open draft candidate"
+    linear_mapping:
+      issue: "KAR-66"
+      status: "In Progress"
+      role: "Program-level Cloud private-alpha stream; no distinct Linear child issue exists"
+    claude_execution_tier: "Opus security, privacy, and deployment-readiness owner under Fable L1 Cloud orchestration"
+    independent_reviewer: "Opus tenant-boundary and operational-risk reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Convert unmade owner decisions into an explicit approval checklist and independently re-run committed isolation tests; do not deploy."
+    escalation_condition: "Stop for a paid-service decision, credential delivery, provider activation, deployment, retention decision, billing/OAuth choice, privacy/legal commitment, or unsupported account-boundary behavior."
+
+  - id: "WS-012"
+    parent_cluster: "Karaya production truth, corpus integrity, and automated editorial controls"
+    objective: "Establish dated read-only production truth and prepare an owner-reviewed, rights-aware remediation decision for historical Industry News corpus drift."
+    priority: "P0"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "Karaya Industry News, About, nine-topic API, and public MCP are live. The public JSON feed has 50 items; 16 exceed the current 480-character provisional cap and one retains a POWER Magazine syndication trailer. Current code strips known boilerplate and applies the cap, so the observed concern is stored-corpus drift rather than proof the current ingest gate is bypassed. Migrations 0007-0010, live source/circuit-breaker state, cron health, queue age, and effective source count are unknown or contradictory."
+      evidence: ["Linear KAR-69", "GitHub issue #18", "fresh Karaya HTTP/MCP smoke observation on 2026-08-15"]
+    production_readiness_category: "data integrity, rights compliance, observability, and rollback planning"
+    risk:
+      level: "critical"
+      statement: "Changing stored public content, sources, or migrations without evidence and an owner-approved rights-aware plan could alter published material or violate source obligations."
+    complexity: "high"
+    uncertainty: "high"
+    repository: "/Users/luismorrobel/karayagroup/karayagroup-production-audit"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/docs/production-truth-2026-08-15.md"
+    dependencies: ["WS-001"]
+    dependents: ["WS-014", "WS-015", "WS-016"]
+    binary_definition_of_done: "A dated read-only evidence packet covers deployed commit, migration history, source state, circuit breakers, cron health, queue age, effective source count, affected row counts, and exact policy drift; it offers rights/revision-aware remediation options with no database, source, provider, or public-content mutation."
+    acceptance_criteria:
+      - "No database mutation, migration, source toggle, provider activation, or silent historical rewrite occurs."
+      - "Every observed row class is reproducible from a documented read-only query or public response."
+      - "The response distinguishes current ingest behavior from historical stored-corpus drift."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site"
+      commands: ["npm test", "npm run build", "node --test test/mcp.test.mjs test/news-compliance.test.mjs", "git -C .. diff --check"]
+    focused_implementation_checks:
+      - "Use only read-only production metadata and public feed/API/MCP requests."
+      - "Run the committed ingestion, source, publish-policy, news API, news page, and compliance regressions."
+    integration_checks:
+      - "Repeat routine HTTP smokes for /, /industry-news, /industry-news/about, /api/v1/news/topics, and MCP initialize."
+      - "Independently reconcile observed data with deployed code and repository migration inventory."
+    expected_artifact: "/Users/luismorrobel/karayagroup/karayagroup-production-audit/docs/production-truth-2026-08-15.md"
+    rollback_boundary: "Read-only evidence only; any later data change requires a separate approved, reversible plan and snapshot/rollback procedure."
+    github_mapping:
+      repository: "MeekPhills/karayagroup"
+      issue: "https://github.com/MeekPhills/karayagroup/issues/18"
+      status: "open"
+    linear_mapping:
+      issue: "KAR-69"
+      status: "Todo"
+      url: "https://linear.app/lgam/issue/KAR-69/karaya-production-truth-and-corpus-policy-integrity"
+    claude_execution_tier: "Opus production-data and rights-integrity owner under Fable L1 Karaya orchestration"
+    independent_reviewer: "Opus data-integrity and rights reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Level 0 first records a fresh clean isolated worktree created from verified origin/main at the nominated production-audit path; then collect only read-only deployment, migration, source, cron, queue, and corpus evidence. Never use karayagroup-live or karayagroup-brand."
+    escalation_condition: "Stop for a database write, migration, provider/source activation, corpus rewrite, unapproved access method, secret, or ambiguity about data rights."
+
+  - id: "WS-013"
+    parent_cluster: "Public Citewire MCP contract and Community resources"
+    objective: "Design a versioned, backward-compatible public MCP expansion for discovery, source/topic metadata, inclusion explanations, health, and resources without moving Karaya-specific editorial state into Community."
+    priority: "P1"
+    status: "planned"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "Community currently exposes news.list, news.get, news.topics, news.about, optional provider tools, stdio, and stateless HTTP. resources/list, resources/read, inclusion tiers, reason tags, and decision traces are absent."
+      evidence: ["Linear KAR-68", "GitHub issue #4", "Citewire source inventory on 2026-08-15"]
+    production_readiness_category: "public API compatibility, contract design, and documentation"
+    risk:
+      level: "high"
+      statement: "An unversioned contract expansion can break existing MCP clients or leak Karaya-specific policy into the MIT Community boundary."
+    complexity: "high"
+    uncertainty: "medium"
+    repository: "/Users/luismorrobel/karayagroup/citewire"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/citewire/docs/platform-contract.md"
+      - "/Users/luismorrobel/karayagroup/citewire/docs/adr-public-mcp-contract-v1.md"
+    dependencies: ["WS-002"]
+    dependents: []
+    binary_definition_of_done: "An independently reviewed ADR and compatibility plan define versioning, schemas, resources, rights fields, fixtures, error behavior, stdio/direct-HTTP smoke plan, and explicit exclusions for Karaya state; runtime and test implementation requires a separately approved, serialized implementation stream after WS-004, and no public contract code merges without green committed regressions."
+    acceptance_criteria:
+      - "Existing news.* tools and HTTP/stdio behavior remain backward compatible."
+      - "Any inclusion explanation is provider-neutral and carries no Karaya editorial state, credentials, source configuration, or protected data."
+      - "Resources enumerate and read predictably with documented errors and bounded content."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/citewire"
+      commands: ["npm test", "node --test test/rpc.test.mjs test/http.test.mjs test/platform.test.mjs", "git diff --check"]
+    focused_implementation_checks:
+      - "Add committed schema/fixture compatibility tests before implementation."
+      - "Run direct stdio and HTTP protocol smoke tests using committed test helpers."
+    integration_checks:
+      - "Review Community boundary against Karaya's independent policy/evaluation architecture."
+      - "Re-run Cloud compatibility tests after any public transport or tool-contract change."
+    expected_artifact: "/Users/luismorrobel/karayagroup/citewire/docs/adr-public-mcp-contract-v1.md"
+    rollback_boundary: "Design/ADR first; later code changes revert by focused commit and must preserve existing protocol behavior."
+    github_mapping:
+      repository: "MeekPhills/citewire"
+      issue: "https://github.com/MeekPhills/citewire/issues/4"
+      status: "open"
+    linear_mapping:
+      issue: "KAR-68"
+      status: "Todo"
+      url: "https://linear.app/lgam/issue/KAR-68/citewire-public-mcp-contract-and-resources"
+    claude_execution_tier: "Opus public-contract owner under Fable L1 Community-MCP orchestration"
+    independent_reviewer: "Opus MCP compatibility reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Write and independently review the ADR and compatibility matrix before changing a tool, resource, transport, or package version."
+    escalation_condition: "Stop on an unversioned breaking change, a public-contract ambiguity, a Karaya-specific data/policy leak, or a release/registry action."
+
+  - id: "WS-014"
+    parent_cluster: "Karaya production truth, corpus integrity, and automated editorial controls"
+    objective: "Define and prove a deterministic, rights-safe policy/evaluation/shadow state machine for automated editorial assessment without expanding production publication."
+    priority: "P1"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "Current code deterministically quarantines relevance below 0.55, routes 0.55 through 0.8199 to review, and marks 0.82 or higher auto eligible subject to further gates; ingest still writes eligible items as needs_review. Proposed shadow bands are below 0.50 held, 0.50 through 0.5999 adjacent-only with automated agreement, and 0.60 or higher standard candidate. No shadow workflow, durable decision trace, or assessment scheduler exists."
+      evidence: ["site/api/_lib/ingest/classify.js", "site/api/cron/ingest.js", "Linear KAR-70"]
+    production_readiness_category: "policy safety, evaluation, auditability, and automated decision controls"
+    risk:
+      level: "critical"
+      statement: "Lowering scores or removing routine review without deterministic replay, audit trails, rights gates, and a global stop path could expand unsafe publication."
+    complexity: "high"
+    uncertainty: "high"
+    repository: "/Users/luismorrobel/karayagroup/karayagroup-production-audit"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/api/_lib/ingest/classify.js"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/api/_lib/ingest/process.js"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/api/_lib/publish-policy.js"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/test/ingest.test.mjs"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/test/ingest-worker.test.mjs"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/test/publish-policy.test.mjs"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/docs/adr-editorial-policy-shadow-state-machine.md"
+    dependencies: ["WS-012"]
+    dependents: ["WS-015", "WS-016"]
+    binary_definition_of_done: "An approved policy/data-contract ADR, deterministic replay fixtures, shadow-only state machine, decision trace schema, rights gates, and assessment criteria pass committed regression tests without changing published-item eligibility or production thresholds."
+    acceptance_criteria:
+      - "Shadow bands are configuration-backed and run without changing production publishing."
+      - "Every automated decision records policy version, input provenance, reason tags, rights/access result, evaluator agreement, and disposition."
+      - "No raw provider content, provider credential, or unapproved model/cost choice is introduced."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site"
+      commands: ["npm test", "node --test test/ingest.test.mjs test/ingest-worker.test.mjs test/publish-policy.test.mjs", "npm run build", "git -C .. diff --check"]
+    focused_implementation_checks:
+      - "Use committed deterministic fixture/replay tests and no ad hoc test artifacts."
+      - "Prove shadow outcomes cannot write published status, change source state, or alter historical corpus."
+    integration_checks:
+      - "Compare shadow decisions with WS-012 production truth and corpus classifications."
+      - "Independent review validates rights, policy trace, and global-stop design before WS-015."
+      - "WS-012 must prove existing schema sufficiency. If a migration, backfill, or configuration write is needed, stop and create a separately approved reversible subtask with snapshot and rollback evidence."
+    expected_artifact: "/Users/luismorrobel/karayagroup/karayagroup-production-audit/docs/adr-editorial-policy-shadow-state-machine.md"
+    rollback_boundary: "Keep shadow decisions non-publishing; revert focused policy/fixture commits before any production threshold or source-state change."
+    github_mapping:
+      repository: "MeekPhills/karayagroup"
+      issue: "https://github.com/MeekPhills/karayagroup/issues/19"
+      status: "open"
+    linear_mapping:
+      issue: "KAR-70"
+      status: "Todo"
+      url: "https://linear.app/lgam/issue/KAR-70/karaya-automated-editorial-pipeline-adjacent-signals-and-control"
+    claude_execution_tier: "Opus policy, evaluation, and data-contract owner under Fable L1 Karaya orchestration"
+    independent_reviewer: "Opus rights-safety and deterministic-replay reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Draft the policy/data-contract ADR and replay matrix from WS-012 evidence; do not change thresholds or publishing behavior."
+    escalation_condition: "Stop for a production threshold change, automatic publishing, provider/model/cost selection, database migration, source activation, untraceable decision, or failed replay."
+
+  - id: "WS-015"
+    parent_cluster: "Karaya production truth, corpus integrity, and automated editorial controls"
+    objective: "Build the owner-approved Adjacent signal label, reason tags, exceptions-only approval console, global pause, and regular assessment surface on top of the validated shadow state machine."
+    priority: "P1"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "No Adjacent signal UI, inclusion-tier fields, agent workflow, durable decision trace, exceptions-only console, global pause control, or assessment scheduler is implemented. Existing KAR-53 remains the console/source-health follow-up anchor."
+      evidence: ["Linear KAR-70", "site source inventory on 2026-08-15"]
+    production_readiness_category: "user experience, accessibility, operational control, and assessment"
+    risk:
+      level: "high"
+      statement: "Visible labels can mislead users or violate approved voice; a console that becomes a publication bypass or lacks a tested pause/control path is unsafe."
+    complexity: "high"
+    uncertainty: "high"
+    repository: "/Users/luismorrobel/karayagroup/karayagroup-production-audit"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/api/admin.js"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/api/_lib/editorial-auth.js"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/api/_lib/editorial-queries.js"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/api/news-page.js"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/api/_lib/render.js"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/src/pages/industry-news/shell.astro"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/src/styles/"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/test/admin.test.mjs"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/test/news-page.test.mjs"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/docs/adjacent-signal-console-runbook.md"
+    dependencies: ["WS-012", "WS-014"]
+    dependents: ["WS-016"]
+    binary_definition_of_done: "The console exposes only exceptions, every control is authorized/auditable and cannot bypass rights or global pause, scheduled assessments use recorded evidence, the Adjacent signal tier/reason tags are accessible and approved by Luis read-aloud, and all committed tests/build/compliance checks pass."
+    acceptance_criteria:
+      - "The visible non-standard label is exactly owner-approved, distinguishable without color alone, and paired with concise reason tags that explain why it appears."
+      - "The console requires editorial authentication and shows exception/decision evidence rather than a routine manual-review queue."
+      - "A global pause halts automated progression; its activation, effect, and recovery are tested."
+      - "Assessments are cadence-defined, reproducible, and do not silently change thresholds or publish content."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site"
+      commands: ["npm test", "node --test test/admin.test.mjs test/news-page.test.mjs test/news-compliance.test.mjs", "npm run build", "git -C .. diff --check"]
+    focused_implementation_checks:
+      - "Add committed accessibility, visual-tier, reason-tag, authorization, global-pause, and assessment-cadence tests."
+      - "Use existing compliance fixtures and avoid synthetic owner screenshots or ad hoc artifacts."
+    integration_checks:
+      - "Luis completes read-aloud approval of every changed visible label/tag/copy string."
+      - "Independent reviewer confirms UI behavior matches WS-014 decision traces and no unexpected fields reach publication."
+    expected_artifact: "/Users/luismorrobel/karayagroup/karayagroup-production-audit/docs/adjacent-signal-console-runbook.md"
+    rollback_boundary: "Feature is disabled by the tested global pause; revert focused UI/API changes and preserve decision logs. No history rewrite or silent label removal."
+    github_mapping:
+      repository: "MeekPhills/karayagroup"
+      issue: "https://github.com/MeekPhills/karayagroup/issues/19"
+      related_issue: "KAR-53"
+      status: "open; KAR-53 remains the existing console/source-health follow-up anchor"
+    linear_mapping:
+      issue: "KAR-70"
+      related_issue: "KAR-53"
+      status: "Todo"
+    claude_execution_tier: "Sonnet bounded console/UI/test owners under Fable L1 Karaya orchestration; Opus owns security and copy review"
+    independent_reviewer: "Opus authorization, accessibility, and copy-compliance reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Create an implementation-ready UI/control specification from the approved WS-014 state contract; ask Luis for read-aloud approval before any visible copy merge."
+    escalation_condition: "Stop for unapproved visible copy, a routine manual-review queue, an unaudited control, missing pause test, threshold change, provider/model/cost choice, or data mutation."
+
+  - id: "WS-016"
+    parent_cluster: "Karaya production truth, corpus integrity, and automated editorial controls"
+    objective: "Perform a separately approved, reversible canary and production rollout only after evidence proves the policy, console, rights controls, and global pause meet their binary gates."
+    priority: "P0"
+    status: "blocked"
+    current_verified_state:
+      claim_status: "Verified"
+      state: "No canary, production threshold change, autonomous publishing rollout, or rollback drill is authorized or recorded. Current production keeps launch-source ingestion in review rather than automatically publishing."
+      evidence: ["site/api/cron/ingest.js", "Linear KAR-70"]
+    production_readiness_category: "deployment, reliability, rollback, and production change control"
+    risk:
+      level: "critical"
+      statement: "An autonomous-publishing rollout without a controlled canary, monitoring, owner approval, and a tested rollback can alter public content at scale."
+    complexity: "high"
+    uncertainty: "high"
+    repository: "/Users/luismorrobel/karayagroup/karayagroup-production-audit"
+    exclusive_ownership_paths:
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/api/cron/ingest.js"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site/vercel.json"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/docs/industry-news-runbook.md"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/docs/go-live-runbook.md"
+      - "/Users/luismorrobel/karayagroup/karayagroup-production-audit/docs/autonomous-editorial-canary-runbook.md"
+    dependencies: ["WS-012", "WS-014", "WS-015"]
+    dependents: []
+    binary_definition_of_done: "Luis separately approves a bounded canary, acceptance metrics, monitoring, pause trigger, and rollback drill; the canary passes all documented safety metrics; production rollout occurs only after independent review and remains reversible through the verified global pause and documented recovery procedure."
+    acceptance_criteria:
+      - "Canary scope, duration, data class, public exposure, success/failure thresholds, and owner are explicit."
+      - "No source/provider activation, database migration, public-copy change, or paid-service decision is bundled into the rollout."
+      - "Global pause and rollback drill are exercised before broader enablement, with evidence preserved."
+    baseline_checks:
+      working_directory: "/Users/luismorrobel/karayagroup/karayagroup-production-audit/site"
+      commands: ["npm test", "npm run build", "node --test test/ingest-worker.test.mjs test/publish-policy.test.mjs test/admin.test.mjs", "git -C .. diff --check"]
+    focused_implementation_checks:
+      - "Use committed regression suites plus approved canary observability checks; do not create a production-only ad hoc test artifact."
+      - "Verify pause, no-publish fallback, and recovery behavior against the exact deployed commit."
+    integration_checks:
+      - "Routine production HTTP/MCP smokes and post-canary corpus/right checks."
+      - "Independent reviewer validates change log, monitoring evidence, and rollout/rollback decision before each escalation."
+    expected_artifact: "/Users/luismorrobel/karayagroup/karayagroup-production-audit/docs/autonomous-editorial-canary-runbook.md"
+    rollback_boundary: "Tested global pause first; then the documented owner-approved recovery procedure. No automatic rollout or rollback and no database/corpus mutation without explicit approval."
+    github_mapping:
+      repository: "MeekPhills/karayagroup"
+      issue: "https://github.com/MeekPhills/karayagroup/issues/19"
+      status: "open"
+    linear_mapping:
+      issue: "KAR-70"
+      status: "Todo"
+    claude_execution_tier: "Fable L1 Karaya rollout orchestrator with Opus production-change owner"
+    independent_reviewer: "Opus production safety and rollback reviewer"
+    integration_owner: "Fable L0 master orchestrator"
+    first_safe_action: "Prepare a no-change canary/rollback plan from WS-012 through WS-015 evidence and request exact owner approval before any deployment or production setting change."
+    escalation_condition: "Stop for missing metrics, absent global-pause proof, unapproved deploy/canary/threshold/source/data change, provider activation, paid service, or any irreversible action."

@@ -1,0 +1,134 @@
+schema_version: 1
+artifact: citewire-orchestration-execution-state
+as_of: "2026-08-15"
+claim_status: Verified
+
+orchestration:
+  repository_path: "/Users/luismorrobel/karayagroup/citewire"
+  repository: "MeekPhills/citewire"
+  branch: "agent/citewire-orchestration-handoff"
+  based_on: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
+  current_head: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
+  mode: "research, synchronization planning, and Claude handoff preparation"
+  next_gate: "WS-002"
+  next_gate_name: "Canonical Citewire identity and authenticated authority decision"
+  integration_owner: "Fable L0 master orchestrator"
+
+scoped_pull_requests:
+  all_open_prs_draft: true
+  citewire_community:
+    url: "https://github.com/MeekPhills/citewire/pull/1"
+    head: "10aee95ac95bb437b4607723cd20fa5c8f9d1879"
+    draft: true
+    mergeable: "MERGEABLE"
+  citewire_landing:
+    url: "https://github.com/MeekPhills/citewire/pull/2"
+    head: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
+    draft: true
+    mergeable: "MERGEABLE"
+  citewire_cloud:
+    url: "https://github.com/MeekPhills/citewire-cloud/pull/1"
+    head: "69068275ca0e332e36304533aa0f6b5d2e291405"
+    draft: true
+    mergeable: "MERGEABLE"
+  openly_useful_link:
+    url: "https://github.com/Openly-Useful/openlyuseful.org/pull/8"
+    head: "28af5c7a5fdd0425ced2fe45f5c50e05946758de"
+    draft: true
+    mergeable: "MERGEABLE"
+  karaya_link:
+    url: "https://github.com/MeekPhills/karayagroup/pull/17"
+    head: "3a90e43d8797af9e7c0bc02d4c1ae6f51ebd19a6"
+    draft: true
+    mergeable: "MERGEABLE"
+
+external_observations:
+  citewire_org:
+    observed_on: "2026-08-15"
+    http: "HTTP responds 200 with a parked Porkbun page"
+    https: "TLS handshake fails"
+    state: "not a verified live Citewire landing destination"
+    claim_status: Verified
+  karaya_production:
+    observed_on: "2026-08-15"
+    state: "Industry News, About, nine-topic API, and read-only MCP initialize were reachable in routine smoke tests"
+    deployment_change_this_session: false
+    claim_status: Verified
+  citewire_cloud:
+    deployment_count_verified: 0
+    deployment_change_this_session: false
+    claim_status: Historical
+
+mutation_guardrails:
+  deploy:
+    permitted: false
+    state: "No deployment is authorized or performed."
+  merge:
+    permitted: false
+    state: "No pull request merge is authorized or performed."
+  tag:
+    permitted: false
+    state: "No tag is authorized or performed."
+  publish:
+    permitted: false
+    state: "No npm package, GitHub release, MCP Registry, catalog, or other publication is authorized or performed."
+  provider_activation:
+    permitted: false
+    state: "No provider/source activation is authorized or performed."
+  data_mutation:
+    permitted: false
+    state: "No database write, migration, source toggle, historical corpus rewrite, threshold change, or automatic-publication change is authorized or performed."
+  dns_or_domain:
+    permitted: false
+    state: "No DNS, certificate, domain, host, or provider activation is authorized or performed."
+  paid_service_decision:
+    permitted: false
+    state: "No paid or fixed-cost service decision is authorized or performed."
+  secrets:
+    permitted: false
+    state: "No credential, raw key, secret, or private customer data may be created, copied, logged, or committed."
+  owner_screenshots:
+    permitted: false
+    state: "Do not alter, stage, delete, clean, or include any of the 49 screenshots under karayagroup-brand/site/handoff/redesign/: 41 are untracked and 8 are tracked."
+
+current_dependency_state:
+  community_archive_pin:
+    repository_path: "/Users/luismorrobel/karayagroup/citewire-cloud"
+    package: "citewire"
+    source: "https://github.com/MeekPhills/citewire/archive/10aee95ac95bb437b4607723cd20fa5c8f9d1879.tar.gz"
+    status: "verified current code pin; do not replace with an npm range until immutable Community publication and provenance verification"
+  cloud_alpha:
+    status: "draft and undeployed; docs-only pin reconciliation completed at 69068275ca0e332e36304533aa0f6b5d2e291405 with isolated install, syntax/diff, and 15/15 committed tests reported passed"
+  karaya_automation:
+    status: "no shadow state machine, Adjacent signal UI, automated editorial agent workflow, durable decision trace, exceptions-only console, assessment scheduler, canary, or production rollout is implemented"
+
+required_stop_conditions:
+  - "failed test or CI check"
+  - "unexpected diff or changed ownership boundary"
+  - "secret, credential, raw key, private customer data, or private transcript"
+  - "paid-service, provider, domain, DNS, deployment, or data decision requiring owner approval"
+  - "irreversible action lacking explicit owner approval"
+  - "attempt to merge visible Karaya copy without Luis read-aloud approval"
+  - "attempt to stage or alter owner screenshots"
+
+initial_parallel_execution_wave:
+  scope: "WS-002 only; do not start WS-003 through WS-016"
+  level_0: "establish controlled baseline, integrate evidence, and own the identity decision packet"
+  nested_fable: "frame retain-in-place and owner-approved move routes without selecting one"
+  luna: "independently verify exact names, refs, PRs, namespace visibility, and authority evidence"
+  terra: "independently review irreversible identity, provenance, registry, hosting, and legacy consequences"
+  mutation_boundary: "the only permitted write is the cited WS-002 decision packet; no external mutation"
+
+two_hour_schedule:
+  t_plus_0_to_30: "revalidate baseline and independently frame/verify the two identity routes"
+  t_plus_30_to_60: "Level 0 reconciles reports into the canonical identity decision packet"
+  t_plus_60_to_120: "stop at Luis's identity decision gate; factual packet corrections only through independent review"
+
+next_safe_sequence:
+  - "WS-002: obtain explicit canonical identity and authority decision with read-only evidence"
+  - "WS-003 and WS-004: plan history preservation and re-verify Community candidate only after WS-002"
+  - "WS-005: reconcile landing identity and verify a live HTTPS target only after a separately approved host/DNS action"
+  - "WS-006 and WS-007: validate and land downstream links only after WS-005 and separate merge approvals"
+  - "WS-008: owner-gated immutable release sequence; then WS-010 only"
+  - "WS-011: separate archive-pinned private-alpha readiness path after WS-009 and owner operating decisions"
+  - "WS-012: read-only Karaya production truth before WS-014 through WS-016"
