@@ -8,14 +8,20 @@ orchestration:
   repository: "MeekPhills/citewire"
   branch: "agent/citewire-orchestration-handoff"
   based_on: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
-  current_head: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
-  mode: "research, synchronization planning, and Claude handoff preparation"
+  package_commit: "80017d60c4396d704e0be55af4cd9cb1dc548b94"
+  head_resolution: "read the live draft PR #5 head; the final metadata commit cannot embed its own SHA"
+  mode: "verified handoff synchronized in draft PR #5; WS-002 is the next owner gate"
   next_gate: "WS-002"
   next_gate_name: "Canonical Citewire identity and authenticated authority decision"
   integration_owner: "Fable L0 master orchestrator"
 
 scoped_pull_requests:
   all_open_prs_draft: true
+  citewire_orchestration:
+    url: "https://github.com/MeekPhills/citewire/pull/5"
+    package_commit: "80017d60c4396d704e0be55af4cd9cb1dc548b94"
+    draft: true
+    mergeable: "MERGEABLE"
   citewire_community:
     url: "https://github.com/MeekPhills/citewire/pull/1"
     head: "10aee95ac95bb437b4607723cd20fa5c8f9d1879"
@@ -123,6 +129,11 @@ two_hour_schedule:
   t_plus_0_to_30: "revalidate baseline and independently frame/verify the two identity routes"
   t_plus_30_to_60: "Level 0 reconciles reports into the canonical identity decision packet"
   t_plus_60_to_120: "stop at Luis's identity decision gate; factual packet corrections only through independent review"
+
+synchronization_evidence:
+  github: "draft PR #5 exists with the exact orchestration package stacked on the draft landing branch"
+  linear: "KAR-66 links/comment updated, KAR-48 provenance comment added, and the complete Launch Log document appended without truncation"
+  launch_log_document: "7f791900-c44b-489f-b0af-e1464784e367"
 
 next_safe_sequence:
   - "WS-002: obtain explicit canonical identity and authority decision with read-only evidence"

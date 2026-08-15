@@ -6,9 +6,9 @@ canonical_orchestration_repository:
   path: "/Users/luismorrobel/karayagroup/citewire"
   repository: "MeekPhills/citewire"
   branch: "agent/citewire-orchestration-handoff"
-  head: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
+  package_commit: "80017d60c4396d704e0be55af4cd9cb1dc548b94"
   base_commit: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
-  state: "orchestration artifacts are being prepared locally; no commit or push is represented by this file"
+  state: "focused orchestration commit pushed in draft PR #5; no product or external-system mutation"
 
 source_of_truth_order:
   - "latest explicit owner direction"
@@ -24,7 +24,7 @@ repositories:
     repository: "MeekPhills/citewire"
     path: "/Users/luismorrobel/karayagroup/citewire"
     current_branch: "agent/citewire-orchestration-handoff"
-    current_head: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
+    verified_package_commit: "80017d60c4396d704e0be55af4cd9cb1dc548b94"
     main_head: "14eb968fd2da80b7a1adc3078cc1ba514b8bcfa5"
   - name: "Citewire Cloud"
     repository: "MeekPhills/citewire-cloud"
@@ -65,6 +65,15 @@ repositories:
     protected_untracked_count: 41
 
 current_pull_requests:
+  - repository: "MeekPhills/citewire"
+    number: 5
+    title: "Add verified Citewire orchestration handoff"
+    url: "https://github.com/MeekPhills/citewire/pull/5"
+    draft: true
+    mergeable: "MERGEABLE"
+    base: "agent/citewire-landing-site"
+    head_branch: "agent/citewire-orchestration-handoff"
+    head_at_initial_pr_creation: "80017d60c4396d704e0be55af4cd9cb1dc548b94"
   - repository: "MeekPhills/citewire"
     number: 1
     title: "Prepare citewire 0.2.0 Community release candidate"
@@ -182,8 +191,8 @@ work_streams:
     status: "in_progress"
     current_verified_state:
       claim_status: "Verified"
-      state: "The orchestration branch is agent/citewire-orchestration-handoff at ff09b68ed811531eb0ca630b65daeaf06cc3304c; no orchestration commit or push is represented yet."
-      evidence: ["git status and HEAD inspection on 2026-08-15"]
+      state: "The focused 22-file orchestration package is committed and pushed at 80017d60c4396d704e0be55af4cd9cb1dc548b94 in draft PR #5, stacked on agent/citewire-landing-site. The PR branch may add only verified synchronization metadata; its live head must be read from GitHub rather than embedded self-referentially."
+      evidence: ["git status/HEAD and GitHub draft PR #5 inspection on 2026-08-15"]
     production_readiness_category: "governance, traceability, and handoff"
     risk:
       level: "high"
@@ -215,8 +224,8 @@ work_streams:
     github_mapping:
       repository: "MeekPhills/citewire"
       branch: "agent/citewire-orchestration-handoff"
-      pull_request: null
-      status: "No dedicated GitHub issue or pull request exists yet; a focused draft PR is required before this artifact is merged."
+      pull_request: "https://github.com/MeekPhills/citewire/pull/5"
+      status: "open draft, mergeable, exact 22-file orchestration-only diff"
     linear_mapping:
       issue: "KAR-66"
       status: "In Progress"
@@ -831,7 +840,7 @@ work_streams:
       - "/Users/luismorrobel/karayagroup/citewire/docs/adr-public-mcp-contract-v1.md"
     dependencies: ["WS-002"]
     dependents: []
-    binary_definition_of_done: "An independently reviewed ADR and compatibility plan define versioning, schemas, resources, rights fields, fixtures, error behavior, stdio/direct-HTTP smoke plan, and explicit exclusions for Karaya state; runtime and test implementation requires a separately approved, serialized implementation stream after WS-004, and no public contract code merges without green committed regressions."
+    binary_definition_of_done: "An independently reviewed ADR and compatibility plan define versioning, schemas, resources, rights fields, fixture specifications, error behavior, stdio/direct-HTTP smoke specifications, and explicit exclusions for Karaya state; actual fixtures, tests, runtime changes, and smoke execution require a separately approved, serialized implementation stream after WS-004."
     acceptance_criteria:
       - "Existing news.* tools and HTTP/stdio behavior remain backward compatible."
       - "Any inclusion explanation is provider-neutral and carries no Karaya editorial state, credentials, source configuration, or protected data."
@@ -840,8 +849,8 @@ work_streams:
       working_directory: "/Users/luismorrobel/karayagroup/citewire"
       commands: ["npm test", "node --test test/rpc.test.mjs test/http.test.mjs test/platform.test.mjs", "git diff --check"]
     focused_implementation_checks:
-      - "Add committed schema/fixture compatibility tests before implementation."
-      - "Run direct stdio and HTTP protocol smoke tests using committed test helpers."
+      - "Specify the committed schema/fixture compatibility tests required before later implementation."
+      - "Specify direct stdio and HTTP protocol smokes using existing committed helpers; execution belongs to the later implementation stream."
     integration_checks:
       - "Review Community boundary against Karaya's independent policy/evaluation architecture."
       - "Re-run Cloud compatibility tests after any public transport or tool-contract change."

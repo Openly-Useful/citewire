@@ -40,7 +40,7 @@ its availability is Unknown until an authorized organization-owner check.
 
 | Repository | Absolute path | Current verified branch and head | State |
 | --- | --- | --- | --- |
-| Citewire Community and landing | `/Users/luismorrobel/karayagroup/citewire` | `agent/citewire-orchestration-handoff`, based on `ff09b68ed811531eb0ca630b65daeaf06cc3304c` | Orchestration branch in progress; product PRs remain draft |
+| Citewire Community and landing | `/Users/luismorrobel/karayagroup/citewire` | `agent/citewire-orchestration-handoff` at `80017d60c4396d704e0be55af4cd9cb1dc548b94`, based on `ff09b68ed811531eb0ca630b65daeaf06cc3304c` | Focused handoff in draft PR #5; product PRs remain draft |
 | Citewire Cloud | `/Users/luismorrobel/karayagroup/citewire-cloud` | `agent/cloud-alpha-http` at `69068275ca0e332e36304533aa0f6b5d2e291405` | Clean after docs sync; implementation base is `ad7e58f...`; exact Community archive pin is `10aee95...` |
 | Openly Useful | `/Users/luismorrobel/karayagroup/openlyuseful.org` | `agent/citewire-site-link` at `28af5c7a5fdd0425ced2fe45f5c50e05946758de` | Clean draft link branch |
 | Current Karaya link branch | `/Users/luismorrobel/karayagroup/karayagroup-citewire-site-link` | `agent/citewire-site-link` at `3a90e43d8797af9e7c0bc02d4c1ae6f51ebd19a6` | Clean and based on production main `9c150632...` |
@@ -58,6 +58,7 @@ never-deployed state claims are superseded by the live Karaya implementation.
 | --- | --- | --- |
 | `MeekPhills/citewire` | PR #1 | Draft, mergeable, head `10aee95...`, base `main`; Node 18/22 workflow run `31750916990` succeeded |
 | `MeekPhills/citewire` | PR #2 | Draft, mergeable, head `ff09b68...`, base `agent/citewire-product-launch`; runs `31849200115` and `31849291099` succeeded |
+| `MeekPhills/citewire` | PR #5 | Draft, mergeable, head `80017d6...`, base `agent/citewire-landing-site`; exact 22-file orchestration-only diff |
 | `MeekPhills/citewire` | Issue #3 | Canonical identity, history migration, website, and release; maps KAR-67 |
 | `MeekPhills/citewire` | Issue #4 | Versioned public MCP contract and resources; maps KAR-68 |
 | `MeekPhills/citewire-cloud` | PR #1 | Draft, mergeable, head `6906827...`; Node 18/22 runs `31893670759` and `31893673430` succeeded |
@@ -83,8 +84,8 @@ No submitted review or unresolved review thread was visible during recovery.
 - Editorial automation child: KAR-70, Todo; related to KAR-53
 - Completed provenance: KAR-48 and KAR-36, Done
 - Existing console/source-health follow-up: KAR-53, Backlog
-- Stale dependency issue: KAR-24 is In Review even though linked PR #16 is
-  merged; tracker reconciliation is required
+- Dependency issue: KAR-24 is Todo as of 2026-08-15T15:52:24.535Z; linked PR
+  #16 is merged
 - Complete Launch Log document ID:
   `7f791900-c44b-489f-b0af-e1464784e367`
 
@@ -307,6 +308,13 @@ Fresh public HTTP/MCP/feed checks verified the production facts above. Local
 Git refs and worktree status were rechecked. One Luna Conductor report drifted
 to unrelated `GLO-*`/FantasyHQ data and was rejected in full; its corrected
 report returned to the Citewire/Karaya scope and supplies the mappings above.
+
+Synchronization is durable: draft Citewire PR #5 contains the 22-file handoff
+package at `80017d60...` plus verified metadata-only follow-up; KAR-66 has the
+PR/issue mappings and dated verification comment; KAR-48 has a provenance-only
+comment and remains Done; and the complete Launch Log document
+`7f791900-c44b-489f-b0af-e1464784e367` was fetched in full, appended, saved, and
+re-read with the 2026-08-15 synchronization marker present.
 
 No secret, private chat transcript, owner screenshot, deployment credential,
 raw account key, or paid-provider configuration belongs in these artifacts.

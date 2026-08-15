@@ -10,7 +10,7 @@ Verified means directly observed in local state, committed tests, GitHub/Linear 
 
 | worktree | branch | head/status |
 | --- | --- | --- |
-| citewire | agent/citewire-orchestration-handoff | controlled handoff package based on ff09b68ed811531eb0ca630b65daeaf06cc3304c; before its focused commit only `.claude/`, `CLAUDE.md`, and `PROJECT_HANDOFF.md` are expected, and after commit the checkout must be clean at the recorded orchestration head |
+| citewire | agent/citewire-orchestration-handoff | package commit 80017d60c4396d704e0be55af4cd9cb1dc548b94, pushed in draft PR #5; exact 22-file orchestration-only package based on ff09b68ed811531eb0ca630b65daeaf06cc3304c, followed only by verified synchronization metadata |
 | citewire release ref | agent/citewire-product-launch | 10aee95ac95bb437b4607723cd20fa5c8f9d1879, clean release candidate |
 | citewire-cloud | agent/cloud-alpha-http | 69068275ca0e332e36304533aa0f6b5d2e291405, clean docs-aligned head; runtime baseline ad7e58f |
 | karayagroup-brand | agent/citewire-product-bridge | 60130c88a3c89098736839bbd5e82c4af6ff9958, all 49 screenshots preserved: 41 untracked and 8 tracked |
@@ -20,6 +20,7 @@ Verified means directly observed in local state, committed tests, GitHub/Linear 
 
 ## PRs and checks
 
+- Citewire PR #5, head 80017d6 into agent/citewire-landing-site, draft/mergeable: exact 22-file orchestration-only diff; CI was started and is recorded only as successful after the final verification pass.
 - Citewire PR #1, head 10aee95a into main, draft/mergeable: Node 18/22 successful in 31750915019 and 31750916990.
 - Citewire PR #2, head ff09b68 into agent/citewire-product-launch, draft/mergeable: Node 18/22 successful in 31849200115 and 31849291099; exact 20-file landing diff.
 - Cloud PR #1, head 6906827 into main, draft/mergeable: Node 18/22 successful in 31893670759 and 31893673430; earlier runtime checks 31752801534 and 31752804098 successful; no deployment.
@@ -52,7 +53,7 @@ Verified means directly observed in local state, committed tests, GitHub/Linear 
 
 ## Linear
 
-KAR-66 parent is In Progress. KAR-67, KAR-68, KAR-69, and KAR-70 are Todo. KAR-53 remains the related console/source-health/dedupe/dead-letter/kill-switch anchor. Launch Log document ID is 7f791900-c44b-489f-b0af-e1464784e367.
+KAR-66 parent is In Progress. KAR-67, KAR-68, KAR-69, and KAR-70 are Todo. KAR-53 remains the related console/source-health/dedupe/dead-letter/kill-switch anchor. KAR-24 is Todo and its merged PR #16 does not complete the Astro major upgrade. KAR-66 has the PR #5/issue mappings and a dated verification comment; KAR-48 has a provenance-only comment and remains Done. The complete Launch Log document `7f791900-c44b-489f-b0af-e1464784e367` was fetched in full, appended with the 2026-08-15 verified synchronization entry, saved, and re-read with its marker present.
 
 ## contradiction resolutions
 
