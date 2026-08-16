@@ -4,7 +4,7 @@
   "title": "CiteWire",
   "description": "Attribution-first MCP server for free news sources and free article APIs.",
   "version": "0.2.0",
-  "websiteUrl": "https://github.com/Openly-Useful/citewire#readme",
+  "websiteUrl": "https://citewire.org",
   "repository": {
     "url": "https://github.com/Openly-Useful/citewire",
     "source": "github",

@@ -4,6 +4,8 @@
 [![CI](https://github.com/Openly-Useful/citewire/actions/workflows/ci.yml/badge.svg)](https://github.com/Openly-Useful/citewire/actions)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
+[citewire.org](https://citewire.org) · [Openly Useful](https://openlyuseful.org)
+
 Attribution-first MCP infrastructure for news and research discovery.
 
 CiteWire gives agents structured, read-only access to news and research

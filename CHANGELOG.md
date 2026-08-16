@@ -7,6 +7,11 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+### Added
+
+- Added the dependency-free `citewire.org` landing site, including canonical
+  project, repository, package, Openly Useful, and Karaya Industry News links.
+
 ### Fixed
 
 - Added stable GDELT Project and Semantic Scholar attribution to their provider

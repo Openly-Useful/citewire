@@ -82,6 +82,7 @@ when a channel requires it.
 | --- | --- |
 | Product name | CiteWire |
 | Short description | Attribution-first MCP server for news and research metadata. |
+| Website | `https://citewire.org` (landing page prepared in the repository; deployment not yet verified) |
 | Repository | `https://github.com/Openly-Useful/citewire` |
 | Package | `https://www.npmjs.com/package/citewire` |
 | License | MIT |
