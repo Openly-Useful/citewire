@@ -159,7 +159,7 @@ test('rights evaluation fails closed and never returns a credential reference', 
 test('classifier applies configurable score bands but is permanently observe-only in this phase', () => {
   const adjacent = classifyInclusion(scoreInput(0.5), { now: NOW });
   assert.equal(adjacent.inclusion_tier, 'adjacent');
-  assert.equal(adjacent.publishable, false);
+  assert.equal('publishable' in adjacent, false);
   assert.equal(adjacent.mode, 'shadow');
   assert.equal(adjacent.evaluated_at, NOW);
   assert.ok(adjacent.inclusion_reasons.includes('ADJACENT_BAND'));
@@ -169,11 +169,10 @@ test('classifier applies configurable score bands but is permanently observe-onl
     thresholds: { adjacent_min: 0.7, standard_min: 0.8 },
   });
   assert.equal(configuredHold.inclusion_tier, 'held');
-  assert.equal(configuredHold.publishable, false);
 
-  const standard = classifyInclusion(scoreInput(0.9), { now: NOW, mode: 'active' });
+  const standard = classifyInclusion(scoreInput(0.9), { now: NOW });
   assert.equal(standard.inclusion_tier, 'standard');
-  assert.equal(standard.publishable, false);
+  assert.throws(() => classifyInclusion(scoreInput(0.9), { now: NOW, mode: 'active' }), /must remain shadow/);
   assert.equal(CLASSIFIER_MODEL_CARD.default_mode, 'shadow');
 });
 
@@ -189,7 +188,7 @@ test('classifier abstains on missing rights, attribution, time, URL, or feature 
   assert.equal(decision.abstained, true);
   assert.equal(decision.score, null);
   assert.equal(decision.inclusion_tier, 'held');
-  assert.equal(decision.publishable, false);
+  assert.equal('publishable' in decision, false);
   assert.ok(decision.inclusion_reasons.includes('FEATURES_INCOMPLETE'));
   assert.ok(decision.inclusion_reasons.includes('RIGHTS_NOT_CLEARED'));
   assert.ok(decision.inclusion_reasons.includes('PUBLISHER_MISSING'));

@@ -287,3 +287,7 @@ export function communityTools(config = {}) {
     },
   ];
 }
+
+// This factory is intentionally not composed into the root server. A deployment
+// must inject an account-scoped store and pass every projection gate explicitly.
+export { createEditorialArticleTools } from './mcp-articles.js';
