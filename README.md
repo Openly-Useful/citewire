@@ -187,6 +187,35 @@ A deployment can combine a platform and provider tools:
 }
 ```
 
+## Optional Community policy foundation
+
+CiteWire can expose a local, read-only foundation for source policy, rights
+evaluation, and shadow inclusion scoring:
+
+```json
+{
+  "community": {
+    "enabled": true,
+    "classifierMode": "shadow",
+    "thresholds": {
+      "adjacent_min": 0.5,
+      "standard_min": 0.6
+    }
+  }
+}
+```
+
+Every bundled source remains disabled by default. This setting performs no
+network calls, loads no credentials, and cannot publish. Credential-based
+rights checks accept opaque secret-manager references in memory but never
+return those references. The classifier is forced to shadow mode and always
+reports `publishable: false` until a separately reviewed editorial system and
+evaluation corpus exist.
+
+Read [Source registry and rights](docs/source-registry-and-rights.md) for the
+runtime validation, fail-closed policy, canonical MCP tools and resources, and
+current limitations.
+
 ## Design boundaries
 
 - **MIT and zero dependency.** The package uses Node built-ins and has no
