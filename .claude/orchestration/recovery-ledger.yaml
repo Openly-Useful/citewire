@@ -1,0 +1,128 @@
+schema_version: 2
+artifact: citewire-orchestration-recovery-ledger
+as_of: "2026-08-15"
+program: "CiteWire open-source and Karaya safety program"
+
+claim_status_legend:
+  Verified: "Observed locally in the current controlled workspace."
+  Historical: "Recorded dated evidence that requires fresh remote revalidation before action."
+  Inferred: "Bounded interpretation, not execution authority."
+  Unknown: "Not established."
+  Contradicted: "A lower-trust claim conflicts with a governing recorded fact."
+
+current_control_baseline:
+  - id: "REC-001"
+    claim_status: Verified
+    claim: "CiteWire orchestration pre-sync baseline is 7e816c5b2900cb04309f751e5d93bab79752128a; first reviewed 17-stream sync is 4b04c4c448f44b07f8fc10a4e2211274d7c55ee8. Initial handoff package 80017d60c4396d704e0be55af4cd9cb1dc548b94 is historical evidence only."
+    action_boundary: "Read the live branch/PR head before action; do not represent 80017d6 or 7e816c5 as current."
+  - id: "REC-002"
+    claim_status: Verified
+    claim: "Visible brand is CiteWire, technical token is citewire, and project parent is Openly Useful."
+    action_boundary: "These facts do not authorize repository, package, registry, DNS, hosting, deployment, or Cloud actions."
+  - id: "REC-003"
+    claim_status: Verified
+    claim: "Openly-Useful/citewire is authenticated absent and unapproved."
+    action_boundary: "Do not create, transfer, mirror, archive, rename, or infer a route."
+  - id: "REC-004"
+    claim_status: Verified
+    claim: "citewire/.project-status/manifest.json is a controlled untracked proposal. The CiteWire repository is not Git-clean until it is separately dispositioned."
+    action_boundary: "Preserve it unstaged and exclude it from orchestration commits."
+  - id: "REC-005"
+    claim_status: Verified
+    claim: "citewire-public-platform is a dirty parked prototype at 7e816c5 and karayagroup-editorial-shadow is a dirty preserved proposal at 9c150632."
+    action_boundary: "Neither receives WS completion credit, may be staged/merged/cleaned, or may replace a clean implementation worktree."
+  - id: "REC-006"
+    claim_status: Verified
+    claim: "karayagroup-production-audit is absent and is a hard WS-012 precondition."
+    action_boundary: "Create a fresh clean isolated worktree from verified origin/main before WS-012; never substitute live, brand, or editorial-shadow."
+  - id: "REC-007"
+    claim_status: Verified
+    claim: "Karaya owner screenshot inventory is protected at 49 files: 8 tracked and 41 untracked."
+    action_boundary: "Never edit, stage, clean, move, delete, or use as a baseline."
+
+recorded_historical_work:
+  - id: "REC-101"
+    claim_status: Historical
+    claim: "CiteWire Community candidate is recorded at 10aee95 in draft PR #1. Cloud docs-only reconciliation is recorded at 6906827 and its archive pin is 10aee95."
+    action_boundary: "Fresh remote/CI evidence is required before release, deployment, or dependency action."
+  - id: "REC-102"
+    claim_status: Historical
+    claim: "CiteWire landing PR #2, Openly Useful PR #8, Karaya PR #17, CiteWire PR #5, and Cloud PR #1 are recorded as drafts."
+    action_boundary: "Do not infer current mergeability, CI, preview, deployment, or PR-head state without a fresh remote read."
+  - id: "REC-103"
+    claim_status: Historical
+    claim: "citewire.org recorded a parked HTTP response and failed HTTPS TLS. It is not a verified live CiteWire destination."
+    action_boundary: "Do not merge downstream links or publish metadata pointing there until WS-005 verifies live HTTPS."
+  - id: "REC-104"
+    claim_status: Historical
+    claim: "Karaya public smoke showed 50 feed items, 16 over the provisional cap, and one POWER Magazine trailer. Current code includes the intended gate."
+    action_boundary: "Treat this as stored-corpus drift pending WS-012, not proof of a current ingest bypass."
+  - id: "REC-105"
+    claim_status: Historical
+    claim: "KAR-66 is parent; KAR-67, KAR-68, KAR-69, and KAR-70 are the recorded work items; KAR-53 is related console context."
+    action_boundary: "KAR-71 and KAR-77 remain context-only and must not become stream mappings or dependencies."
+  - id: "REC-106"
+    claim_status: Historical
+    claim: "KAR-48 and KAR-36 are Done provenance/history. KAR-24 is Todo; linked PR #16 does not establish completion of the Astro-major-upgrade dependency."
+    action_boundary: "These are context-only and do not map to an active CiteWire stream or authorize product work."
+  - id: "REC-107"
+    claim_status: Unknown
+    claim: "No verified CiteWire Cowork/plugin manifest or GitHub/Linear work item maps to a required stream."
+    action_boundary: "Studio/plugin work remains speculative and outside the required graph."
+
+parked_prototype_findings:
+  public_platform:
+    claim_status: Verified
+    finding: "Runtime changes precede WS-013 design; Studio trusts caller-supplied accountId; pause does not gate all writes; nested sensitive values can survive cleanup; active classifier creates a publish seam; registry input lacks schema validation; package excludes Studio; resource compatibility is not yet Node-18/22 verified."
+    action_boundary: "Park the entire diff. WS-017 must implement from approved WS-013 schemas in a clean worktree and excludes Studio/plugins."
+  editorial_shadow:
+    claim_status: Verified
+    finding: "Executable migration is present; fingerprint lacks as-of/window semantics; corpus query lacks deterministic pagination; retries/partial writes are not safely convergent; tests do not prove database/RLS/race behavior; provenance asserts 0.1.0 against upstream 6c89b6e package version 0.2.0. Focused verification stopped after 21 passing tests when one test file could not load @supabase/supabase-js because dependencies were absent; the shell was Node v24.18.0 rather than required Node 22. No install, rerun, build, audit, commit, migration, or deployment followed."
+    action_boundary: "Preserve without credit. WS-012 reconciles vendor provenance; WS-014 starts only after production truth and schema sufficiency."
+
+graph_corrections:
+  - "The graph contains exactly 17 streams."
+  - "WS-008 depends on WS-003, WS-004, and WS-005."
+  - "WS-011 depends on WS-002 and WS-009."
+  - "Karaya direct sequence is WS-012 to WS-014 to WS-015 to WS-016."
+  - "WS-017 depends on WS-004 and WS-013 and is the only new required stream."
+  - "Studio/plugin work is speculative and not a required stream."
+  - "No exclusive path lease overlaps another active mutable lease."
+
+fresh_synchronization:
+  claim_status: Verified
+  evidence:
+    - "Draft PR #5 re-read at 4b04c4c, draft and mergeable, before the final metadata follow-up."
+    - "Node 18/22 CI passed in runs 31906699682 and 31906701652."
+    - "GitHub synchronization comments re-read on CiteWire #3/#4 and Karaya #18/#19."
+    - "KAR-66 through KAR-70 re-read after updates; Launch Log preserved and extended once."
+  action_boundary: "Tracking synchronization only; no product, release, deployment, DNS, provider, migration, or production mutation."
+
+unknowns_and_stops:
+  - id: "REC-401"
+    claim_status: Unknown
+    topic: "Repository route and immutable public identity"
+    action_boundary: "WS-002 and WS-003 require separate owner decisions and fresh authority evidence."
+  - id: "REC-402"
+    claim_status: Unknown
+    topic: "CiteWire website/DNS/hosting"
+    action_boundary: "WS-005 requires separate owner approval and independent live HTTPS evidence."
+  - id: "REC-403"
+    claim_status: Unknown
+    topic: "Cloud operator, tenancy, credentials, support, privacy, billing, deployment, and retention"
+    action_boundary: "WS-011 remains blocked; no default Community/Karaya trust."
+  - id: "REC-404"
+    claim_status: Unknown
+    topic: "Karaya production migrations, source/circuit-breaker state, cron, queue, and exact corpus truth"
+    action_boundary: "WS-012 read-only production-truth packet is required before shadow, UI, or rollout."
+
+safety_state:
+  no_secret_or_private_transcript: true
+  no_external_mutation_authorized_by_this_ledger: true
+  no_plugin_or_connector_delivery_requirement: true
+  hard_stops:
+    - "repository create, transfer, archive, rename, visibility, or history change"
+    - "DNS, domain, certificate, hosting, deployment, merge, tag, publication, registry, catalog, or paid service"
+    - "provider/source activation, migration, data/configuration mutation, corpus rewrite, canary, or automatic publication"
+    - "visible Karaya copy without Luis read-aloud approval"
+    - "protected screenshots or controlled dirty exception paths"
