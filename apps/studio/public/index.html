@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="An exception-first, account-scoped control surface for CiteWire.">
+  <title>CiteWire Studio</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to workspace</a>
+  <header class="masthead">
+    <a class="wordmark" href="https://citewire.org">CiteWire <span>Studio</span></a>
+    <div class="masthead-actions">
+      <span id="system-status" class="status" role="status">Local control plane</span>
+      <button id="pause-control" class="danger" type="button" hidden>Pause automations</button>
+    </div>
+  </header>
+
+  <main id="workspace">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Exception-first editorial operations</p>
+      <h1 id="page-title">Review what needs judgment.</h1>
+      <p>Sources, disabled connector references, assessment posture, and held decisions remain separated by account.</p>
+    </section>
+
+    <section class="metrics" aria-label="Workspace summary">
+      <article><strong id="exception-count">—</strong><span>Open exceptions</span></article>
+      <article><strong id="source-count">—</strong><span>Source settings</span></article>
+      <article><strong id="connector-count">—</strong><span>Disabled connectors</span></article>
+    </section>
+
+    <nav class="tabs" aria-label="Studio views">
+      <button type="button" data-view="exceptions" aria-pressed="true">Exceptions</button>
+      <button type="button" data-view="sources" aria-pressed="false">Sources</button>
+      <button type="button" data-view="connectors" aria-pressed="false">Connectors</button>
+      <button type="button" data-view="assessments" aria-pressed="false">Assessments</button>
+      <button type="button" data-view="audit" aria-pressed="false">Audit</button>
+    </nav>
+
+    <section id="view" class="panel" aria-live="polite" aria-busy="true">
+      <h2>Loading workspace</h2>
+      <p>Studio is reading the current account scope.</p>
+    </section>
+  </main>
+
+  <template id="connector-form-template">
+    <form class="connector-form">
+      <fieldset>
+        <legend>Configure a disabled connector</legend>
+        <label>Connector ID <input name="id" required pattern="[a-z0-9-]+" autocomplete="off"></label>
+        <label>Reviewed source <select name="source_id" required></select></label>
+        <label>Access mode
+          <select name="access_mode" required>
+            <option value="public">Public</option>
+            <option value="personal_credential">Personal credential reference</option>
+            <option value="organization_credential">Organization credential reference</option>
+          </select>
+        </label>
+        <label>Credential reference <input name="credential_ref" autocomplete="off" aria-describedby="credential-help"></label>
+        <small id="credential-help">Use an opaque environment or secret-manager reference. Values are never accepted.</small>
+        <button type="submit">Save disabled connector</button>
+      </fieldset>
+    </form>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>
