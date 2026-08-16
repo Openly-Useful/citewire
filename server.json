@@ -1,0 +1,33 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Openly-Useful/citewire",
+  "title": "CiteWire",
+  "description": "Attribution-first MCP server for free news sources and free article APIs.",
+  "version": "0.2.0",
+  "websiteUrl": "https://github.com/Openly-Useful/citewire#readme",
+  "repository": {
+    "url": "https://github.com/Openly-Useful/citewire",
+    "source": "github",
+    "id": "1335526820"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "citewire",
+      "version": "0.2.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "packageArguments": [
+        {
+          "type": "named",
+          "name": "--config",
+          "description": "Absolute path to a citewire JSON configuration that enables a platform or provider.",
+          "format": "filepath",
+          "isRequired": true,
+          "placeholder": "/absolute/path/to/citewire.config.json"
+        }
+      ]
+    }
+  ]
+}

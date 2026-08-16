@@ -10,6 +10,11 @@
 import { fetchJson, buildUrl, toolJson, toolError, clampLimit } from './util.js';
 
 const ENDPOINT = 'https://api.gdeltproject.org/api/v2/context/context';
+const ATTRIBUTION = Object.freeze({
+  name: 'GDELT Project',
+  url: 'https://www.gdeltproject.org/',
+});
+const CITATION = `${ATTRIBUTION.name}: ${ATTRIBUTION.url}`;
 
 export const key = 'gdelt-context';
 export const title = 'GDELT Context 2.0 (news snippet context)';
@@ -40,7 +45,18 @@ export function tools(config) {
         // Context API returns { articles: [ { url, title, domain, ... snippet fields } ] }
         const matches = Array.isArray(data && data.articles) ? data.articles : [];
         const items = matches.slice(0, limit);
-        return toolJson({ provider: key, query, count: items.length, items, termsNote });
+        return toolJson(
+          {
+            provider: key,
+            query,
+            count: items.length,
+            items,
+            attribution: ATTRIBUTION,
+            citation: CITATION,
+            termsNote,
+          },
+          ATTRIBUTION,
+        );
       },
     },
   ];

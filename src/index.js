@@ -20,7 +20,7 @@ const DEFAULT_INSTRUCTIONS =
 export function createCitewire(config = {}) {
   const tools = [...platformTools(config), ...providerTools(config)];
   return createServer({
-    serverInfo: config.serverInfo ?? { name: 'citewire', version: '0.1.0' },
+    serverInfo: config.serverInfo ?? { name: 'citewire', version: '0.2.0' },
     instructions: config.instructions ?? DEFAULT_INSTRUCTIONS,
     tools,
   });

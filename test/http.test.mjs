@@ -1,9 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-const { createHttpHandler } = await import('../src/transports/http.js');
+const { createHttpHandler, runHttp } = await import('../src/transports/http.js');
 const { createServer } = await import('../src/core/rpc.js');
 const { runStdio } = await import('../src/transports/stdio.js');
+
+const MCP_ACCEPT = 'application/json, text/event-stream';
+const INITIALIZE = JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'initialize', params: {} });
 
 function makeServer() {
   return createServer({
@@ -15,13 +18,23 @@ function makeServer() {
 
 // A req mock that behaves like a Node IncomingMessage stream when a body is given,
 // but also exposes .body directly for express-ish handlers.
-function makeReq({ method = 'POST', body } = {}) {
+function makeReq({ method = 'POST', body, headers = {} } = {}) {
   const listeners = { data: [], end: [], error: [] };
+  const requestHeaders = {
+    accept: MCP_ACCEPT,
+    'content-type': 'application/json',
+    host: 'mcp.example.test',
+    ...headers,
+  };
+  for (const [name, value] of Object.entries(requestHeaders)) {
+    if (value === undefined) delete requestHeaders[name];
+  }
   const req = {
     method,
-    headers: { 'content-type': 'application/json' },
+    headers: requestHeaders,
     url: '/',
     body,
+    socket: { encrypted: false },
     on(event, cb) {
       listeners[event] = listeners[event] || [];
       listeners[event].push(cb);
@@ -123,6 +136,92 @@ test('GET -> 405 with Allow: POST', async () => {
   assert.ok(allow && /POST/i.test(String(allow)), `expected Allow: POST, got ${allow}`);
 });
 
+test('request without Origin is accepted for non-browser MCP clients', async () => {
+  const handler = createHttpHandler(makeServer());
+  const req = makeReq({ body: INITIALIZE });
+  const res = makeRes();
+  await handler(req, res);
+  assert.equal(res.statusCode, 200);
+  assert.ok(res.parsed()?.result, 'initialize result present');
+});
+
+test('remote handler accepts its effective origin behind a proxy', async () => {
+  const handler = createHttpHandler(makeServer());
+  const req = makeReq({
+    body: INITIALIZE,
+    headers: {
+      host: 'internal.vercel.test',
+      origin: 'https://mcp.example.test',
+      'x-forwarded-host': 'mcp.example.test',
+      'x-forwarded-proto': 'https',
+    },
+  });
+  const res = makeRes();
+  await handler(req, res);
+  assert.equal(res.statusCode, 200);
+  assert.ok(res.parsed()?.result, 'initialize result present');
+});
+
+test('remote handler rejects a cross-origin request before dispatch', async () => {
+  let dispatches = 0;
+  const handler = createHttpHandler({
+    async handle() {
+      dispatches++;
+      return { jsonrpc: '2.0', id: 1, result: {} };
+    },
+  });
+  const req = makeReq({ body: INITIALIZE, headers: { origin: 'https://attacker.example' } });
+  const res = makeRes();
+  await handler(req, res);
+  assert.equal(res.statusCode, 403);
+  assert.equal(res.parsed()?.error?.code, -32000);
+  assert.equal(dispatches, 0);
+});
+
+test('remote handler accepts an explicitly allowed cross-origin deployment', async () => {
+  const handler = createHttpHandler(makeServer(), { allowedOrigins: ['https://client.example'] });
+  const req = makeReq({ body: INITIALIZE, headers: { origin: 'https://client.example' } });
+  const res = makeRes();
+  await handler(req, res);
+  assert.equal(res.statusCode, 200);
+  assert.ok(res.parsed()?.result, 'initialize result present');
+});
+
+test('malformed Origin -> 403', async () => {
+  const handler = createHttpHandler(makeServer());
+  const req = makeReq({ body: INITIALIZE, headers: { origin: 'https://mcp.example.test/path' } });
+  const res = makeRes();
+  await handler(req, res);
+  assert.equal(res.statusCode, 403);
+});
+
+test('POST without both required Accept media types -> 406', async () => {
+  const handler = createHttpHandler(makeServer());
+  const req = makeReq({ body: INITIALIZE, headers: { accept: 'application/json' } });
+  const res = makeRes();
+  await handler(req, res);
+  assert.equal(res.statusCode, 406);
+  assert.equal(res.parsed()?.error?.code, -32000);
+});
+
+test('POST without application/json Content-Type -> 415', async () => {
+  const handler = createHttpHandler(makeServer());
+  const req = makeReq({ body: INITIALIZE, headers: { 'content-type': 'text/plain' } });
+  const res = makeRes();
+  await handler(req, res);
+  assert.equal(res.statusCode, 415);
+  assert.equal(res.parsed()?.error?.code, -32000);
+});
+
+test('POST with unsupported MCP-Protocol-Version -> 400', async () => {
+  const handler = createHttpHandler(makeServer());
+  const req = makeReq({ body: INITIALIZE, headers: { 'mcp-protocol-version': '2025-03-26' } });
+  const res = makeRes();
+  await handler(req, res);
+  assert.equal(res.statusCode, 400);
+  assert.equal(res.parsed()?.error?.code, -32600);
+});
+
 test('POST with malformed JSON body -> 400 with error.code -32700', async () => {
   const handler = createHttpHandler(makeServer());
   const req = makeReq({ method: 'POST', body: '{bad' });
@@ -134,7 +233,7 @@ test('POST with malformed JSON body -> 400 with error.code -32700', async () => 
   assert.equal(parsed.error.code, -32700);
 });
 
-test('POST notification -> 204 and no JSON body', async () => {
+test('POST notification -> 202 and no response body', async () => {
   const handler = createHttpHandler(makeServer());
   const req = makeReq({
     method: 'POST',
@@ -142,16 +241,26 @@ test('POST notification -> 204 and no JSON body', async () => {
   });
   const res = makeRes();
   await handler(req, res);
-  assert.equal(res.statusCode, 204);
-  const parsed = res.parsed();
-  assert.ok(parsed === undefined || parsed === '' || parsed === null, `expected empty body, got ${JSON.stringify(parsed)}`);
+  assert.equal(res.statusCode, 202);
+  assert.equal(res.body, undefined);
+  assert.equal(res.getHeader('content-type'), undefined);
+});
+
+test('recognized method without id is still a notification -> 202 with no body', async () => {
+  const handler = createHttpHandler(makeServer());
+  const req = makeReq({ body: JSON.stringify({ jsonrpc: '2.0', method: 'ping', params: {} }) });
+  const res = makeRes();
+  await handler(req, res);
+  assert.equal(res.statusCode, 202);
+  assert.equal(res.body, undefined);
 });
 
 test('POST initialize -> 200 with JSON-RPC result', async () => {
   const handler = createHttpHandler(makeServer());
   const req = makeReq({
     method: 'POST',
-    body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'initialize', params: {} }),
+    body: INITIALIZE,
+    headers: { 'mcp-protocol-version': '2025-06-18' },
   });
   const res = makeRes();
   await handler(req, res);
@@ -159,6 +268,37 @@ test('POST initialize -> 200 with JSON-RPC result', async () => {
   const parsed = res.parsed();
   assert.ok(parsed && parsed.result, 'result present');
   assert.equal(parsed.result.protocolVersion, '2025-06-18');
+});
+
+test('runHttp binds to 127.0.0.1 and only accepts loopback Origins', async (t) => {
+  const httpServer = await runHttp(makeServer(), { port: 0 });
+  t.after(
+    () =>
+      new Promise((resolve, reject) => {
+        httpServer.close((err) => (err ? reject(err) : resolve()));
+      }),
+  );
+
+  const address = httpServer.address();
+  assert.ok(address && typeof address === 'object');
+  assert.equal(address.address, '127.0.0.1');
+  const endpoint = `http://127.0.0.1:${address.port}/`;
+  const headers = { Accept: MCP_ACCEPT, 'Content-Type': 'application/json' };
+
+  const rejected = await fetch(endpoint, {
+    method: 'POST',
+    headers: { ...headers, Origin: 'https://attacker.example' },
+    body: INITIALIZE,
+  });
+  assert.equal(rejected.status, 403);
+
+  const accepted = await fetch(endpoint, {
+    method: 'POST',
+    headers: { ...headers, Origin: 'http://localhost:4321' },
+    body: INITIALIZE,
+  });
+  assert.equal(accepted.status, 200);
+  assert.equal((await accepted.json()).result.protocolVersion, '2025-06-18');
 });
 
 test('runStdio is an importable function (smoke)', () => {

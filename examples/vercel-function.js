@@ -4,7 +4,7 @@
 // POST /api/mcp. The server is built once at module scope and reused across
 // invocations; createHttpHandler reads the pre-parsed req.body Vercel provides.
 //
-//   package.json needs: { "type": "module", "dependencies": { "citewire": "^0.1.0" } }
+//   package.json needs: { "type": "module", "dependencies": { "citewire": "^0.2.0" } }
 
 import { createCitewire } from 'citewire';
 import { createHttpHandler } from 'citewire/transports/http';
@@ -20,7 +20,7 @@ const server = createCitewire({
 });
 
 // createHttpHandler returns an async (req, res) handler: POST-only JSON-RPC,
-// 204 for notifications, 200 application/json otherwise.
+// 202 for accepted notifications, 200 application/json otherwise.
 const handler = createHttpHandler(server);
 
 export default handler;

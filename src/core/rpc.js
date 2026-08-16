@@ -39,11 +39,15 @@ export function toolJson(payload) {
 
 // Serialize a tool for tools/list: the wire shape only, never the handler.
 function publicTool(tool) {
-  return {
+  const descriptor = {
     name: tool.name,
     description: tool.description,
     inputSchema: tool.inputSchema,
   };
+  if (tool.title) descriptor.title = tool.title;
+  if (tool.outputSchema) descriptor.outputSchema = tool.outputSchema;
+  if (tool.annotations) descriptor.annotations = tool.annotations;
+  return descriptor;
 }
 
 export function createServer({ serverInfo, instructions, tools }) {

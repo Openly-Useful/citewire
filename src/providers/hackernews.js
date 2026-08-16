@@ -23,6 +23,7 @@ function mapItem(item) {
     id: item.id,
     title: item.title,
     url: item.url,
+    hn_url: item.id ? `https://news.ycombinator.com/item?id=${item.id}` : null,
     score: item.score,
     by: item.by,
     time: item.time,

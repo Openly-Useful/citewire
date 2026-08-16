@@ -7,7 +7,14 @@
 // Enabling this provider is the deployer's own act. Reachability is not
 // permission: the deployer must review Crossref's terms before turning it on.
 
-import { fetchJson, buildUrl, toolJson, toolError, clampLimit } from './util.js';
+import {
+  fetchJson,
+  buildUrl,
+  toolJson,
+  toolError,
+  clampLimit,
+  citewireUserAgent,
+} from './util.js';
 
 const ENDPOINT = 'https://api.crossref.org/works';
 
@@ -15,7 +22,15 @@ export const key = 'crossref';
 export const title = 'Crossref (DOI metadata search)';
 export const docsUrl = 'https://api.crossref.org/';
 export const termsNote =
-  'Bibliographic metadata is public; identify politely (User-Agent).';
+  'Bibliographic metadata is public. A deployer-supplied mailto contact identifies citewire to the Crossref polite pool; abstracts remain third-party content.';
+
+function validMailto(value) {
+  return (
+    typeof value === 'string' &&
+    value.length <= 254 &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+  );
+}
 
 function joinDateParts(dateObj) {
   const parts =
@@ -41,9 +56,18 @@ export function tools(config) {
       handler: async (args) => {
         const query = args && args.query;
         if (!query || typeof query !== 'string') return toolError('query is required');
+        const mailto = config?.providers?.crossref?.mailto;
+        if (!validMailto(mailto)) {
+          return toolError(
+            'providers.crossref.mailto must be a valid deployer contact email before Crossref can be queried',
+          );
+        }
         const limit = clampLimit(args && args.limit);
-        const url = buildUrl(ENDPOINT, { query, rows: limit });
-        const data = await fetchJson(url, { fetchImpl: config && config.fetch });
+        const url = buildUrl(ENDPOINT, { query, rows: limit, mailto });
+        const data = await fetchJson(url, {
+          fetchImpl: config && config.fetch,
+          headers: { 'User-Agent': citewireUserAgent(mailto) },
+        });
         const items = (data && data.message && Array.isArray(data.message.items)
           ? data.message.items
           : []

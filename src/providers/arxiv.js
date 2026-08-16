@@ -2,13 +2,15 @@
 //
 // Queries: the arXiv API query endpoint — search across arXiv preprint
 // metadata (physics, CS, math, quantitative biology, etc.).
-// Free-access basis: arXiv offers an open, keyless API; it asks callers to
-// pace requests courteously. Responses are Atom XML, parsed here with plain
-// string/regex operations to keep the zero-dependency guarantee.
+// Free-access basis: arXiv offers an open, keyless API. This adapter enforces
+// an operative process-local one-request gate with at least 3000ms between
+// request starts. Responses are Atom XML, parsed here with plain string/regex
+// operations to keep the zero-dependency guarantee.
 // Enabling this provider is the deployer's own act. Reachability is not
 // permission: the deployer must review arXiv's API terms before turning it on.
 
 import { fetchText, buildUrl, toolJson, toolError, clampLimit } from './util.js';
+import { scheduleArxivRequest } from './arxiv-limiter.js';
 
 const ENDPOINT = 'https://export.arxiv.org/api/query';
 
@@ -16,7 +18,7 @@ export const key = 'arxiv';
 export const title = 'arXiv (preprint search)';
 export const docsUrl = 'https://info.arxiv.org/help/api/index.html';
 export const termsNote =
-  'Metadata access is open; each paper license controls reuse. Courteous pacing required.';
+  'Metadata access is open; each paper license controls reuse. citewire enforces one in-process request at a time and at least 3000ms between arXiv request starts; horizontally scaled deployments require a shared limiter.';
 
 // Minimal, dependency-free extraction of the fields we expose from one <entry>.
 function decodeEntities(s) {
@@ -80,7 +82,9 @@ export function tools(config) {
           search_query: `all:${query}`,
           max_results: limit,
         });
-        const xml = await fetchText(url, { fetchImpl: config && config.fetch });
+        const xml = await scheduleArxivRequest(() =>
+          fetchText(url, { fetchImpl: config && config.fetch }),
+        );
         const items = parseEntries(xml, limit);
         return toolJson({ provider: key, query, count: items.length, items, termsNote });
       },

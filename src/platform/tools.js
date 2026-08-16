@@ -12,8 +12,15 @@
 
 import { toolJson, toolError } from '../core/rpc.js';
 
-const USER_AGENT = 'citewire/0.1.0 (+https://github.com/MeekPhills/citewire)';
+const USER_AGENT = 'citewire/0.2.0 (+https://github.com/Openly-Useful/citewire)';
 const TIMEOUT_MS = 15000;
+const READ_ONLY_EXTERNAL = Object.freeze({
+  readOnlyHint: true,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint: true,
+});
+const READ_ONLY_LOCAL = Object.freeze({ ...READ_ONLY_EXTERNAL, openWorldHint: false });
 
 // Perform one GET and return { ok, status, body } or throw on transport error.
 async function getJson(url, doFetch) {
@@ -80,6 +87,7 @@ export function platformTools(config) {
   return [
     {
       name: 'news.list',
+      title: 'List published news',
       description:
         'List published news items, newest first. Filters mirror the platform API: ' +
         'topic and industry taxonomy slugs, free-text search, a days window, and ' +
@@ -96,6 +104,7 @@ export function platformTools(config) {
         },
         additionalProperties: false,
       },
+      annotations: READ_ONLY_EXTERNAL,
       handler: async (args) => {
         const qs = buildQuery(args, ['topic', 'industry', 'q', 'days', 'cursor', 'page_size']);
         return requestTool(`${apiBase}${qs}`, doFetch);
@@ -103,6 +112,7 @@ export function platformTools(config) {
     },
     {
       name: 'news.get',
+      title: 'Get a published news item',
       description: 'One published news item by slug, with attribution and related coverage.',
       inputSchema: {
         type: 'object',
@@ -110,6 +120,7 @@ export function platformTools(config) {
         required: ['slug'],
         additionalProperties: false,
       },
+      annotations: READ_ONLY_EXTERNAL,
       handler: async (args) => {
         const slug = String((args && args.slug) || '');
         if (!slug) return toolError('invalid_request: slug is required.');
@@ -118,18 +129,22 @@ export function platformTools(config) {
     },
     {
       name: 'news.topics',
+      title: 'List news topics',
       description: 'The active news taxonomy topics (slug, label, description).',
       inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+      annotations: READ_ONLY_EXTERNAL,
       handler: async () => requestTool(`${apiBase}/topics`, doFetch),
     },
     {
       name: 'news.about',
+      title: 'Describe the news platform',
       description:
         'Static facts about this server and the platform: attribution policy, site, and API base.',
       inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+      annotations: READ_ONLY_LOCAL,
       handler: async () =>
         toolJson({
-          server: { name: 'citewire', version: '0.1.0' },
+          server: { name: 'citewire', version: '0.2.0' },
           platform: { name, site: siteUrl, api_base: apiBase },
           attribution_policy:
             'Every item credits its original publisher and links to the original article. ' +

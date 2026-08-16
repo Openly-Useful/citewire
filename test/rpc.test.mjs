@@ -67,6 +67,27 @@ test('tools/list returns descriptors without handler property', async () => {
   }
 });
 
+test('tools/list preserves optional titles, output schemas, and annotations', async () => {
+  const annotated = createServer({
+    serverInfo: { name: 'test', version: '1.0.0' },
+    tools: [{
+      name: 'test.read',
+      title: 'Read a test value',
+      description: 'Read one value.',
+      inputSchema: { type: 'object', properties: {} },
+      outputSchema: { type: 'object', properties: { value: { type: 'string' } } },
+      annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true },
+      handler: async () => toolJson({ value: 'ok' }),
+    }],
+  });
+  const response = await annotated.handle({ jsonrpc: '2.0', id: 1, method: 'tools/list' });
+  const [tool] = response.result.tools;
+  assert.equal(tool.title, 'Read a test value');
+  assert.equal(tool.outputSchema.properties.value.type, 'string');
+  assert.equal(tool.annotations.readOnlyHint, true);
+  assert.equal('handler' in tool, false);
+});
+
 test('tools/call returns a well-formed tool result', async () => {
   const server = makeServer();
   const res = await server.handle(req('tools/call', { name: 'echo.say', arguments: { msg: 'hi' } }));

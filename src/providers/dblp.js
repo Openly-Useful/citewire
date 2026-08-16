@@ -9,6 +9,7 @@
 // permission: the deployer must review DBLP's data terms before turning it on.
 
 import { fetchJson, buildUrl, toolJson, toolError, clampLimit } from './util.js';
+import { scheduleDblpRequest } from './dblp-limiter.js';
 
 const ENDPOINT = 'https://dblp.org/search/publ/api';
 
@@ -16,7 +17,7 @@ export const key = 'dblp';
 export const title = 'DBLP (computer science bibliography search)';
 export const docsUrl = 'https://dblp.org/faq/How+to+use+the+dblp+search+API.html';
 export const termsNote =
-  'DBLP data terms apply; article rights remain with publishers. Throttle bulk use.';
+  'Metadata is CC0; article rights remain with publishers. citewire serializes dblp calls with at least 1000ms between starts; distributed deployments need a shared limiter.';
 
 // DBLP nests authors as either a single object or an array under authors.author.
 function extractAuthors(info) {
@@ -45,7 +46,9 @@ export function tools(config) {
         if (!query || typeof query !== 'string') return toolError('query is required');
         const limit = clampLimit(args && args.limit);
         const url = buildUrl(ENDPOINT, { q: query, format: 'json', h: limit });
-        const data = await fetchJson(url, { fetchImpl: config && config.fetch });
+        const data = await scheduleDblpRequest(() =>
+          fetchJson(url, { fetchImpl: config && config.fetch }),
+        );
         const hits =
           data && data.result && data.result.hits && Array.isArray(data.result.hits.hit)
             ? data.result.hits.hit
