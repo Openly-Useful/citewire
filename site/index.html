@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>citewire - Attribution-first MCP infrastructure</title>
+  <title>CiteWire - Attribution-first MCP infrastructure</title>
   <meta name="description" content="Open-source MCP infrastructure for read-only news and research metadata, with attribution and canonical source links preserved.">
   <link rel="canonical" href="https://citewire.org">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
-  <meta property="og:title" content="citewire">
+  <meta property="og:title" content="CiteWire">
   <meta property="og:description" content="Keep the source attached.">
   <meta property="og:url" content="https://citewire.org">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://citewire.org/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="citewire source nodes connected by a wire to an MCP client">
+  <meta property="og:image:alt" content="CiteWire source nodes connected by a wire to an MCP client">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="citewire">
+  <meta name="twitter:title" content="CiteWire">
   <meta name="twitter:description" content="Keep the source attached.">
   <meta name="twitter:image" content="https://citewire.org/og.png">
   <link rel="stylesheet" href="/styles.css">
@@ -24,19 +24,19 @@
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header shell">
-    <a class="brand" href="#top" aria-label="citewire home">
+    <a class="brand" href="#top" aria-label="CiteWire home">
       <svg viewBox="0 0 48 48" aria-hidden="true">
         <path class="brand-wire" d="M33 9a17 17 0 1 0 0 30M31 24h13" fill="none" stroke-width="4" stroke-linecap="round"/>
         <circle class="brand-node" cx="31" cy="24" r="4"/>
         <circle class="brand-node" cx="44" cy="24" r="3"/>
       </svg>
-      <span>citewire</span>
+      <span>CiteWire</span>
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="#how">How it works</a>
       <a href="#community">Community</a>
       <a href="#start">Quick start</a>
-      <a href="https://github.com/MeekPhills/citewire">GitHub ↗</a>
+      <a href="https://github.com/Openly-Useful/citewire">GitHub ↗</a>
     </nav>
   </header>
 
@@ -46,14 +46,14 @@
         <div>
           <p class="eyebrow">Open source · MIT · Node 18+</p>
           <h1>Keep the source <em>attached.</em></h1>
-          <p class="hero-lede">citewire gives agents structured, read-only access to news and research metadata. Attribution and canonical links stay in every result.</p>
+          <p class="hero-lede">CiteWire gives agents structured, read-only access to news and research metadata. Attribution and canonical links stay in every result.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#start">Start with npm <span>↓</span></a>
-            <a class="button button-secondary" href="https://github.com/MeekPhills/citewire">View the source <span>↗</span></a>
+            <a class="button button-secondary" href="https://github.com/Openly-Useful/citewire">View the source <span>↗</span></a>
           </div>
         </div>
 
-        <div class="signal-board" aria-label="Source metadata moves through citewire to an MCP client while source links remain attached">
+        <div class="signal-board" aria-label="Source metadata moves through CiteWire to an MCP client while source links remain attached">
           <svg viewBox="0 0 430 460" role="img" aria-hidden="true">
             <path class="signal-path" d="M72 102H170C202 102 207 145 238 145H355"/>
             <path class="signal-path" d="M72 182H145C184 182 189 207 218 207H355"/>
@@ -79,7 +79,7 @@
 
             <rect class="signal-node" x="198" y="197" width="80" height="82" rx="14"/>
             <circle class="signal-node-core" cx="238" cy="223" r="8"/>
-            <text class="signal-text" x="209" y="253">citewire</text>
+            <text class="signal-text" x="209" y="253">CiteWire</text>
             <text class="signal-note" x="206" y="269">MCP CORE</text>
 
             <circle class="signal-node" cx="378" cy="238" r="43"/>
@@ -102,7 +102,7 @@
       <p class="section-label">The operating idea</p>
       <div class="statement-copy">
         <h2 id="statement-title">A source trail, not a content mirror.</h2>
-        <p>citewire exposes metadata and links from compatible news platforms and optional public providers. It does not store or republish article bodies.</p>
+        <p>CiteWire exposes metadata and links from compatible news platforms and optional public providers. It does not store or republish article bodies.</p>
         <div class="statement-proof">
           <article class="proof-item">
             <span>01 / Read only</span>
@@ -130,7 +130,7 @@
         <p class="section-intro">Wrap a compatible news API, enable selected research providers, or use both in the same server.</p>
       </div>
 
-      <div class="route-map" aria-label="Source to Citewire to MCP client architecture">
+      <div class="route-map" aria-label="Source to CiteWire to MCP client architecture">
         <article class="route-stop">
           <p class="route-label">Input / selected by deployer</p>
           <h3>Sources</h3>
@@ -143,7 +143,7 @@
         <div class="route-wire" aria-hidden="true"></div>
         <article class="route-stop route-stop-core">
           <p class="route-label">Core / typed and stateless</p>
-          <h3>citewire</h3>
+          <h3>CiteWire</h3>
           <ul>
             <li>Config validation</li>
             <li>Provider adapters</li>
@@ -185,8 +185,8 @@
       <div class="quickstart-copy">
         <p class="section-label">Quick start</p>
         <h2 id="start-title">Choose one source. Start local.</h2>
-        <p>Create a small config, then launch citewire from any MCP client or run its HTTP transport on a local port.</p>
-        <a class="text-link" href="https://github.com/MeekPhills/citewire#quick-start">Read the full setup guide <span>↗</span></a>
+        <p>Create a small config, then launch CiteWire from any MCP client or run its HTTP transport on a local port.</p>
+        <a class="text-link" href="https://github.com/Openly-Useful/citewire#quick-start">Read the full setup guide <span>↗</span></a>
       </div>
 
       <div class="terminal" aria-label="citewire quick-start commands">
@@ -210,7 +210,7 @@
         <p class="section-label">Openly Useful project</p>
         <div class="project-band-copy">
           <h2>Useful things, openly made.</h2>
-          <p>citewire is part of Openly Useful, a home for practical public tools, reusable infrastructure, and systems people can inspect, adapt, and improve.</p>
+          <p>CiteWire is part of Openly Useful, a home for practical public tools, reusable infrastructure, and systems people can inspect, adapt, and improve.</p>
         </div>
         <a class="button button-secondary" href="https://openlyuseful.org">Visit Openly Useful <span>↗</span></a>
       </div>
@@ -218,25 +218,25 @@
 
     <section class="origin shell" aria-labelledby="origin-title">
       <p class="section-label" id="origin-title">First deployment context</p>
-      <p>citewire was shaped through its first deployment for <a href="https://karaya.group/industry-news">Karaya Group Industry News</a>. The public platform contract is generic and can wrap any compatible read API.</p>
+      <p>CiteWire was shaped through its first deployment for <a href="https://karaya.group/industry-news">Karaya Group Industry News</a>. The public platform contract is generic and can wrap any compatible read API.</p>
     </section>
   </main>
 
   <footer>
     <div class="footer-grid shell">
       <div>
-        <a class="brand" href="#top" aria-label="citewire home">
+        <a class="brand" href="#top" aria-label="CiteWire home">
           <svg viewBox="0 0 48 48" aria-hidden="true">
             <path class="brand-wire" d="M33 9a17 17 0 1 0 0 30M31 24h13" fill="none" stroke-width="4" stroke-linecap="round"/>
             <circle class="brand-node" cx="31" cy="24" r="4"/>
             <circle class="brand-node" cx="44" cy="24" r="3"/>
           </svg>
-          <span>citewire</span>
+          <span>CiteWire</span>
         </a>
         <p class="footer-copy">Attribution-first MCP infrastructure for news and research discovery.</p>
       </div>
       <div class="footer-links">
-        <a href="https://github.com/MeekPhills/citewire">Source on GitHub ↗</a>
+        <a href="https://github.com/Openly-Useful/citewire">Source on GitHub ↗</a>
         <a href="https://www.npmjs.com/package/citewire">Package on npm ↗</a>
         <a href="https://openlyuseful.org">Openly Useful ↗</a>
       </div>

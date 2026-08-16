@@ -14,7 +14,7 @@ const tokens = await read('styles/tokens.css');
 const vercel = JSON.parse(await read('vercel.json'));
 
 test('landing page has canonical, social, and truthful product metadata', () => {
-  assert.match(html, /<title>citewire - Attribution-first MCP infrastructure<\/title>/);
+  assert.match(html, /<title>CiteWire - Attribution-first MCP infrastructure<\/title>/);
   assert.match(html, /<link rel="canonical" href="https:\/\/citewire\.org">/);
   assert.match(html, /<meta property="og:image" content="https:\/\/citewire\.org\/og\.png">/);
   assert.match(html, /Keep the source <em>attached\.<\/em>/);
@@ -25,7 +25,7 @@ test('landing page has canonical, social, and truthful product metadata', () => 
 
 test('landing page connects the verified public surfaces', () => {
   for (const href of [
-    'https://github.com/MeekPhills/citewire',
+    'https://github.com/Openly-Useful/citewire',
     'https://www.npmjs.com/package/citewire',
     'https://openlyuseful.org',
     'https://karaya.group/industry-news',
@@ -34,6 +34,9 @@ test('landing page connects the verified public surfaces', () => {
   }
   assert.equal(packageJson.homepage, 'https://citewire.org');
   assert.equal(serverJson.websiteUrl, 'https://citewire.org');
+  assert.doesNotMatch(html, /github\.com\/MeekPhills\/citewire/);
+  assert.match(html, /aria-label="CiteWire home"/);
+  assert.match(html, /<span>CiteWire<\/span>/);
 });
 
 test('landing page is local, dependency-free, responsive, and accessible by default', async () => {
