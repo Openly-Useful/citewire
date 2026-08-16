@@ -1,6 +1,6 @@
 # Governance
 
-citewire is a small open-source project with a maintainer-led decision model.
+CiteWire is a small open-source project with a maintainer-led decision model.
 The goal of this policy is to keep Community useful, attribution-first,
 technically focused, and safe to adopt without creating unnecessary process.
 
@@ -152,7 +152,7 @@ provider.
 
 ## Attribution, privacy, and terms
 
-citewire is attribution-first. Changes should preserve publisher and provider
+CiteWire is attribution-first. Changes should preserve publisher and provider
 credit, source URLs, and rights notices supplied by the upstream response.
 
 Community is intentionally stateless. A proposal that adds retention,

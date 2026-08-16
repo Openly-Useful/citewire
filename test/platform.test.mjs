@@ -61,7 +61,7 @@ test('news.list passes only provided args as query params', async () => {
   assert.equal(fetch.calls.length, 1);
   assert.equal(
     fetch.calls[0].init.headers['User-Agent'],
-    'citewire/0.2.0 (+https://github.com/MeekPhills/citewire)',
+    'citewire/0.2.0 (+https://github.com/Openly-Useful/citewire)',
   );
   const requested = new URL(fetch.calls[0].url);
   assert.equal(requested.searchParams.get('q'), 'energy');
