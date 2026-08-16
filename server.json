@@ -1,14 +1,14 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.MeekPhills/citewire",
-  "title": "citewire",
+  "name": "io.github.Openly-Useful/citewire",
+  "title": "CiteWire",
   "description": "Attribution-first MCP server for free news sources and free article APIs.",
   "version": "0.2.0",
-  "websiteUrl": "https://github.com/MeekPhills/citewire#readme",
+  "websiteUrl": "https://github.com/Openly-Useful/citewire#readme",
   "repository": {
-    "url": "https://github.com/MeekPhills/citewire",
+    "url": "https://github.com/Openly-Useful/citewire",
     "source": "github",
-    "id": "1316499152"
+    "id": "1335526820"
   },
   "packages": [
     {

@@ -12,7 +12,7 @@
 
 import { toolJson, toolError } from '../core/rpc.js';
 
-const USER_AGENT = 'citewire/0.2.0 (+https://github.com/MeekPhills/citewire)';
+const USER_AGENT = 'citewire/0.2.0 (+https://github.com/Openly-Useful/citewire)';
 const TIMEOUT_MS = 15000;
 const READ_ONLY_EXTERNAL = Object.freeze({
   readOnlyHint: true,

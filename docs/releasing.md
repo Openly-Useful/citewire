@@ -26,7 +26,7 @@ Complete these steps before enabling either publish input.
    does not provide an approval gate.
 2. In the npm settings for `citewire`, configure a GitHub Actions trusted
    publisher with these exact values:
-   - Owner: `MeekPhills`
+   - Owner: `Openly-Useful`
    - Repository: `citewire`
    - Workflow filename: `release.yml`
    - Environment: `release`
@@ -35,7 +35,7 @@ Complete these steps before enabling either publish input.
    GitHub OIDC. After the first successful trusted publish, disallow token-based
    package publishing in npm and revoke obsolete write tokens.
 4. Confirm the GitHub account running the workflow can publish the
-   `io.github.MeekPhills/*` namespace to the official MCP Registry. MCP Registry
+   `io.github.Openly-Useful/*` namespace to the official MCP Registry. MCP Registry
    authentication also uses GitHub OIDC and needs no stored secret.
 5. Enable GitHub private vulnerability reporting for the repository. Until it
    is enabled, security reports use the contact in `SECURITY.md`.
@@ -115,7 +115,7 @@ Verify the immutable artifact and registry entry:
 
 ```sh
 npm view citewire@X.Y.Z version mcpName dist.integrity
-curl "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.MeekPhills%2Fcitewire&version=latest"
+curl "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.Openly-Useful%2Fcitewire&version=latest"
 ```
 
 Confirm npm shows provenance linked to this public repository. Confirm the MCP

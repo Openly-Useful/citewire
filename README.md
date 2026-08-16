@@ -1,12 +1,12 @@
-# citewire
+# CiteWire
 
 [![npm](https://img.shields.io/npm/v/citewire)](https://www.npmjs.com/package/citewire)
-[![CI](https://github.com/MeekPhills/citewire/actions/workflows/ci.yml/badge.svg)](https://github.com/MeekPhills/citewire/actions)
+[![CI](https://github.com/Openly-Useful/citewire/actions/workflows/ci.yml/badge.svg)](https://github.com/Openly-Useful/citewire/actions)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 Attribution-first MCP infrastructure for news and research discovery.
 
-citewire gives agents structured, read-only access to news and research
+CiteWire gives agents structured, read-only access to news and research
 metadata while preserving credit and traffic for the original publisher. It
 can expose a compatible news platform as typed MCP tools, query optional public
 provider APIs, or do both in one server.
@@ -18,7 +18,7 @@ additive and focused on managed operations, personalization, workflows,
 collaboration, retained history, and support. See
 [Product tiers](docs/product-tiers.md).
 
-## What citewire is for
+## What CiteWire is for
 
 - **News platform operators** can expose a compatible read API through
   `news.list`, `news.get`, `news.topics`, and `news.about`.
@@ -29,7 +29,7 @@ collaboration, retained history, and support. See
 - **Provider contributors** can add a focused adapter without introducing a
   runtime dependency.
 
-citewire is not a full-text ingestion service, crawler, publisher, editorial
+CiteWire is not a full-text ingestion service, crawler, publisher, editorial
 system, or rights-clearance service. It does not store or republish article
 bodies. Provider reachability does not replace review of the provider's current
 terms for your use case.

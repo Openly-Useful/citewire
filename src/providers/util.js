@@ -6,7 +6,7 @@
 // each provider module stand alone. The shapes are identical to the core's
 // toolJson / toolError so results drop straight onto the MCP wire.
 
-const PROJECT_URL = 'https://github.com/MeekPhills/citewire';
+const PROJECT_URL = 'https://github.com/Openly-Useful/citewire';
 
 export function citewireUserAgent(mailto) {
   const contact = mailto ? `; mailto:${mailto}` : '';

@@ -25,7 +25,7 @@ public disclosure.
 
 ## Scope
 
-Reports about citewire's code, package, release process, and documented
+Reports about CiteWire's code, package, release process, and documented
 configuration are in scope. Vulnerabilities or outages in upstream news and
 research providers should be reported to those providers unless citewire's use
 of the provider creates the issue.
