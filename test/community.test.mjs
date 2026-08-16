@@ -41,6 +41,13 @@ function scoreInput(value) {
 test('default registry passes runtime validation and every source remains disabled', () => {
   const schema = loadRegistrySchema();
   assert.equal(schema.$schema, 'https://json-schema.org/draft/2020-12/schema');
+  const sourceSchema = schema.properties.sources.items.properties;
+  for (const field of [sourceSchema.homepage, sourceSchema.review.properties.review_basis]) {
+    const pattern = new RegExp(field.pattern);
+    assert.equal(pattern.test('https://example.test/policy'), true);
+    assert.equal(pattern.test('ftp://example.test/policy'), false);
+    assert.equal(pattern.test('https://user@example.test/policy'), false);
+  }
   assert.equal(registry.schema_version, '1.0.0');
   assert.ok(registry.sources.length >= 5);
   assert.ok(registry.sources.every((source) => source.enabled_by_default === false));
@@ -129,6 +136,24 @@ test('rights evaluation fails closed and never returns a credential reference', 
   });
   assert.equal(unknown.decision, 'hold');
   assert.ok(unknown.reasons.includes('SOURCE_POLICY_MISSING'));
+
+  const incomplete = evaluateRights({
+    source: {
+      id: 'unreviewed',
+      rights: {
+        access_modes: ['public'],
+        allowed_operations: { public_brief: ['metadata'] },
+      },
+    },
+    accessMode: 'public',
+    useCase: 'public_brief',
+    operation: 'metadata',
+  });
+  assert.equal(incomplete.decision, 'hold');
+  assert.equal(incomplete.allowed, false);
+  assert.ok(incomplete.reasons.includes('SOURCE_POLICY_INVALID'));
+  assert.equal(incomplete.source_id, null);
+  assert.match(incomplete.policy_notice, /Hold by default/);
 });
 
 test('classifier applies configurable score bands but is permanently observe-only in this phase', () => {

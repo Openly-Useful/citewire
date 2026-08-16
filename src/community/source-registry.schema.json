@@ -16,7 +16,11 @@
           "id": { "type": "string", "pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" },
           "name": { "type": "string", "minLength": 1 },
           "type": { "enum": ["news", "editorial", "newsletter", "repository", "research"] },
-          "homepage": { "type": "string", "format": "uri" },
+          "homepage": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^[Hh][Tt][Tt][Pp][Ss]?://(?![^/?#]*@).+$"
+          },
           "adapter": { "type": "string", "pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" },
           "enabled_by_default": { "const": false },
           "review": {
@@ -25,7 +29,11 @@
             "properties": {
               "cadence_days": { "type": "integer", "minimum": 1 },
               "last_reviewed": { "type": "string", "format": "date" },
-              "review_basis": { "type": "string", "format": "uri" }
+              "review_basis": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^[Hh][Tt][Tt][Pp][Ss]?://(?![^/?#]*@).+$"
+              }
             },
             "additionalProperties": false
           },

@@ -1,3 +1,5 @@
+import { validateSourcePolicy } from './registry.js';
+
 const ACCESS_MODES = new Set(['public', 'personal_credential', 'organization_credential']);
 const USE_CASES = new Set(['personal_research', 'organization_internal', 'public_brief', 'republication']);
 const OPERATIONS = new Set(['metadata', 'excerpt', 'summary', 'republication']);
@@ -9,7 +11,16 @@ function hasValidReference(value) {
 
 export function evaluateRights({ source, accessMode, credentialRef, useCase, operation } = {}) {
   const reasons = [];
-  if (!source || typeof source !== 'object' || !source.rights) reasons.push('SOURCE_POLICY_MISSING');
+  let validatedSource = null;
+  if (!source || typeof source !== 'object') {
+    reasons.push('SOURCE_POLICY_MISSING');
+  } else {
+    try {
+      validatedSource = validateSourcePolicy(source);
+    } catch {
+      reasons.push('SOURCE_POLICY_INVALID');
+    }
+  }
   if (!ACCESS_MODES.has(accessMode)) reasons.push('ACCESS_MODE_UNKNOWN');
   if (!USE_CASES.has(useCase)) reasons.push('USE_CASE_UNKNOWN');
   if (!OPERATIONS.has(operation)) reasons.push('OPERATION_UNKNOWN');
@@ -23,11 +34,13 @@ export function evaluateRights({ source, accessMode, credentialRef, useCase, ope
     reasons.push('CREDENTIAL_REFERENCE_INVALID');
   }
 
-  if (source?.rights) {
-    if (!Array.isArray(source.rights.access_modes) || !source.rights.access_modes.includes(accessMode)) {
+  if (validatedSource?.rights) {
+    if (!validatedSource.rights.access_modes.includes(accessMode)) {
       reasons.push('ACCESS_MODE_NOT_ALLOWED');
     }
-    const allowed = USE_CASES.has(useCase) ? source.rights.allowed_operations?.[useCase] || [] : [];
+    const allowed = USE_CASES.has(useCase)
+      ? validatedSource.rights.allowed_operations[useCase] || []
+      : [];
     if (!allowed.includes(operation)) reasons.push('USE_NOT_ALLOWED');
   }
 
@@ -36,13 +49,13 @@ export function evaluateRights({ source, accessMode, credentialRef, useCase, ope
     allowed,
     decision: allowed ? 'allow' : 'hold',
     reasons,
-    source_id: typeof source?.id === 'string' ? source.id : null,
+    source_id: typeof validatedSource?.id === 'string' ? validatedSource.id : null,
     access_mode: ACCESS_MODES.has(accessMode) ? accessMode : null,
     credential_reference_present: referenceValid,
     use_case: USE_CASES.has(useCase) ? useCase : null,
     operation: OPERATIONS.has(operation) ? operation : null,
-    policy_notice: typeof source?.rights?.notice === 'string'
-      ? source.rights.notice
+    policy_notice: typeof validatedSource?.rights?.notice === 'string'
+      ? validatedSource.rights.notice
       : 'No source policy is available. Hold by default.',
     safeguards: [
       'No paywall or access-control bypass.',

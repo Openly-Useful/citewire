@@ -154,6 +154,12 @@ function validateSource(source, index) {
   expectString(source.rights.notice, `${path}.rights.notice`);
 }
 
+export function validateSourcePolicy(source) {
+  assertNoSecretLikeFields(source, 'source');
+  validateSource(source, 0);
+  return structuredClone(source);
+}
+
 export function validateRegistry(registry) {
   assertNoSecretLikeFields(registry, 'registry');
   expectExactKeys(
