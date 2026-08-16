@@ -66,6 +66,9 @@ export function validateThresholds(value = DEFAULT_THRESHOLDS) {
 }
 
 export function classifyInclusion(input, options = {}) {
+  if (options.mode !== undefined && options.mode !== 'shadow') {
+    throw new TypeError('Community classifier mode must remain shadow.');
+  }
   const thresholds = validateThresholds(options.thresholds);
   const reasons = [];
   const missingFeatures = Object.keys(FEATURES).filter((key) => !finiteUnit(input?.[key]));
@@ -104,7 +107,6 @@ export function classifyInclusion(input, options = {}) {
     score,
     inclusion_tier: inclusionTier,
     inclusion_reasons: reasons,
-    publishable: false,
     abstained,
     evaluated_at: new Date(evaluatedAt).toISOString(),
     thresholds,
@@ -112,6 +114,7 @@ export function classifyInclusion(input, options = {}) {
       evidence_complete: missingFeatures.length === 0,
       rights_cleared: input?.rights_decision === 'allow',
       output_effect: 'observe_only',
+      calibration_status: 'not_evaluated',
     },
   };
 }
@@ -131,5 +134,5 @@ export const CLASSIFIER_MODEL_CARD = Object.freeze({
     'Inputs must come from a separate, documented normalization process.',
     'Missing rights, attribution, publication time, canonical URL, or feature values causes abstention.',
   ],
-  evaluation_requirement: 'Compare against a versioned, maintainer-approved corpus before any active workflow is designed.',
+  evaluation_requirement: 'Compare against a versioned, maintainer-approved corpus. Passing evidence never activates a workflow.',
 });

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://citewire.org/schemas/calibration-corpus.schema.json",
+  "title": "CiteWire shadow classifier calibration corpus",
+  "type": "object",
+  "required": ["schema_version", "corpus_id", "revision", "reviewed_at", "model_version", "thresholds", "records"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "corpus_id": { "type": "string", "minLength": 1 },
+    "revision": { "type": "string", "minLength": 1 },
+    "reviewed_at": { "type": "string", "format": "date-time" },
+    "model_version": { "type": "string", "minLength": 1 },
+    "thresholds": {
+      "type": "object",
+      "required": ["adjacent_min", "standard_min"],
+      "properties": {
+        "adjacent_min": { "type": "number", "minimum": 0, "maximum": 1 },
+        "standard_min": { "type": "number", "minimum": 0, "maximum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "expected_tier", "review_basis", "input"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "expected_tier": { "enum": ["held", "adjacent", "standard"] },
+          "review_basis": { "enum": ["maintainer_review", "regression_fixture"] },
+          "input": {
+            "type": "object",
+            "propertyNames": {
+              "not": { "pattern": "^(body|content|full_text|raw_text|credential_ref|password|token|secret|api_key)$" }
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
