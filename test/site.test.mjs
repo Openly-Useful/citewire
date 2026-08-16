@@ -59,13 +59,21 @@ test('landing page is local, dependency-free, responsive, and accessible by defa
 
   assert.match(html, /class="skip-link"/);
   assert.match(html, /aria-label="Primary navigation"/);
+  assert.match(html, /role="img" aria-label="Source metadata moves through CiteWire/);
+  assert.doesNotMatch(html, /<svg[^>]+role="img"[^>]+aria-hidden="true"/);
+  assert.match(html, /role="list" aria-label="Current Community characteristics"/);
+  assert.match(html, /role="group" aria-label="Source to CiteWire to MCP client architecture"/);
+  assert.match(html, /<figure class="terminal" aria-labelledby="terminal-caption">/);
+  assert.match(html, /twitter:image:alt/);
   assert.doesNotMatch(html, /<script\b/i);
   assert.doesNotMatch(html, /https?:\/\/[^"']+\.(?:css|js|woff2?)/i);
   assert.match(css, /@media \(max-width: 680px\)/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(css, /@media \(forced-colors: active\)/);
+  assert.match(css, /outline: 3px solid Highlight/);
   assert.match(css, /min-height: 44px/);
   assert.match(tokens, /Openly Useful design-system family tokens/);
+  assert.equal((html.match(/class="(?:eyebrow|section-label)"/g) ?? []).length, 3);
 });
 
 test('static hosting policy is locked down without authorizing deployment', () => {
@@ -74,6 +82,9 @@ test('static hosting policy is locked down without authorizing deployment', () =
   const headers = vercel.headers[0].headers;
   const csp = headers.find(({ key }) => key === 'Content-Security-Policy')?.value;
   assert.match(csp, /script-src 'none'/);
+  assert.match(csp, /style-src 'self';/);
+  assert.doesNotMatch(csp, /unsafe-inline/);
+  assert.match(csp, /base-uri 'none'/);
   assert.match(csp, /frame-ancestors 'none'/);
   assert.equal(vercel.redirects[0].destination, 'https://citewire.org/:path*');
 });

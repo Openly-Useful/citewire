@@ -11,6 +11,7 @@
   <meta property="og:description" content="Keep the source attached.">
   <meta property="og:url" content="https://citewire.org">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CiteWire">
   <meta property="og:image" content="https://citewire.org/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -19,6 +20,8 @@
   <meta name="twitter:title" content="CiteWire">
   <meta name="twitter:description" content="Keep the source attached.">
   <meta name="twitter:image" content="https://citewire.org/og.png">
+  <meta name="twitter:image:alt" content="CiteWire source nodes connected by a wire to an MCP client">
+  <meta name="theme-color" content="#f7f3e9">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -36,7 +39,7 @@
       <a href="#how">How it works</a>
       <a href="#community">Community</a>
       <a href="#start">Quick start</a>
-      <a href="https://github.com/Openly-Useful/citewire">GitHub ↗</a>
+      <a href="https://github.com/Openly-Useful/citewire">GitHub <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
@@ -44,17 +47,17 @@
     <section class="hero shell" id="top">
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">Open source · MIT · Node 18+</p>
+          <p class="eyebrow"><span>Open source</span><span>MIT</span><span>Node 18+</span></p>
           <h1>Keep the source <em>attached.</em></h1>
-          <p class="hero-lede">CiteWire gives agents structured, read-only access to news and research metadata. Attribution and canonical links stay in every result.</p>
+          <p class="hero-lede">CiteWire gives agents read-only news and research metadata while keeping attribution and canonical source links in every result.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#start">Start with npm <span>↓</span></a>
-            <a class="button button-secondary" href="https://github.com/Openly-Useful/citewire">View the source <span>↗</span></a>
+            <a class="button button-primary" href="#start">Start with npm <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="https://github.com/Openly-Useful/citewire">View the source <span aria-hidden="true">↗</span></a>
           </div>
         </div>
 
-        <div class="signal-board" aria-label="Source metadata moves through CiteWire to an MCP client while source links remain attached">
-          <svg viewBox="0 0 430 460" role="img" aria-hidden="true">
+        <div class="signal-board" role="img" aria-label="Source metadata moves through CiteWire to an MCP client while source links remain attached">
+          <svg viewBox="0 0 430 460" aria-hidden="true" focusable="false">
             <path class="signal-path" d="M72 102H170C202 102 207 145 238 145H355"/>
             <path class="signal-path" d="M72 182H145C184 182 189 207 218 207H355"/>
             <path class="signal-path" d="M72 262H150C187 262 191 269 218 269H355"/>
@@ -86,15 +89,15 @@
             <path class="signal-spine" d="M366 238h24M378 226v24"/>
             <text class="signal-text" x="342" y="300">MCP client</text>
 
-            <text class="signal-note" x="145" y="407">METADATA · ATTRIBUTION · CANONICAL URL</text>
+            <text class="signal-note" x="145" y="407">METADATA / ATTRIBUTION / CANONICAL URL</text>
           </svg>
         </div>
       </div>
 
-      <div class="hero-metrics" aria-label="Current Community characteristics">
-        <div class="metric"><strong>10</strong> included provider adapters</div>
-        <div class="metric"><strong>2</strong> transports: stdio and HTTP</div>
-        <div class="metric"><strong>0</strong> package dependencies</div>
+      <div class="hero-metrics" role="list" aria-label="Current Community characteristics">
+        <div class="metric" role="listitem"><strong>10</strong> included provider adapters</div>
+        <div class="metric" role="listitem"><strong>2</strong> transports: stdio and HTTP</div>
+        <div class="metric" role="listitem"><strong>0</strong> package dependencies</div>
       </div>
     </section>
 
@@ -125,12 +128,11 @@
 
     <section class="how shell" id="how" aria-labelledby="how-title">
       <div class="section-heading">
-        <p class="section-label">How it works</p>
         <h2 id="how-title">One typed path from source to agent.</h2>
         <p class="section-intro">Wrap a compatible news API, enable selected research providers, or use both in the same server.</p>
       </div>
 
-      <div class="route-map" aria-label="Source to CiteWire to MCP client architecture">
+      <div class="route-map" role="group" aria-label="Source to CiteWire to MCP client architecture">
         <article class="route-stop">
           <p class="route-label">Input / selected by deployer</p>
           <h3>Sources</h3>
@@ -183,13 +185,13 @@
 
     <section class="quickstart shell" id="start" aria-labelledby="start-title">
       <div class="quickstart-copy">
-        <p class="section-label">Quick start</p>
         <h2 id="start-title">Choose one source. Start local.</h2>
         <p>Create a small config, then launch CiteWire from any MCP client or run its HTTP transport on a local port.</p>
-        <a class="text-link" href="https://github.com/Openly-Useful/citewire#quick-start">Read the full setup guide <span>↗</span></a>
+        <a class="text-link" href="https://github.com/Openly-Useful/citewire#quick-start">Read the full setup guide <span aria-hidden="true">↗</span></a>
       </div>
 
-      <div class="terminal" aria-label="citewire quick-start commands">
+      <figure class="terminal" aria-labelledby="terminal-caption">
+        <figcaption class="visually-hidden" id="terminal-caption">CiteWire quick-start commands</figcaption>
         <div class="terminal-bar">
           <div class="terminal-dots" aria-hidden="true"><span></span><span></span><span></span></div>
           <span class="terminal-label">citewire.config.json</span>
@@ -202,22 +204,21 @@
         <pre><code><span class="prompt">$</span> npx -y citewire --config /absolute/path/to/citewire.config.json
 
 <span class="prompt">$</span> npx -y citewire --config /absolute/path/to/citewire.config.json --http 8722</code></pre>
-      </div>
+      </figure>
     </section>
 
     <section class="project-band-wrap">
       <div class="project-band shell">
-        <p class="section-label">Openly Useful project</p>
         <div class="project-band-copy">
           <h2>Useful things, openly made.</h2>
           <p>CiteWire is part of Openly Useful, a home for practical public tools, reusable infrastructure, and systems people can inspect, adapt, and improve.</p>
         </div>
-        <a class="button button-secondary" href="https://openlyuseful.org">Visit Openly Useful <span>↗</span></a>
+        <a class="button button-secondary" href="https://openlyuseful.org">Visit Openly Useful <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
     <section class="origin shell" aria-labelledby="origin-title">
-      <p class="section-label" id="origin-title">First deployment context</p>
+      <h2 id="origin-title">First deployment context</h2>
       <p>CiteWire was shaped through its first deployment for <a href="https://karaya.group/industry-news">Karaya Group Industry News</a>. The public platform contract is generic and can wrap any compatible read API.</p>
     </section>
   </main>
@@ -236,9 +237,9 @@
         <p class="footer-copy">Attribution-first MCP infrastructure for news and research discovery.</p>
       </div>
       <div class="footer-links">
-        <a href="https://github.com/Openly-Useful/citewire">Source on GitHub ↗</a>
-        <a href="https://www.npmjs.com/package/citewire">Package on npm ↗</a>
-        <a href="https://openlyuseful.org">Openly Useful ↗</a>
+        <a href="https://github.com/Openly-Useful/citewire">Source on GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://www.npmjs.com/package/citewire">Package on npm <span aria-hidden="true">↗</span></a>
+        <a href="https://openlyuseful.org">Openly Useful <span aria-hidden="true">↗</span></a>
       </div>
       <p class="footer-meta">MIT licensed<br>Node.js 18+<br>Read only by design</p>
     </div>
