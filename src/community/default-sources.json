@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-16T00:00:00.000Z",
+  "sources": [
+    {
+      "id": "gdelt-doc",
+      "name": "GDELT DOC 2.0",
+      "type": "news",
+      "homepage": "https://www.gdeltproject.org/",
+      "adapter": "gdelt-doc",
+      "enabled_by_default": false,
+      "review": {
+        "cadence_days": 90,
+        "last_reviewed": "2026-08-15",
+        "review_basis": "https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/"
+      },
+      "rights": {
+        "access_modes": ["public"],
+        "allowed_operations": {
+          "personal_research": ["metadata"],
+          "organization_internal": ["metadata"],
+          "public_brief": ["metadata"]
+        },
+        "notice": "Metadata and canonical links only. Publisher rights remain with publishers."
+      }
+    },
+    {
+      "id": "arxiv",
+      "name": "arXiv",
+      "type": "research",
+      "homepage": "https://arxiv.org/",
+      "adapter": "arxiv",
+      "enabled_by_default": false,
+      "review": {
+        "cadence_days": 90,
+        "last_reviewed": "2026-08-15",
+        "review_basis": "https://info.arxiv.org/help/api/index.html"
+      },
+      "rights": {
+        "access_modes": ["public"],
+        "allowed_operations": {
+          "personal_research": ["metadata"],
+          "organization_internal": ["metadata"],
+          "public_brief": ["metadata"]
+        },
+        "notice": "API metadata and canonical links only. Each paper license governs content reuse."
+      }
+    },
+    {
+      "id": "openalex",
+      "name": "OpenAlex",
+      "type": "research",
+      "homepage": "https://openalex.org/",
+      "adapter": "openalex",
+      "enabled_by_default": false,
+      "review": {
+        "cadence_days": 30,
+        "last_reviewed": "2026-08-15",
+        "review_basis": "https://docs.openalex.org/"
+      },
+      "rights": {
+        "access_modes": ["public", "personal_credential", "organization_credential"],
+        "allowed_operations": {
+          "personal_research": ["metadata"],
+          "organization_internal": ["metadata"],
+          "public_brief": ["metadata"],
+          "republication": ["metadata"]
+        },
+        "notice": "Registry policy permits metadata only. API terms and charges remain separate operational decisions."
+      }
+    },
+    {
+      "id": "hacker-news",
+      "name": "Hacker News",
+      "type": "editorial",
+      "homepage": "https://news.ycombinator.com/",
+      "adapter": "hackernews",
+      "enabled_by_default": false,
+      "review": {
+        "cadence_days": 90,
+        "last_reviewed": "2026-08-15",
+        "review_basis": "https://github.com/HackerNews/API"
+      },
+      "rights": {
+        "access_modes": ["public"],
+        "allowed_operations": {
+          "personal_research": ["metadata"],
+          "organization_internal": ["metadata"],
+          "public_brief": ["metadata"]
+        },
+        "notice": "Official API metadata and canonical links only. Do not mirror user content."
+      }
+    },
+    {
+      "id": "dev-community",
+      "name": "DEV Community",
+      "type": "editorial",
+      "homepage": "https://dev.to/",
+      "adapter": "devto",
+      "enabled_by_default": false,
+      "review": {
+        "cadence_days": 90,
+        "last_reviewed": "2026-08-15",
+        "review_basis": "https://developers.forem.com/api"
+      },
+      "rights": {
+        "access_modes": ["public"],
+        "allowed_operations": {
+          "personal_research": ["metadata"],
+          "organization_internal": ["metadata"],
+          "public_brief": ["metadata"]
+        },
+        "notice": "Metadata, author attribution, and canonical URLs only. Do not mirror article bodies."
+      }
+    },
+    {
+      "id": "hacker-news-api-repository",
+      "name": "Hacker News API repository",
+      "type": "repository",
+      "homepage": "https://github.com/HackerNews/API",
+      "enabled_by_default": false,
+      "review": {
+        "cadence_days": 180,
+        "last_reviewed": "2026-08-15",
+        "review_basis": "https://github.com/HackerNews/API"
+      },
+      "rights": {
+        "access_modes": ["public"],
+        "allowed_operations": {
+          "personal_research": ["metadata"],
+          "organization_internal": ["metadata"],
+          "public_brief": ["metadata"]
+        },
+        "notice": "Repository metadata only. File and contribution licenses govern content reuse."
+      }
+    }
+  ]
+}

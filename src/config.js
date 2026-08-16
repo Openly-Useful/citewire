@@ -9,6 +9,8 @@
 // authority on which providers exist.
 
 import { readFileSync } from 'node:fs';
+import { validateThresholds } from './community/classifier.js';
+import { assertNoSecretLikeFields, validateRegistry } from './community/registry.js';
 
 export const DEFAULT_CONFIG = {
   serverInfo: { name: 'citewire', version: '0.2.0' },
@@ -56,6 +58,34 @@ export function validateConfig(config) {
       if (!isPlainObject(entry)) fail(`providers.${key} must be an object.`);
       if (typeof entry.enabled !== 'boolean') {
         fail(`providers.${key}.enabled must be a boolean.`);
+      }
+    }
+  }
+
+  if (config.community !== undefined) {
+    const community = config.community;
+    if (!isPlainObject(community)) fail('community must be an object.');
+    assertNoSecretLikeFields(community, 'config.community');
+    const supported = new Set(['enabled', 'classifierMode', 'thresholds', 'registry']);
+    for (const key of Object.keys(community)) {
+      if (!supported.has(key)) fail(`community.${key} is not supported.`);
+    }
+    if (typeof community.enabled !== 'boolean') fail('community.enabled must be a boolean.');
+    if (community.classifierMode !== undefined && community.classifierMode !== 'shadow') {
+      fail('community.classifierMode must remain shadow.');
+    }
+    if (community.thresholds !== undefined) {
+      try {
+        validateThresholds(community.thresholds);
+      } catch (error) {
+        fail(error.message);
+      }
+    }
+    if (community.registry !== undefined) {
+      try {
+        validateRegistry(community.registry);
+      } catch (error) {
+        fail(error.message);
       }
     }
   }

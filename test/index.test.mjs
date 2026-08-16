@@ -36,3 +36,48 @@ test('createCitewire composes platform + provider tools', async () => {
     assert.ok(!('handler' in t));
   }
 });
+
+test('createCitewire adds the canonical Community contract only when explicitly enabled', async () => {
+  const disabled = createCitewire({});
+  assert.equal(disabled.resources.length, 0);
+  assert.equal(disabled.resourceTemplates.length, 0);
+
+  const server = createCitewire({ community: { enabled: true, classifierMode: 'shadow' } });
+  const listed = await server.handle(req('tools/list', {}));
+  const names = listed.result.tools.map((tool) => tool.name);
+  for (const expected of [
+    'search_articles',
+    'get_article',
+    'list_topics',
+    'list_sources',
+    'explain_inclusion',
+    'get_health',
+  ]) {
+    assert.ok(names.includes(expected), `${expected} should be present`);
+  }
+  const initialized = await server.handle(req('initialize', {}));
+  assert.ok(initialized.result.capabilities.resources);
+  const policy = await server.handle(req('resources/read', { uri: 'citewire://policy' }));
+  assert.match(policy.result.contents[0].text, /"classifier_mode": "shadow"/);
+
+  const rejectedSecret = await server.handle(req('tools/call', {
+    name: 'evaluate_rights',
+    arguments: {
+      source_id: 'openalex',
+      access_mode: 'public',
+      use_case: 'personal_research',
+      operation: 'metadata',
+      nested: { api_key: 'not-a-real-key' },
+    },
+  }));
+  assert.equal(rejectedSecret.result.isError, true);
+  assert.match(rejectedSecret.result.content[0].text, /secret-like fields/);
+  assert.doesNotMatch(rejectedSecret.result.content[0].text, /not-a-real-key/);
+});
+
+test('createCitewire rejects an attempt to activate the foundation classifier', () => {
+  assert.throws(
+    () => createCitewire({ community: { enabled: true, classifierMode: 'active' } }),
+    /must remain shadow/,
+  );
+});

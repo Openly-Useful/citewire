@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://citewire.org/schemas/source-registry.schema.json",
+  "title": "CiteWire Community source registry",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "sources"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "type", "homepage", "enabled_by_default", "review", "rights"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" },
+          "name": { "type": "string", "minLength": 1 },
+          "type": { "enum": ["news", "editorial", "newsletter", "repository", "research"] },
+          "homepage": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^[Hh][Tt][Tt][Pp][Ss]?://(?![^/?#]*@).+$"
+          },
+          "adapter": { "type": "string", "pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" },
+          "enabled_by_default": { "const": false },
+          "review": {
+            "type": "object",
+            "required": ["cadence_days", "last_reviewed", "review_basis"],
+            "properties": {
+              "cadence_days": { "type": "integer", "minimum": 1 },
+              "last_reviewed": { "type": "string", "format": "date" },
+              "review_basis": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^[Hh][Tt][Tt][Pp][Ss]?://(?![^/?#]*@).+$"
+              }
+            },
+            "additionalProperties": false
+          },
+          "rights": {
+            "type": "object",
+            "required": ["access_modes", "allowed_operations", "notice"],
+            "properties": {
+              "access_modes": {
+                "type": "array",
+                "items": { "enum": ["public", "personal_credential", "organization_credential"] },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "allowed_operations": {
+                "type": "object",
+                "propertyNames": { "enum": ["personal_research", "organization_internal", "public_brief", "republication"] },
+                "additionalProperties": {
+                  "type": "array",
+                  "items": { "enum": ["metadata", "excerpt", "summary", "republication"] },
+                  "uniqueItems": true
+                }
+              },
+              "notice": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
