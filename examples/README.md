@@ -1,4 +1,4 @@
-# citewire examples
+# CiteWire examples
 
 Working examples for running citewire and wiring it into MCP clients.
 

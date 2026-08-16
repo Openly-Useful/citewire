@@ -53,6 +53,6 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - Stdio and Streamable HTTP transports
 - Zero-dependency Node.js package and command-line interface
 
-[Unreleased]: https://github.com/MeekPhills/citewire/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/MeekPhills/citewire/compare/d4d3b77992930486205cb6b8c43e0a771472f2be...v0.2.0
-[0.1.0]: https://github.com/MeekPhills/citewire/tree/d4d3b77992930486205cb6b8c43e0a771472f2be
+[Unreleased]: https://github.com/Openly-Useful/citewire/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Openly-Useful/citewire/compare/d4d3b77992930486205cb6b8c43e0a771472f2be...v0.2.0
+[0.1.0]: https://github.com/Openly-Useful/citewire/tree/d4d3b77992930486205cb6b8c43e0a771472f2be

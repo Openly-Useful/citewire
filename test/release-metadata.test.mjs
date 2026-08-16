@@ -12,6 +12,8 @@ const releaseWorkflow = await readFile(
   'utf8',
 );
 const ciWorkflow = await readFile(new URL('../.github/workflows/ci.yml', import.meta.url), 'utf8');
+const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
+const support = await readFile(new URL('../SUPPORT.md', import.meta.url), 'utf8');
 
 test('release versions and MCP ownership metadata stay aligned', async () => {
   assert.equal(packageJson.version, '0.2.0');
@@ -19,6 +21,16 @@ test('release versions and MCP ownership metadata stay aligned', async () => {
   assert.equal(serverJson.version, packageJson.version);
   assert.equal(serverJson.packages[0].version, packageJson.version);
   assert.equal(serverJson.name, packageJson.mcpName);
+  assert.equal(packageJson.mcpName, 'io.github.Openly-Useful/citewire');
+  assert.equal(serverJson.title, 'CiteWire');
+  assert.equal(serverJson.repository.url, 'https://github.com/Openly-Useful/citewire');
+  assert.equal(serverJson.repository.id, '1335526820');
+  assert.equal(packageJson.repository.url, 'git+https://github.com/Openly-Useful/citewire.git');
+  assert.match(readme, /^# CiteWire$/m);
+  assert.match(support, /https:\/\/github\.com\/Openly-Useful\/citewire\/issues/);
+  for (const publicSurface of [packageJson.repository.url, packageJson.homepage, packageJson.bugs.url, serverJson.websiteUrl, serverJson.repository.url, readme, support]) {
+    assert.doesNotMatch(publicSurface, /MeekPhills\/citewire/);
+  }
   assert.equal(serverJson.packages[0].identifier, packageJson.name);
   assert.equal(DEFAULT_CONFIG.serverInfo.version, packageJson.version);
 

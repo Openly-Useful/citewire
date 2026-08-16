@@ -1,10 +1,10 @@
 {
   "name": "citewire",
   "version": "0.2.0",
-  "mcpName": "io.github.MeekPhills/citewire",
+  "mcpName": "io.github.Openly-Useful/citewire",
   "description": "Attribution-first MCP server for free news sources and free article APIs.",
   "license": "MIT",
-  "author": "Karaya Group",
+  "author": "Openly Useful contributors",
   "type": "module",
   "main": "src/index.js",
   "exports": {
@@ -26,11 +26,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MeekPhills/citewire.git"
+    "url": "git+https://github.com/Openly-Useful/citewire.git"
   },
   "homepage": "https://citewire.org",
   "bugs": {
-    "url": "https://github.com/MeekPhills/citewire/issues"
+    "url": "https://github.com/Openly-Useful/citewire/issues"
   },
   "keywords": [
     "mcp",

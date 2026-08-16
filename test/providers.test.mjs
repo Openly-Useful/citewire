@@ -102,7 +102,7 @@ test('openalex.search with injected fake fetch returns 1 structured result, isEr
   assert.equal(res.isError, false);
   assert.equal(
     fetch.calls[0].init.headers['User-Agent'],
-    'citewire/0.2.0 (+https://github.com/MeekPhills/citewire)',
+    'citewire/0.2.0 (+https://github.com/Openly-Useful/citewire)',
   );
   assert.ok(res.structuredContent, 'structuredContent present');
   const sc = res.structuredContent;
@@ -162,7 +162,7 @@ test('Crossref requires deployer mailto and identifies the request in query and 
   assert.equal(new URL(fetch.calls[0].url).searchParams.get('mailto'), 'operator@example.test');
   assert.equal(
     fetch.calls[0].init.headers['User-Agent'],
-    'citewire/0.2.0 (+https://github.com/MeekPhills/citewire; mailto:operator@example.test)',
+    'citewire/0.2.0 (+https://github.com/Openly-Useful/citewire; mailto:operator@example.test)',
   );
 });
 
@@ -215,7 +215,7 @@ test('DEV results preserve author attribution and canonical URL', async () => {
   assert.equal(result.structuredContent.items[0].url, 'https://dev.to/author/article');
   assert.equal(
     fetch.calls[0].init.headers['User-Agent'],
-    'citewire/0.2.0 (+https://github.com/MeekPhills/citewire)',
+    'citewire/0.2.0 (+https://github.com/Openly-Useful/citewire)',
   );
 });
 

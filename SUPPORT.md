@@ -2,7 +2,7 @@
 
 ## Questions and bug reports
 
-Use [GitHub Issues](https://github.com/MeekPhills/citewire/issues) for citewire
+Use [GitHub Issues](https://github.com/Openly-Useful/citewire/issues) for CiteWire
 questions, reproducible bugs, and documentation gaps. Search existing issues
 before opening a new one.
 
@@ -20,9 +20,9 @@ response time.
 
 ## Boundaries
 
-citewire maintainers cannot provide legal advice about provider terms, restore
+CiteWire maintainers cannot provide legal advice about provider terms, restore
 an upstream provider, or support private deployment infrastructure. Report
-upstream outages and API behavior to the relevant provider when citewire is
+upstream outages and API behavior to the relevant provider when CiteWire is
 passing through the documented response.
 
 Do not use a public issue for a suspected security vulnerability. Follow

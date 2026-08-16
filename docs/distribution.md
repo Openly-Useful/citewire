@@ -4,7 +4,7 @@ This document is the execution ledger for distributing citewire through package
 registries, MCP registries, and ecosystem catalogs. It separates verified
 artifacts from proposed or unperformed submissions.
 
-Last reviewed: 2026-08-13.
+Last reviewed: 2026-08-15.
 
 ## Status rules
 
@@ -29,7 +29,8 @@ part of the documentation work that created this checklist.
 
 | Surface | Identifier | Status | Evidence |
 | --- | --- | --- | --- |
-| Source repository | `MeekPhills/citewire` | `VERIFIED` | [GitHub repository](https://github.com/MeekPhills/citewire), checked 2026-08-12 |
+| Canonical source repository | `Openly-Useful/citewire` | `VERIFIED` | [GitHub repository](https://github.com/Openly-Useful/citewire), created and checked 2026-08-15 |
+| Legacy source repository | `MeekPhills/citewire` | `VERIFIED` | [Historical GitHub repository](https://github.com/MeekPhills/citewire), retained as readable provenance and checked 2026-08-15 |
 | npm package | `citewire@0.1.0` | `VERIFIED` | [npm package](https://www.npmjs.com/package/citewire), version checked with `npm view` on 2026-08-12 |
 | License | MIT | `VERIFIED` | Repository [LICENSE](../LICENSE) and npm package metadata |
 | First deployment context | Karaya Group Industry News | `VERIFIED` | [Industry News](https://karaya.group/industry-news), checked 2026-08-12. This is deployment context, not an MCP catalog listing. |
@@ -48,7 +49,7 @@ Complete these items before broad catalog submission:
 - [x] Provider tools are documented and disabled by default.
 - [x] Product tiers and governance protect Community provider parity.
 - [x] `package.json` contains the prepared canonical MCP identifier
-  `io.github.MeekPhills/citewire` as `mcpName`. This metadata is not present in
+  `io.github.Openly-Useful/citewire` as `mcpName`. This metadata is not present in
   the published `citewire@0.1.0` artifact.
 - [x] `server.json` exists for the npm stdio package and passes the repository's
   local release-metadata tests.
@@ -79,10 +80,10 @@ when a channel requires it.
 
 | Field | Value |
 | --- | --- |
-| Product name | citewire |
+| Product name | CiteWire |
 | Short description | Attribution-first MCP server for news and research metadata. |
 | Website | `https://citewire.org` (landing page prepared in the repository; deployment not yet verified) |
-| Repository | `https://github.com/MeekPhills/citewire` |
+| Repository | `https://github.com/Openly-Useful/citewire` |
 | Package | `https://www.npmjs.com/package/citewire` |
 | License | MIT |
 | Runtime | Node.js 18 or newer |
@@ -110,7 +111,7 @@ evidence and approval.
 
 | Order | Registry or catalog | Target record | Status | Next gate |
 | --- | --- | --- | --- | --- |
-| 1 | Official MCP Registry | Target `io.github.MeekPhills/citewire` | `PENDING` | Publish a new package with prepared ownership metadata, tag it, then run the guarded registry workflow |
+| 1 | Official MCP Registry | Target `io.github.Openly-Useful/citewire` | `PENDING` | Publish a new package with prepared ownership metadata, tag it, then run the guarded registry workflow |
 | 2 | GitHub MCP Registry | Curated citewire entry | `PENDING` | Complete official registry publication, then request curation |
 | 3 | Smithery | Proposed `<namespace>/citewire` | `PENDING` | Choose verified URL or MCPB publication path |
 | 4 | Glama | Repository-backed citewire record | `PENDING` | Search, submit or claim, then verify generated metadata |
@@ -125,12 +126,12 @@ Every catalog submission in the table is unperformed and remains `PENDING`.
 Submission guide:
 [MCP Registry quickstart](https://modelcontextprotocol.io/registry/quickstart).
 
-Target identifier: `io.github.MeekPhills/citewire`. It is aligned in the current
+Target identifier: `io.github.Openly-Useful/citewire`. It is aligned in the current
 `package.json` and `server.json`, but it has not been published or verified in
 the Official MCP Registry.
 
 - [x] Align `package.json` `mcpName` and `server.json` `name` as
-  `io.github.MeekPhills/citewire` in the current working tree.
+  `io.github.Openly-Useful/citewire` in the current working tree.
 - [x] Declare npm package `citewire` with stdio transport in `server.json`.
 - [x] Add local consistency tests for package name, version, transport,
   dependency policy, and release workflow safeguards.
@@ -215,7 +216,7 @@ Catalog: [Glama MCP Servers](https://glama.ai/mcp/servers).
 
 - [ ] Search Glama for the exact repository URL and package name.
 - [ ] If no record exists, use **Add Server** with
-  `https://github.com/MeekPhills/citewire`.
+  `https://github.com/Openly-Useful/citewire`.
 - [ ] If an automated record exists, claim it through an authorized account
   instead of creating a duplicate.
 - [ ] Verify that the generated install command includes a usable config path.
@@ -237,7 +238,7 @@ PulseMCP is treated here as a downstream verification step after official MCP
 Registry publication. No separate owner submission is recorded in this ledger.
 
 - [ ] Publish and verify the Official MCP Registry record.
-- [ ] Search PulseMCP for `io.github.MeekPhills/citewire`, `citewire`, and the
+- [ ] Search PulseMCP for `io.github.Openly-Useful/citewire`, `citewire`, and the
   exact GitHub repository URL.
 - [ ] If a record appears, verify package, source, license, and install details.
 - [ ] If no record appears, use PulseMCP's then-current contact or feedback path
@@ -256,7 +257,7 @@ Submission form: [MCP.so server submission](https://mcp.so/submit?type=server).
 
 - [ ] Review the current submission terms and obtain owner approval before
   proceeding.
-- [ ] Submit `https://github.com/MeekPhills/citewire` as an MCP Server project.
+- [ ] Submit `https://github.com/Openly-Useful/citewire` as an MCP Server project.
 - [ ] Use the canonical listing metadata in this document.
 - [ ] Do not classify citewire as a Remote Server without a verified public
   endpoint.
