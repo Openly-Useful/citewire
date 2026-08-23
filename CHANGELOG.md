@@ -7,10 +7,36 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-08-23
+
 ### Added
 
-- Added the dependency-free `citewire.org` landing site, including canonical
-  project, repository, package, Openly Useful, and Karaya Industry News links.
+- Official MCP Registry metadata for the npm package and stdio transport
+- A manual, approval-ready release workflow for npm provenance and MCP Registry
+  publication
+- Public security, support, conduct, and release documentation
+- Automated consistency checks for release metadata
+- Human-readable tool titles and standard read-only tool annotations
+- Product-tier and governance policies that preserve the complete MIT-licensed
+  Community edition
+- A dependency-free `citewire.org` landing site linking the canonical project,
+  repository, npm package, Openly Useful, and Karaya Industry News
+- A disabled-by-default Community source registry with explicit rights policy,
+  review metadata, and account-isolated personal and organization scopes
+- An explainable, observe-only classifier and calibration contract with
+  configurable score bands that cannot activate sources or publication
+- Rights-gated local RSS and MCP article projections that remain uncomposed and
+  perform no publication
+- A fail-closed editorial shadow engine with global pause, independent gates,
+  deterministic retries, idempotency, account isolation, and immutable traces
+- Redacted credential references and reviewed HTTPS endpoint validation for
+  optional connector implementations
+
+### Changed
+
+- Streamable HTTP now validates Origin, binds the local listener to loopback,
+  enforces required media headers and protocol versions, and returns HTTP 202
+  with an empty body for accepted notifications
 
 ### Fixed
 
@@ -24,25 +50,6 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - Updated OpenAlex access guidance to its current metered allowance.
 - Documented the Node 18+ ESM-only Community runtime and pinned release action
   revisions to reviewed commits.
-
-## [0.2.0] - 2026-08-13
-
-### Added
-
-- Official MCP Registry metadata for the npm package and stdio transport
-- A manual, approval-ready release workflow for npm provenance and MCP Registry
-  publication
-- Public security, support, conduct, and release documentation
-- Automated consistency checks for release metadata
-- Human-readable tool titles and standard read-only tool annotations
-- Product-tier and governance policies that preserve the complete MIT-licensed
-  Community edition
-
-### Changed
-
-- Streamable HTTP now validates Origin, binds the local listener to loopback,
-  enforces required media headers and protocol versions, and returns HTTP 202
-  with an empty body for accepted notifications
 
 ## [0.1.0] - 2026-07-29
 
