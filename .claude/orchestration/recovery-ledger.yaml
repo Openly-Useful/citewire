@@ -1,0 +1,56 @@
+schema_version: 3
+artifact: citewire-orchestration-recovery-ledger
+as_of: "2026-08-23"
+
+claim_status_legend:
+  Verified: "Reproduced locally or read directly from the current remote or public endpoint."
+  Historical: "Recorded evidence that must be refreshed before a mutation."
+  Unknown: "Not established; do not infer authority or safety."
+
+verified:
+  - id: REC-001
+    claim: "Openly-Useful/citewire is the canonical public repository at main e12d9b6."
+    boundary: "Repository existence does not authorize release or registry actions."
+  - id: REC-002
+    claim: "citewire.org serves the CiteWire landing page over HTTPS with status 200."
+    boundary: "No DNS or deployment change is authorized by this record."
+  - id: REC-003
+    claim: "Community main passes 119 tests and five release checks with zero package dependencies."
+    boundary: "This is not publication evidence."
+  - id: REC-004
+    claim: "Public source, Studio, connector, classifier, and editorial foundations are merged and inert by default."
+    boundary: "Do not activate providers, connectors, credentials, or publishing."
+  - id: REC-005
+    claim: "Openly Useful PR 8 and Karaya PR 17 are current clean green drafts."
+    boundary: "Each merge remains separately owner-gated; Karaya also requires read-aloud approval."
+  - id: REC-006
+    claim: "Cloud PR 1 is a clean undeployed draft at 6906827 with Node 18/22 CI green and the Community archive pinned to 10aee95."
+    boundary: "Do not deploy or migrate to npm before immutable Community publication."
+  - id: REC-007
+    claim: "npm latest is citewire 0.1.0 and no CiteWire GitHub release or tag exists."
+    boundary: "OU-149 remains an immutable-release gate."
+  - id: REC-008
+    claim: "Karaya cron requests returned 200 every 15 minutes while the newest visible item was about 60.6 hours old."
+    boundary: "Finish KAR-69 read-only truth before changing data, sources, thresholds, policy, or migrations."
+  - id: REC-009
+    claim: "Forty-one untracked owner screenshots and unrelated dirty worktrees remain protected."
+    boundary: "Never stage, edit, move, clean, delete, or use them as an implementation baseline."
+
+unknowns:
+  - id: REC-401
+    topic: "Karaya source-level failures, queue age, held volume, and migration state"
+    boundary: "Read-only investigation only under KAR-69."
+  - id: REC-402
+    topic: "Cloud operator, tenants, support/privacy, retention, billing, credentials, and deployment"
+    boundary: "Separate owner decisions and account-isolation review required."
+  - id: REC-403
+    topic: "Immutable npm, GitHub release, MCP registry, and catalog sequence"
+    boundary: "Separate explicit approval required for every irreversible step."
+
+safety_state:
+  contains_credentials: false
+  contains_private_transcript: false
+  contains_local_paths: false
+  provider_activation_authorized: false
+  publication_authorized: false
+  production_mutation_authorized: false

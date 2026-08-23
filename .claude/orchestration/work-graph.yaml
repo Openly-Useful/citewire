@@ -1,0 +1,185 @@
+schema_version: 3
+artifact: citewire-orchestration-work-graph
+as_of: "2026-08-23"
+claim_status: Verified
+
+source_of_truth_order:
+  - latest explicit owner direction
+  - current reproducible behavior and committed tests
+  - fresh CI, HTTPS, GitHub, and Linear evidence
+  - reviewed git history and pull-request diffs
+  - repository documentation
+  - historical handoffs
+
+program_boundaries:
+  community: "Public, MIT, zero-dependency, read-only boundary, provider-neutral, attribution-first, inert by default."
+  studio: "Optional local management foundation; not a hosted control plane and not an authentication provider."
+  editorial: "Shadow-only, fail-closed, and unable to publish."
+  cloud: "Separate private account boundary; undeployed."
+  karaya: "Separate customized consumer; no private policy, credentials, state, or source configuration may leak into Community."
+
+protected_state:
+  - "41 untracked owner screenshots"
+  - "parked dirty CiteWire prototype"
+  - "dirty Karaya editorial-shadow proposal"
+  - "separate in-progress Karaya navigation work"
+
+streams:
+  - id: WS-001
+    name: orchestration continuity
+    status: active_refresh
+    dependencies: []
+    ownership: [CLAUDE.md, PROJECT_HANDOFF.md, CLAUDE_CODE_LAUNCH_PROMPT.md, .claude/orchestration/]
+    artifact: .claude/orchestration/work-graph.yaml
+    done: "Portable artifacts parse, contain exactly 17 streams, match current remote truth, contain no local paths or secrets, and pass Node 18/22 CI."
+    next: "Validate and keep PR 1 draft."
+
+  - id: WS-002
+    name: canonical identity and authority
+    status: complete
+    dependencies: [WS-001]
+    ownership: [docs/governance.md, package.json, server.json]
+    artifact: docs/governance.md
+    done: "CiteWire is public under Openly Useful with consistent package and website identity."
+    next: "Preserve identity; treat package and registry publication as separate gates."
+
+  - id: WS-003
+    name: repository route and history
+    status: complete_for_current_route
+    dependencies: [WS-002]
+    ownership: [repository metadata]
+    artifact: repository history
+    done: "Canonical public repository exists under Openly Useful and current main is reproducible."
+    next: "Do not transfer, archive, mirror, or rewrite history without separate approval."
+
+  - id: WS-004
+    name: Community 0.2 candidate
+    status: complete_unpublished
+    dependencies: [WS-002]
+    ownership: [package.json, package-lock.json, server.json, docs/providers.md]
+    artifact: package.json
+    done: "Version 0.2.0 is merged on main and passes 119 tests plus five release checks."
+    next: "Keep unpublished until WS-008 approval."
+
+  - id: WS-005
+    name: CiteWire landing and HTTPS
+    status: complete
+    dependencies: [WS-002, WS-004]
+    ownership: [site/, test/site.test.mjs]
+    artifact: site/README.md
+    done: "citewire.org returns the verified landing page over HTTPS 200."
+    next: "No DNS or deployment change required."
+
+  - id: WS-006
+    name: Openly Useful link
+    status: ready_draft_unmerged
+    dependencies: [WS-005]
+    ownership: [open-source.html, scripts/validate_site.py]
+    artifact: Openly-Useful/openlyuseful.org#8
+    done: "Exact two-file draft diff validates, targets citewire.org, and CI is green."
+    next: "Obtain separate merge approval."
+
+  - id: WS-007
+    name: Karaya CiteWire bridge
+    status: ready_draft_owner_gate
+    dependencies: [WS-005]
+    ownership: [docs/citewire-product-bridge.md, site/src/pages/industry-news/about.astro, site/test/news-compliance.test.mjs]
+    artifact: MeekPhills/karayagroup#17
+    done: "Exact three-file draft diff passes 432 tests, build, compliance, CI, and live target checks."
+    next: "Read visible copy aloud to Luis; obtain merge approval."
+
+  - id: WS-008
+    name: immutable Community release
+    status: blocked_owner_approval
+    dependencies: [WS-003, WS-004, WS-005]
+    ownership: [.github/workflows/release.yml, CHANGELOG.md, docs/releasing.md, docs/distribution.md]
+    artifact: docs/distribution.md
+    done: "Approved tag, npm provenance, GitHub release, and registry records are independently verified."
+    next: "OU-149 remains Todo; request exact approval for each irreversible step."
+
+  - id: WS-009
+    name: Cloud archive-pin alignment
+    status: complete_preserve_only
+    dependencies: [WS-001]
+    ownership: []
+    artifact: MeekPhills/citewire-cloud#1
+    done: "Cloud archive pin is 10aee95 and docs do not imply deployment."
+    next: "Preserve draft and undeployed state."
+
+  - id: WS-010
+    name: Cloud npm migration
+    status: blocked_on_WS_008
+    dependencies: [WS-008]
+    ownership: [package.json, package-lock.json]
+    artifact: CiteWire Cloud lockfile
+    done: "Published npm provenance and MCP identity are verified; Cloud tests, direct HTTP smoke, and concurrent account-isolation tests pass on Node 18/22."
+    next: "Retain the archive pin."
+
+  - id: WS-011
+    name: Cloud private-alpha operations
+    status: blocked_owner_decisions
+    dependencies: [WS-002, WS-009]
+    ownership: [Cloud auth, HTTP, plans, tools, tests, owner decision docs]
+    artifact: Cloud alpha checklist
+    done: "Operator, account, auth, support, privacy, retention, billing, domain, participant, and rollback decisions are approved and account isolation passes."
+    next: "Do not deploy or activate providers."
+
+  - id: WS-012
+    name: Karaya production truth
+    status: in_progress_read_only
+    dependencies: [WS-001]
+    ownership: [read-only production truth packet]
+    artifact: KAR-69
+    done: "Deployed commit, migrations, source health, circuit breakers, cron, queue, held volume, corpus drift, and vendor provenance are dated and reconciled without mutation."
+    next: "Resolve source-level fetch results, queue age, held volume, and migration state."
+
+  - id: WS-013
+    name: Community source and projection contract
+    status: complete
+    dependencies: [WS-002, WS-004]
+    ownership: [src/community/, docs/source-registry-and-rights.md, docs/rss-and-mcp-projections.md]
+    artifact: merged PR 6
+    done: "Versioned registry, rights, attribution, canonical-link, RSS, and MCP projection contracts are merged and fail closed."
+    next: "Preserve backward compatibility and inert defaults."
+
+  - id: WS-014
+    name: Karaya deterministic shadow policy
+    status: blocked_on_WS_012
+    dependencies: [WS-012]
+    ownership: [Karaya policy and non-publishing shadow paths]
+    artifact: Karaya shadow-policy ADR
+    done: "Deterministic replay, bounded run identity, complete pagination, convergence, rights traces, and no-publish behavior pass on verified production schema."
+    next: "Do not use or migrate the dirty proposal as a shortcut."
+
+  - id: WS-015
+    name: Karaya exceptions console
+    status: blocked_on_WS_014
+    dependencies: [WS-014]
+    ownership: [Karaya admin, UI, authorization, pause, and controls]
+    artifact: Karaya exceptions-console runbook
+    done: "Exceptions-only console is authorized, accessible, auditable, account-isolated, globally pausable, and read-aloud approved."
+    next: "Do not substitute public Studio for Karaya authorization."
+
+  - id: WS-016
+    name: Karaya reversible canary
+    status: blocked_on_WS_015
+    dependencies: [WS-015]
+    ownership: [Karaya rollout configuration and canary runbooks]
+    artifact: Karaya canary runbook
+    done: "Luis approves metrics, pause, rollback, and bounded canary; safety checks pass and recovery is proven."
+    next: "No production rollout or threshold change."
+
+  - id: WS-017
+    name: Community product foundations
+    status: complete_inert
+    dependencies: [WS-004, WS-013]
+    ownership: [src/community/, src/editorial/, src/security/, apps/studio/, focused tests and docs]
+    artifact: merged PRs 6, 7, and 8
+    done: "Source registry, optional Studio, connector boundary, calibrated classifier, and fail-closed editorial shadow engine pass 119 committed tests."
+    next: "Do not activate connectors, credentials, providers, scheduling, or publishing."
+
+hard_stops:
+  - failed check, unexpected diff, secret, protected asset, or owner overlap
+  - merge, deployment, DNS change, tag, publish, release, or registry action without explicit approval
+  - paid service, provider/source/connector activation, migration, or production mutation
+  - visible Karaya copy without Luis read-aloud approval

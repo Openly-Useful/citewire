@@ -1,0 +1,96 @@
+schema_version: 3
+artifact: citewire-orchestration-execution-state
+as_of: "2026-08-23"
+claim_status: Verified
+
+canonical:
+  repository: Openly-Useful/citewire
+  main_commit: e12d9b6e8efed725a085a32e935e63e35241859a
+  website: https://citewire.org/
+  website_status: "HTTPS 200"
+  community_version: 0.2.0
+  npm_latest: 0.1.0
+  tests: 119
+  release_checks: 5
+  node_ci: [18, 22]
+
+merged_foundations:
+  pull_requests: [2, 3, 4, 6, 7, 8]
+  capabilities:
+    - source registry and rights policy
+    - RSS and MCP projections
+    - optional local Studio
+    - credential-reference and connector boundaries
+    - deterministic classifier calibration
+    - fail-closed editorial shadow engine
+  safety_boundary: "Sources and connectors are inert by default; classifier and editorial engine cannot publish."
+
+open_drafts:
+  orchestration:
+    repository: Openly-Useful/citewire
+    pull_request: 1
+    state: "draft; refresh in progress"
+  openly_useful_link:
+    repository: Openly-Useful/openlyuseful.org
+    pull_request: 8
+    head: e48d6069e33f84a85d41ad397bc4ef74d3906451
+    state: "draft, clean, CI green"
+  karaya_link:
+    repository: MeekPhills/karayagroup
+    pull_request: 17
+    head: 004a8e09cfe146324bfe481664a5b68c182dc6b2
+    state: "draft, clean, CI green, read-aloud approval pending"
+  cloud:
+    repository: MeekPhills/citewire-cloud
+    pull_request: 1
+    head: 69068275ca0e332e36304533aa0f6b5d2e291405
+    state: "draft, clean, Node 18/22 green, undeployed"
+    community_pin: 10aee95ac95bb437b4607723cd20fa5c8f9d1879
+
+linear:
+  launch_parent: "OU-143 In Progress"
+  completed_foundations:
+    - "OU-145 Done"
+    - "OU-180 Done"
+    - "OU-181 Done"
+    - "OU-182 Done"
+    - "OU-183 Done"
+  immutable_release: "OU-149 Todo"
+  karaya_truth: "KAR-69 In Progress"
+
+karaya_observation:
+  registered_sources: 49
+  monitored_sources: 27
+  directory_only_sources: 22
+  visible_items_seven_days: 6
+  newest_item_age_hours: 60.6
+  cron: "POST /api/cron/ingest returned 200 at 15-minute cadence"
+  unknowns:
+    - source-level fetch results
+    - queue age
+    - held volume
+    - migration state
+
+protected_state:
+  untracked_owner_screenshots: 41
+  dirty_worktrees:
+    - parked CiteWire prototype
+    - Karaya editorial-shadow proposal
+    - Karaya navigation work
+  rule: "Preserve exactly; never stage, clean, move, delete, or credit as completed work."
+
+next_safe_sequence:
+  - validate and keep orchestration PR 1 draft
+  - obtain separate merge approval for Openly Useful PR 8
+  - obtain Luis read-aloud and merge approval for Karaya PR 17
+  - complete KAR-69 read-only production truth
+  - sequence Karaya shadow policy, exceptions console, and reversible canary
+  - obtain separate immutable-release approval for OU-149
+
+hard_stops:
+  - failed check or unexpected diff
+  - secret or protected asset
+  - paid-service decision
+  - provider, source, or connector activation
+  - migration or production data/configuration mutation
+  - merge, deployment, DNS change, tag, package publish, release, or registry submission without explicit approval
