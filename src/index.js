@@ -8,9 +8,10 @@
 // property of its config, not of this file.
 
 import { createServer, toolJson, toolError } from './core/rpc.js';
-import { loadConfig } from './config.js';
+import { loadConfig, validateConfig } from './config.js';
 import { platformTools } from './platform/tools.js';
 import { providerTools } from './providers/index.js';
+import { communityResources, communityResourceTemplates, communityTools } from './community/mcp.js';
 
 const DEFAULT_INSTRUCTIONS =
   'Read-only, attribution-first tools over free news sources and free article APIs. ' +
@@ -18,12 +19,22 @@ const DEFAULT_INSTRUCTIONS =
   'source rights remain with their publishers.';
 
 export function createCitewire(config = {}) {
-  const tools = [...platformTools(config), ...providerTools(config)];
+  const validated = validateConfig(config);
+  const tools = [
+    ...platformTools(validated),
+    ...providerTools(validated),
+    ...communityTools(validated),
+  ];
   return createServer({
-    serverInfo: config.serverInfo ?? { name: 'citewire', version: '0.2.0' },
-    instructions: config.instructions ?? DEFAULT_INSTRUCTIONS,
+    serverInfo: validated.serverInfo ?? { name: 'citewire', version: '0.2.0' },
+    instructions: validated.instructions ?? DEFAULT_INSTRUCTIONS,
     tools,
+    resources: communityResources(validated),
+    resourceTemplates: communityResourceTemplates(validated),
   });
 }
 
 export { createServer, toolJson, toolError, loadConfig };
+export { classifyInclusion, CLASSIFIER_MODEL_CARD, DEFAULT_THRESHOLDS } from './community/classifier.js';
+export { evaluateRights } from './community/rights.js';
+export { loadDefaultRegistry, loadRegistrySchema, validateRegistry } from './community/registry.js';

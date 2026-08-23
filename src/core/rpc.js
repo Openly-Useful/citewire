@@ -50,9 +50,34 @@ function publicTool(tool) {
   return descriptor;
 }
 
-export function createServer({ serverInfo, instructions, tools }) {
+function publicResource(resource) {
+  const descriptor = {
+    uri: resource.uri,
+    name: resource.name,
+  };
+  if (resource.title) descriptor.title = resource.title;
+  if (resource.description) descriptor.description = resource.description;
+  if (resource.mimeType) descriptor.mimeType = resource.mimeType;
+  return descriptor;
+}
+
+function publicResourceTemplate(template) {
+  const descriptor = {
+    uriTemplate: template.uriTemplate,
+    name: template.name,
+  };
+  if (template.title) descriptor.title = template.title;
+  if (template.description) descriptor.description = template.description;
+  if (template.mimeType) descriptor.mimeType = template.mimeType;
+  return descriptor;
+}
+
+export function createServer({ serverInfo, instructions, tools, resources, resourceTemplates }) {
   const toolList = tools || [];
   const byName = new Map(toolList.map((t) => [t.name, t]));
+  const resourceList = resources || [];
+  const resourcesByUri = new Map(resourceList.map((resource) => [resource.uri, resource]));
+  const templateList = resourceTemplates || [];
 
   async function callTool(name, args) {
     const tool = byName.get(name);
@@ -88,7 +113,10 @@ export function createServer({ serverInfo, instructions, tools }) {
     if (method === 'initialize') {
       return rpcResult(id, {
         protocolVersion: PROTOCOL_VERSION,
-        capabilities: { tools: { listChanged: false } },
+        capabilities: {
+          tools: { listChanged: false },
+          ...(resourceList.length || templateList.length ? { resources: { listChanged: false } } : {}),
+        },
         serverInfo,
         instructions,
       });
@@ -96,6 +124,26 @@ export function createServer({ serverInfo, instructions, tools }) {
     if (method === 'ping') return rpcResult(id, {});
     if (method === 'tools/list') {
       return rpcResult(id, { tools: toolList.map(publicTool) });
+    }
+    if (method === 'resources/list') {
+      return rpcResult(id, { resources: resourceList.map(publicResource) });
+    }
+    if (method === 'resources/templates/list') {
+      return rpcResult(id, { resourceTemplates: templateList.map(publicResourceTemplate) });
+    }
+    if (method === 'resources/read') {
+      const uri = params && params.uri;
+      if (typeof uri !== 'string') return rpcError(id, -32602, 'Resource URI must be a string.');
+      const exact = resourcesByUri.get(uri);
+      try {
+        const template = exact ? null : templateList.find((candidate) => candidate.match(uri));
+        if (!exact && !template) return rpcError(id, -32602, 'Resource not found.');
+        const content = exact ? await exact.read() : await template.read(uri);
+        if (!content) return rpcError(id, -32602, 'Resource not found.');
+        return rpcResult(id, { contents: [content] });
+      } catch {
+        return rpcError(id, -32603, 'Resource read failed.');
+      }
     }
     if (method === 'tools/call') {
       const name = params && params.name;
@@ -108,5 +156,5 @@ export function createServer({ serverInfo, instructions, tools }) {
     return rpcError(id, -32601, `Method not found: ${method}`);
   }
 
-  return { handle, tools: toolList };
+  return { handle, tools: toolList, resources: resourceList, resourceTemplates: templateList };
 }

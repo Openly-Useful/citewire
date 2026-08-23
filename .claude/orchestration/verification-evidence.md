@@ -1,139 +1,61 @@
-# Verification evidence — CiteWire orchestration graph
+# Verification evidence
 
-Evidence date: 2026-08-15, America/New_York. This file separates current local
-facts from recorded historical remote evidence. Historical GitHub, Linear, CI,
-deployment, DNS, and provider claims require a fresh read-only revalidation
-before an action is taken.
+Evidence date: 2026-08-23, America/New_York.
 
-## Current local facts
+## Public CiteWire
 
-- CiteWire pre-synchronization orchestration baseline is
-  7e816c5b2900cb04309f751e5d93bab79752128a. The first reviewed 17-stream
-  synchronization commit is 4b04c4c448f44b07f8fc10a4e2211274d7c55ee8.
-  The live branch/PR head must be re-read because this metadata commit cannot
-  embed its own resulting SHA.
-- 80017d60c4396d704e0be55af4cd9cb1dc548b94 is the historical initial
-  handoff-package commit, not the current head.
-- The settled identity facts are visible CiteWire, technical citewire, and
-  Openly Useful as project parent.
-- Openly-Useful/citewire is authenticated absent and unapproved. Its absence
-  is not authority to create, transfer, mirror, archive, rename, or publish.
-- citewire/.project-status/manifest.json is a controlled untracked proposal.
-  The CiteWire repository is not Git-clean until it is separately
-  dispositioned. Preserve it unstaged and exclude it from this handoff commit.
-- citewire-public-platform is a dirty parked prototype at 7e816c5.
-  karayagroup-editorial-shadow is a dirty preserved proposal at 9c150632.
-  Neither is completion evidence or an implementation baseline.
-- The required
-  /Users/luismorrobel/karayagroup/karayagroup-production-audit worktree is
-  absent.
-- The protected Karaya owner-screenshot inventory remains 49 files: 8 tracked
-  and 41 untracked.
+- Canonical main resolved to `e12d9b6e8efed725a085a32e935e63e35241859a`.
+- PRs #2, #3, #4, #6, #7, and #8 are merged.
+- The committed suite passed 119 tests.
+- Release metadata passed five checks.
+- Package metadata requires Node 18 or newer and has no dependencies.
+- `https://citewire.org/` returned HTTPS 200 with strict response headers.
+- npm reported `citewire@0.1.0` as latest.
+- GitHub reported no tags or releases.
+- GitHub vulnerability reporting returned 204, confirming it is enabled.
 
-## Recorded historical remote and production state
+## Draft integrations
 
-The following is retained as historical, pending fresh remote revalidation:
+| Repository | PR | Head | Verified state |
+| --- | ---: | --- | --- |
+| Openly-Useful/citewire | #1 | refreshed by this branch | Draft; must pass Node 18/22 after push |
+| Openly-Useful/openlyuseful.org | #8 | `e48d606` | Draft, mergeable, clean, validator and preview green |
+| MeekPhills/karayagroup | #17 | `004a8e0` | Draft, mergeable, clean, 432 tests and CI green |
+| MeekPhills/citewire-cloud | #1 | `6906827` | Draft, mergeable, clean, 15 tests and Node 18/22 green |
 
-| Scope | Recorded item |
-| --- | --- |
-| Orchestration | CiteWire PR #5; KAR-66 In Progress |
-| Community identity/release/links | CiteWire issue #3; KAR-67 Todo; CiteWire PR #1 candidate and PR #2 landing |
-| Downstream links | Openly Useful PR #8 and Karaya PR #17, both recorded as drafts |
-| Cloud | CiteWire Cloud PR #1; archive pin 10aee95; KAR-66 In Progress |
-| Public MCP contract | CiteWire issue #4; KAR-68 Todo |
-| Karaya truth | Karaya issue #18; KAR-69 Todo |
-| Karaya automation | Karaya issue #19; KAR-70 Todo; KAR-53 related context |
+## Karaya read-only observation
 
-KAR-71 and KAR-77 are context only. They are not stream mappings,
-dependencies, completion evidence, or work authorization.
+- Registry API: 49 sources total, 27 monitored, 22 directory-only.
+- Seven-day feed: six items.
+- Newest visible publication: approximately 60.6 hours old.
+- Production logs: `POST /api/cron/ingest` returned 200 at 15-minute cadence.
+- Interpretation: the observed freshness gap is not evidence of a missing cron.
+  Source-level fetch results, queue age, held volume, and migration state remain
+  unknown.
 
-KAR-48 and KAR-36 are recorded Done provenance/history. KAR-24 is recorded
-Todo; linked PR #16 does not establish completion of the Astro-major-upgrade
-dependency. These are context-only. No verified CiteWire Cowork/plugin
-manifest or GitHub/Linear work item maps to a required stream; Studio/plugin
-work remains speculative.
+## Tracker reconciliation
 
-The prior recorded observations remain:
+- OU-145 and OU-180 through OU-183 were read against their defined scopes,
+  commented with merged-commit and test evidence, and marked Done.
+- OU-143 remains In Progress.
+- OU-149 remains Todo.
+- KAR-69 remains In Progress and received the read-only freshness observation.
 
-- citewire.org returned a parked HTTP response and failed HTTPS TLS, so it is
-  not a verified live CiteWire destination.
-- Karaya public smoke had working Industry News/About/topic/MCP endpoints, but
-  production migration/source/circuit-breaker/cron/queue truth remains
-  incomplete.
-- The recorded 50-item Karaya feed had 16 summaries over the provisional cap
-  and one POWER Magazine trailer. This is stored-corpus drift pending WS-012,
-  not proof of a current ingest bypass.
+## Protected state
 
-## Fresh synchronization verification
+- Forty-one untracked owner screenshots were left untouched.
+- The parked CiteWire prototype, Karaya editorial-shadow proposal, and Karaya
+  navigation work were left untouched.
+- No secret, credential, provider activation, migration, production mutation,
+  merge, deployment, DNS change, tag, publication, release, or registry action
+  occurred during this refresh.
 
-- Draft PR #5 was re-read at first 17-stream sync 4b04c4c, still draft and
-  mergeable, before this final metadata follow-up.
-- Node 18 and Node 22 CI passed in runs 31906699682 and 31906701652.
-- Synchronization comments were re-read on CiteWire issues #3/#4 and Karaya
-  issues #18/#19.
-- KAR-66 through KAR-70 were re-read after update. Their statuses remained
-  In Progress for KAR-66 and Todo for KAR-67 through KAR-70.
-- The complete Launch Log was re-read at 124831 characters with exactly one
-  CiteWire 17-stream synchronization marker.
+## Required refresh validation
 
-These are tracking-only results, not product completion or action authority.
-
-## Parked worktree findings
-
-### Public-platform prototype
-
-It made runtime changes before WS-013 approval. Its Studio path lacks a real
-authentication boundary, relies on caller-supplied accountId, and has a pause
-state that does not gate all writes. Its record cleanup is shallow,
-classifierMode active creates a publish seam, custom registry input lacks
-schema validation, and package contents exclude Studio. Its resource contract
-is not yet approved or independently verified across Node 18 and Node 22.
-
-Disposition: preserve it, do not merge it, and give it no WS-013 or WS-017
-completion credit. Studio, plugins, and hosted-control-plane work remain
-speculative and have no required stream.
-
-### Editorial-shadow proposal
-
-It contains an executable migration before WS-012 proves schema sufficiency,
-has no bounded time/window identity for scheduled reassessment, lacks
-deterministic full-corpus pagination, and does not converge safely on
-concurrent/partial writes. Its in-memory tests do not prove real migration,
-RLS, transaction, or race behavior. Its vendor lock claims version 0.1.0 for
-upstream 6c89b6e, whose package metadata is 0.2.0.
-
-The focused verification stopped after 21 passing tests when one test file
-could not load `@supabase/supabase-js`. Dependencies were absent from the
-isolated worktree, and the shell was Node v24.18.0 instead of the required
-Node 22. No install, rerun, build, audit, commit, migration, or deployment
-followed. This is a stopped verification, not a passing suite.
-
-Disposition: preserve it without completion credit. WS-012 reconciles vendor
-provenance; WS-014 starts only from the clean production-audit worktree after
-WS-012.
-
-## Graph facts to validate mechanically
-
-- There are exactly 17 briefs, WS-001 through WS-017.
-- WS-008 directly depends on WS-003, WS-004, and WS-005.
-- WS-011 directly depends on WS-002 and WS-009.
-- Karaya direct sequence is WS-012 to WS-014 to WS-015 to WS-016.
-- WS-017 directly depends on WS-004 and WS-013.
-- No active exclusive-path lease overlaps another active mutable lease.
-- WS-009 is evidence-only, so its completed documentation does not overlap
-  WS-011’s future Cloud documentation lease.
-
-## Actions explicitly not authorized
-
-- Repository create/transfer/mirror/archive/rename; package, registry, tag, or
-  release action.
-- DNS, hosting, certificate, deployment, merge, preview disclosure, or
-  provider activation.
-- Cloud participant, credential, account, paid-service, billing, OAuth,
-  retention, or operator decision.
-- Karaya migration, database/configuration write, source toggle, corpus
-  rewrite, threshold change, canary, automatic publication, or visible-copy
-  change.
-- Studio/plugin delivery or modification of either parked prototype.
-- Any action touching the controlled .project-status proposal or protected
-  owner screenshots.
+- Parse `execution-state.yaml`, `recovery-ledger.yaml`, and `work-graph.yaml`.
+- Verify exactly 17 briefs and dependency references.
+- Run isolated-cache install, 119 committed tests, five release checks, syntax
+  checks, secret/local-path scan, and `git diff --check`.
+- Verify the PR-relative diff contains continuity artifacts only.
+- Require fresh Node 18 and Node 22 CI before treating orchestration PR #1 as
+  green.

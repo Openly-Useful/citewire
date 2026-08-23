@@ -1,108 +1,53 @@
 # CLAUDE.md
 
-This repository contains the tracked orchestration package for the CiteWire
-cross-repository program. Read PROJECT_HANDOFF.md and every file under
-.claude/orchestration before acting.
+Read `PROJECT_HANDOFF.md`, `CLAUDE_CODE_LAUNCH_PROMPT.md`, and every file in
+`.claude/orchestration/` before acting.
 
-Community CiteWire remains MIT licensed, zero-dependency, stateless, read-only,
-provider-neutral, and Node 18+ ESM unless a later owner-approved,
-versioned-contract change says otherwise. Providers remain disabled by default.
-Cloud consumes Community one way. Karaya is a separate customized consumer and
-must not leak credentials, editorial policy, source configuration, redactions,
-or proprietary state into Community.
+CiteWire Community is MIT licensed, zero-dependency, Node 18+ ESM,
+provider-neutral, attribution-first, and read-only at its public boundary.
+Default sources and connectors are inert until an operator explicitly enables
+them. The classifier and editorial engine are shadow-only and cannot publish.
+Credential material is represented only by opaque references and must never be
+stored in the public registry, logs, fixtures, or continuity artifacts.
 
-<!-- FABLE-ORCHESTRATION:BEGIN -->
-## Managed orchestration block
+Cloud and Karaya are separate consumers with separate account and policy
+boundaries. Never copy their credentials, source configuration, editorial
+policy, private state, or account data into Community.
 
-Last synchronized: 2026-08-15.
+## Current verified baseline
 
-### Planning labels and authority
+- Canonical repository: `Openly-Useful/citewire`.
+- Canonical main: `e12d9b6e8efed725a085a32e935e63e35241859a`.
+- Public PRs #2, #3, #4, #6, #7, and #8 are merged.
+- `https://citewire.org/` returns HTTPS 200 with the verified landing page.
+- Main passes 119 committed tests and five release-metadata checks.
+- The public product foundations now include the source registry, rights
+  policy, RSS and MCP projections, optional Studio, credential-reference and
+  connector boundaries, calibrated classifier, and fail-closed editorial
+  shadow engine.
+- Nothing in this baseline proves a package, registry, provider, connector,
+  production editorial rollout, or automatic publication is active.
 
-- Fable, Opus, and Sonnet are execution-planning labels only. They do not
-  assert model, plugin, connector, or runtime availability.
-- Fable L0 owns cross-stream truth, dependency release, and stop/go
-  integration. It does not self-approve a high-risk implementation.
-- Opus is required for identity, history, protocol, rights, security,
-  supply-chain, data-integrity, migration, and production-safety review.
-- Sonnet is limited to bounded implementation, documentation,
-  exact-reference, and deterministic verification work.
-- Every implementation has an independent reviewer with no write lease over
-  the implementation paths.
+## Active gates
 
-### Current authority facts
+- Draft orchestration PR #1 may be refreshed and validated, but not merged
+  without separate approval.
+- Openly Useful PR #8 and Karaya PR #17 are current, green, clean drafts. Keep
+  both unmerged unless their owner gates are separately satisfied.
+- Cloud PR #1 is a clean draft pinned to Community commit `10aee95`; it remains
+  undeployed and account-isolated.
+- npm still reports `citewire@0.1.0`; Community `0.2.0` is not published.
+- Karaya automation remains a separate workstream. Public cron requests return
+  HTTP 200 every 15 minutes, but source-level fetch health, queue age, held
+  volume, and migration state remain unverified.
+- Preserve the 41 untracked owner screenshots and every unrelated dirty
+  worktree exactly as found.
 
-- Pre-synchronization CiteWire orchestration baseline is
-  7e816c5b2900cb04309f751e5d93bab79752128a. The first reviewed 17-stream
-  synchronization commit is 4b04c4c448f44b07f8fc10a4e2211274d7c55ee8.
-  Resolve the live branch/PR head before acting; a metadata commit cannot
-  truthfully embed its own SHA.
-- 80017d60c4396d704e0be55af4cd9cb1dc548b94 is only historical
-  initial-package evidence.
-- Visible brand is CiteWire. Technical token is citewire. Project parent is
-  Openly Useful.
-- Openly-Useful/citewire is authenticated absent and unapproved. This does not
-  permit creation, transfer, mirror, archive, rename, npm work, registry work,
-  DNS, hosting, or Cloud operator action.
-- GitHub, Linear, CI, deployment, DNS, and provider references in the handoff
-  are recorded historical state pending fresh remote revalidation before
-  action.
-- KAR-71 and KAR-77 are context only. They are not dependencies, mapped
-  streams, or authorization.
+## Hard stops
 
-### Controlled dirty exceptions
-
-- citewire/.project-status/manifest.json is a controlled untracked proposal.
-  Keep it unstaged and exclude it from every orchestration commit. The
-  repository is not Git-clean until it is separately dispositioned.
-- citewire-public-platform is a dirty parked prototype. Do not merge, stage,
-  clean, cherry-pick, or credit it to WS-013 or WS-017.
-- karayagroup-editorial-shadow is a dirty preserved proposal. Do not commit its
-  migration or credit it to WS-014 or WS-015.
-- karayagroup-production-audit is absent. It must be created as a fresh clean
-  isolated worktree from verified origin/main before WS-012 begins. Never use
-  karayagroup-live, karayagroup-brand, or editorial-shadow as a substitute.
-- Preserve the protected Karaya screenshot inventory: 49 files, 8 tracked and
-  41 untracked. Never edit, stage, clean, move, delete, or use it as a
-  baseline.
-
-### Execution rules
-
-- Follow the 17-stream graph exactly. Required direct corrections are:
-  WS-008 depends on WS-003, WS-004, and WS-005; WS-011 depends on WS-002 and
-  WS-009; Karaya follows WS-012 to WS-014 to WS-015 to WS-016; WS-017 depends
-  on WS-004 and WS-013.
-- Studio, plugins, and hosted-control-plane work are speculative. They have no
-  required workstream and are explicitly excluded from WS-017.
-- WS-004 owns current Community candidate metadata, not future Community
-  runtime/test paths. WS-017 owns the later runtime contract paths. WS-009 is
-  evidence-only, while WS-011 owns future mutable Cloud readiness paths.
-- Do not start a downstream link before WS-005 independently proves a live
-  canonical HTTPS destination.
-- Do not publish an immutable Community artifact before WS-005 as well as
-  WS-003 and WS-004. A published public metadata record must not point at the
-  recorded broken domain.
-- WS-012 is read-only and writes only its evidence packet. It must establish
-  vendor provenance and production truth before WS-014. WS-014 owns
-  non-publishing policy/shadow paths, WS-015 owns admin/UI/controls, and
-  WS-016 owns rollout/configuration/runbooks.
-
-### Hard stops
-
-Stop for a failed check, unexpected diff, secret, target collision,
-overlapping owner edit, protected asset, repository creation/transfer/archive,
-DNS/domain/TLS change, deployment, merge, tag, npm/GitHub release, registry or
-catalog action, provider activation, migration, production-data/configuration
-change, paid-service decision, Studio/plugin scope expansion, or visible
-Karaya copy without Luis read-aloud approval.
-
-### Initial execution wave
-
-1. Run WS-001 only: synchronize and mechanically validate the 17-stream
-   documentation package.
-2. After WS-001, begin WS-002 as a documentation-only identity packet.
-3. In parallel only after a clean production-audit worktree exists, WS-012 may
-   collect public/local read-only evidence. It must stop before a privileged
-   read, migration, data/configuration change, or rights ambiguity.
-4. Do not start WS-003 through WS-008, WS-010 through WS-011, WS-013 through
-   WS-017 implementation, Studio/plugin work, or either parked prototype.
-<!-- FABLE-ORCHESTRATION:END -->
+Stop for a failed check, unexpected diff, secret, owner overlap, protected
+asset, paid-service decision, provider or connector activation, migration,
+production data/configuration change, merge, tag, package or registry publish,
+release, deployment, DNS change, or any irreversible action without explicit
+owner approval. Visible Karaya copy remains gated on Luis's read-aloud
+approval.

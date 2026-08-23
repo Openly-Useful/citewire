@@ -1,8 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { once } from 'node:events';
 
 const { createHttpHandler, runHttp } = await import('../src/transports/http.js');
 const { createServer } = await import('../src/core/rpc.js');
+const { createCitewire } = await import('../src/index.js');
 const { runStdio } = await import('../src/transports/stdio.js');
 
 const MCP_ACCEPT = 'application/json, text/event-stream';
@@ -303,4 +306,65 @@ test('runHttp binds to 127.0.0.1 and only accepts loopback Origins', async (t) =
 
 test('runStdio is an importable function (smoke)', () => {
   assert.equal(typeof runStdio, 'function');
+});
+
+test('direct HTTP smoke exposes the local Community source registry without activation', async (t) => {
+  const server = await runHttp(createCitewire({ community: { enabled: true } }), { port: 0 });
+  t.after(
+    () =>
+      new Promise((resolve, reject) => {
+        server.close((err) => (err ? reject(err) : resolve()));
+      }),
+  );
+  const address = server.address();
+  const endpoint = `http://127.0.0.1:${address.port}/`;
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: { Accept: MCP_ACCEPT, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      jsonrpc: '2.0',
+      id: 7,
+      method: 'tools/call',
+      params: { name: 'list_sources', arguments: {} },
+    }),
+  });
+  assert.equal(response.status, 200);
+  const result = (await response.json()).result.structuredContent;
+  assert.ok(result.sources.length >= 5);
+  assert.ok(result.sources.every((source) => source.enabled_by_default === false));
+});
+
+test('direct stdio smoke exposes canonical Community tools without diagnostics on stdout', async () => {
+  const indexUrl = new URL('../src/index.js', import.meta.url).href;
+  const stdioUrl = new URL('../src/transports/stdio.js', import.meta.url).href;
+  const script = [
+    `import { createCitewire } from ${JSON.stringify(indexUrl)};`,
+    `import { runStdio } from ${JSON.stringify(stdioUrl)};`,
+    'runStdio(createCitewire({ community: { enabled: true } }));',
+  ].join('\n');
+  const child = spawn(process.execPath, ['--input-type=module', '--eval', script], {
+    stdio: ['pipe', 'pipe', 'pipe'],
+  });
+  let stdout = '';
+  let stderr = '';
+  child.stdout.setEncoding('utf8');
+  child.stderr.setEncoding('utf8');
+  child.stdout.on('data', (chunk) => { stdout += chunk; });
+  child.stderr.on('data', (chunk) => { stderr += chunk; });
+  child.stdin.end(`${JSON.stringify({
+    jsonrpc: '2.0',
+    id: 9,
+    method: 'tools/list',
+    params: {},
+  })}\n`);
+  const [code] = await once(child, 'exit');
+  assert.equal(code, 0, stderr);
+  assert.equal(stderr, '');
+  const lines = stdout.trim().split('\n');
+  assert.equal(lines.length, 1);
+  const response = JSON.parse(lines[0]);
+  const names = response.result.tools.map((tool) => tool.name);
+  assert.ok(names.includes('list_sources'));
+  assert.ok(names.includes('explain_inclusion'));
+  assert.doesNotMatch(stdout, /"handler"|vault:\/\//);
 });

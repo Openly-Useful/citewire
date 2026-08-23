@@ -1,148 +1,96 @@
-schema_version: 2
+schema_version: 3
 artifact: citewire-orchestration-execution-state
-as_of: "2026-08-15"
+as_of: "2026-08-23"
 claim_status: Verified
 
-orchestration:
-  repository_path: "/Users/luismorrobel/karayagroup/citewire"
-  repository: "MeekPhills/citewire"
-  branch: "agent/citewire-orchestration-handoff"
-  pre_synchronization_head: "7e816c5b2900cb04309f751e5d93bab79752128a"
-  first_17_stream_sync_commit: "4b04c4c448f44b07f8fc10a4e2211274d7c55ee8"
-  live_head_resolution: "Read the live branch and draft PR #5 head before action; this metadata commit cannot embed its own resulting SHA."
-  historical_initial_package_commit: "80017d60c4396d704e0be55af4cd9cb1dc548b94"
-  based_on: "ff09b68ed811531eb0ca630b65daeaf06cc3304c"
-  mode: "17-stream controlled handoff; documentation synchronization only until explicit gates release later streams"
-  next_gate: "WS-001"
-  next_gate_name: "17-stream graph synchronization and structural validation"
-  integration_owner: "Fable L0 planning label only"
-  runtime_availability: "No Fable, Opus, Sonnet, plugin, or connector runtime availability is asserted."
+canonical:
+  repository: Openly-Useful/citewire
+  main_commit: e12d9b6e8efed725a085a32e935e63e35241859a
+  website: https://citewire.org/
+  website_status: "HTTPS 200"
+  community_version: 0.2.0
+  npm_latest: 0.1.0
+  tests: 119
+  release_checks: 5
+  node_ci: [18, 22]
 
-identity:
-  visible_brand: "CiteWire"
-  technical_token: "citewire"
-  project_parent: "Openly Useful"
-  target_repository: "Openly-Useful/citewire"
-  target_repository_state: "authenticated absent and unapproved"
-  boundary: "This does not authorize a repository, package, registry, domain, DNS, deployment, transfer, archive, or Cloud operator action."
+merged_foundations:
+  pull_requests: [2, 3, 4, 6, 7, 8]
+  capabilities:
+    - source registry and rights policy
+    - RSS and MCP projections
+    - optional local Studio
+    - credential-reference and connector boundaries
+    - deterministic classifier calibration
+    - fail-closed editorial shadow engine
+  safety_boundary: "Sources and connectors are inert by default; classifier and editorial engine cannot publish."
 
-baseline_worktree_state:
-  citewire:
-    head: "7e816c5b2900cb04309f751e5d93bab79752128a"
-    controlled_untracked_proposal: ".project-status/manifest.json"
-    git_clean: false
-    rule: "The repository is not Git-clean until the controlled proposal is separately dispositioned. Preserve it unstaged and exclude it from orchestration commits."
-  citewire_public_platform:
-    head: "7e816c5b2900cb04309f751e5d93bab79752128a"
-    state: "dirty parked prototype"
-    rule: "Do not merge, stage, clean, cherry-pick, or credit to WS-013/WS-017."
-  editorial_shadow:
-    head: "9c1506320771faf177f3675ef5ea1c1eff36fe81"
-    state: "dirty preserved proposal"
-    stopped_verification: "21 tests passed; one test file stopped at module load because @supabase/supabase-js was not installed. The shell was Node v24.18.0, not required Node 22. No install, rerun, build, audit, commit, migration, or deployment followed."
-    rule: "Do not commit its migration or credit to WS-014/WS-015."
-  production_audit:
-    path: "/Users/luismorrobel/karayagroup/karayagroup-production-audit"
-    state: "absent"
-    rule: "Fresh clean verified-origin/main worktree required before WS-012."
-  owner_screenshots:
-    path: "/Users/luismorrobel/karayagroup/karayagroup-brand/site/handoff/redesign/"
-    state: "49 protected files, 8 tracked and 41 untracked"
-    rule: "Never alter, stage, clean, move, delete, or use as a baseline."
-
-recorded_historical_mappings:
-  disclaimer: "All remote PR, CI, GitHub, Linear, Vercel, DNS, and deployment states below are recorded historical state pending fresh remote revalidation before action."
-  pull_requests:
-    citewire_orchestration: "MeekPhills/citewire PR #5"
-    citewire_community: "MeekPhills/citewire PR #1"
-    citewire_landing: "MeekPhills/citewire PR #2"
-    citewire_cloud: "MeekPhills/citewire-cloud PR #1"
-    openly_useful_link: "Openly-Useful/openlyuseful.org PR #8"
-    karaya_link: "MeekPhills/karayagroup PR #17"
-  issues:
-    identity_release: "MeekPhills/citewire issue #3; KAR-67 Todo"
-    public_contract: "MeekPhills/citewire issue #4; KAR-68 Todo"
-    karaya_truth: "MeekPhills/karayagroup issue #18; KAR-69 Todo"
-    karaya_automation: "MeekPhills/karayagroup issue #19; KAR-70 Todo"
-    program_parent: "KAR-66 In Progress"
-    console_context: "KAR-53 context only"
-    context_only: ["KAR-71", "KAR-77"]
-
-fresh_synchronization_evidence:
-  observed_on: "2026-08-15"
-  draft_pr_5: "Verified draft and mergeable at first 17-stream sync 4b04c4c; re-read live head after any later metadata commit."
-  ci: "Node 18 and Node 22 passed in runs 31906699682 and 31906701652."
-  github: "Synchronization comments were re-read on CiteWire issues #3/#4 and Karaya issues #18/#19."
-  linear: "KAR-66 through KAR-70 were re-read after update; statuses remained In Progress/Todo as recorded."
-  launch_log: "The full document was re-read at 124831 characters with exactly one CiteWire 17-stream synchronization marker."
-  claim_status: Verified
-
-external_observations:
-  citewire_org:
-    observed_on: "2026-08-15"
-    state: "Recorded HTTP parked response and HTTPS TLS failure; not a verified live CiteWire destination."
-    claim_status: Historical
-  karaya_production:
-    observed_on: "2026-08-15"
-    state: "Recorded Industry News, About, nine-topic API, and read-only MCP smoke evidence; production truth remains incomplete pending WS-012."
-    claim_status: Historical
+open_drafts:
+  orchestration:
+    repository: Openly-Useful/citewire
+    pull_request: 1
+    state: "draft; refresh in progress"
+  openly_useful_link:
+    repository: Openly-Useful/openlyuseful.org
+    pull_request: 8
+    head: e48d6069e33f84a85d41ad397bc4ef74d3906451
+    state: "draft, clean, CI green"
+  karaya_link:
+    repository: MeekPhills/karayagroup
+    pull_request: 17
+    head: 004a8e09cfe146324bfe481664a5b68c182dc6b2
+    state: "draft, clean, CI green, read-aloud approval pending"
   cloud:
-    state: "Recorded draft and undeployed; Cloud archive pin is 10aee95."
-    claim_status: Historical
+    repository: MeekPhills/citewire-cloud
+    pull_request: 1
+    head: 69068275ca0e332e36304533aa0f6b5d2e291405
+    state: "draft, clean, Node 18/22 green, undeployed"
+    community_pin: 10aee95ac95bb437b4607723cd20fa5c8f9d1879
 
-stream_status:
-  WS-001: "active documentation-only"
-  WS-002: "active decision-record only"
-  WS-003: "blocked"
-  WS-004: "recorded candidate, identity re-verification blocked"
-  WS-005: "blocked"
-  WS-006: "blocked"
-  WS-007: "blocked"
-  WS-008: "blocked on WS-003, WS-004, WS-005"
-  WS-009: "complete preserve-only"
-  WS-010: "blocked on WS-008"
-  WS-011: "blocked on WS-002 and WS-009"
-  WS-012: "blocked; production-audit worktree absent"
-  WS-013: "planned design-only"
-  WS-014: "blocked on WS-012"
-  WS-015: "blocked on WS-014"
-  WS-016: "blocked on WS-015"
-  WS-017: "required, parked, not authorized; blocked on WS-004 and WS-013"
+linear:
+  launch_parent: "OU-143 In Progress"
+  completed_foundations:
+    - "OU-145 Done"
+    - "OU-180 Done"
+    - "OU-181 Done"
+    - "OU-182 Done"
+    - "OU-183 Done"
+  immutable_release: "OU-149 Todo"
+  karaya_truth: "KAR-69 In Progress"
 
-mutation_guardrails:
-  deploy: "not authorized"
-  merge: "not authorized"
-  tag: "not authorized"
-  publish: "not authorized"
-  provider_activation: "not authorized"
-  data_mutation: "not authorized"
-  dns_or_domain: "not authorized"
-  paid_service_decision: "not authorized"
-  secrets: "must not be copied, logged, or committed"
-  studio_or_plugin: "speculative only; no required stream"
-  cowork_plugin_mapping: "No verified CiteWire Cowork/plugin manifest or GitHub/Linear item maps to a required stream."
+karaya_observation:
+  registered_sources: 49
+  monitored_sources: 27
+  directory_only_sources: 22
+  visible_items_seven_days: 6
+  newest_item_age_hours: 60.6
+  cron: "POST /api/cron/ingest returned 200 at 15-minute cadence"
+  unknowns:
+    - source-level fetch results
+    - queue age
+    - held volume
+    - migration state
 
-initial_parallel_execution_wave:
-  phase_0: "WS-001 only."
-  after_ws_001:
-    - "WS-002 documentation-only identity packet."
-    - "Conditional WS-012 preflight only after fresh production-audit worktree creation; read-only public/local evidence only."
-  prohibited:
-    - "WS-003 through WS-008 execution"
-    - "WS-010 through WS-011 execution"
-    - "WS-013 through WS-017 implementation"
-    - "Studio/plugin work"
-    - "Any use of parked prototypes as a baseline"
-
-two_hour_schedule:
-  t_plus_0_to_15: "Resolve live head, confirm 7e816c5 pre-sync baseline and controlled exceptions; independent exact-ref/path review."
-  t_plus_15_to_40: "Synchronize WS-001 documentation while preparing WS-002 decision packet without external action."
-  t_plus_40_to_60: "Independent review of graph, direct dependencies, exclusive leases, historical labels, and stops."
-  t_plus_60_to_75: "Conditional future worktree creation/recording for WS-012, otherwise preserve its blocked status."
-  t_plus_75_to_120: "Conditional WS-012 public/local read-only evidence and provenance reconciliation while WS-002 review completes."
+protected_state:
+  untracked_owner_screenshots: 41
+  dirty_worktrees:
+    - parked CiteWire prototype
+    - Karaya editorial-shadow proposal
+    - Karaya navigation work
+  rule: "Preserve exactly; never stage, clean, move, delete, or credit as completed work."
 
 next_safe_sequence:
-  - "Complete WS-001 structural synchronization."
-  - "Complete WS-002 decision record only."
-  - "Run WS-012 only after its clean worktree precondition."
-  - "Do not start a public release, deployment, migration, Studio/plugin, or parked-prototype implementation."
+  - validate and keep orchestration PR 1 draft
+  - obtain separate merge approval for Openly Useful PR 8
+  - obtain Luis read-aloud and merge approval for Karaya PR 17
+  - complete KAR-69 read-only production truth
+  - sequence Karaya shadow policy, exceptions console, and reversible canary
+  - obtain separate immutable-release approval for OU-149
+
+hard_stops:
+  - failed check or unexpected diff
+  - secret or protected asset
+  - paid-service decision
+  - provider, source, or connector activation
+  - migration or production data/configuration mutation
+  - merge, deployment, DNS change, tag, package publish, release, or registry submission without explicit approval

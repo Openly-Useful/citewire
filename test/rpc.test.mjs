@@ -163,3 +163,48 @@ test('toolJson and toolError produce valid tool-result shapes', () => {
   assert.equal(bad.isError, true);
   assert.match(bad.content[0].text, /something failed/);
 });
+
+test('resources and resource templates are additive and never expose reader functions', async () => {
+  const server = createServer({
+    serverInfo: { name: 'resource-test', version: '1.0.0' },
+    tools: [],
+    resources: [{
+      uri: 'citewire://policy',
+      name: 'Policy',
+      description: 'Policy document.',
+      mimeType: 'application/json',
+      read: async () => ({ uri: 'citewire://policy', mimeType: 'application/json', text: '{"ok":true}' }),
+    }],
+    resourceTemplates: [{
+      uriTemplate: 'citewire://sources/{id}',
+      name: 'Source',
+      description: 'Source policy.',
+      mimeType: 'application/json',
+      match: (uri) => uri === 'citewire://sources/example',
+      read: async (uri) => ({ uri, mimeType: 'application/json', text: '{"id":"example"}' }),
+    }],
+  });
+  const initialized = await server.handle(req('initialize', {}));
+  assert.ok(initialized.result.capabilities.resources);
+
+  const listed = await server.handle(req('resources/list', {}));
+  assert.equal(listed.result.resources[0].uri, 'citewire://policy');
+  assert.equal('read' in listed.result.resources[0], false);
+
+  const templates = await server.handle(req('resources/templates/list', {}));
+  assert.equal(templates.result.resourceTemplates[0].uriTemplate, 'citewire://sources/{id}');
+  assert.equal('read' in templates.result.resourceTemplates[0], false);
+  assert.equal('match' in templates.result.resourceTemplates[0], false);
+
+  const exact = await server.handle(req('resources/read', { uri: 'citewire://policy' }));
+  assert.equal(exact.result.contents[0].text, '{"ok":true}');
+  const templated = await server.handle(req('resources/read', { uri: 'citewire://sources/example' }));
+  assert.equal(templated.result.contents[0].text, '{"id":"example"}');
+  const missing = await server.handle(req('resources/read', { uri: 'citewire://sources/missing' }));
+  assert.equal(missing.error.code, -32602);
+});
+
+test('servers without resources preserve their original capability shape', async () => {
+  const initialized = await makeServer().handle(req('initialize', {}));
+  assert.equal(initialized.result.capabilities.resources, undefined);
+});
