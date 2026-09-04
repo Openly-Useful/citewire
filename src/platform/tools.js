@@ -1,7 +1,7 @@
 // src/platform/tools.js — config-driven news-platform tools over HTTP.
 //
 // This is what makes citewire generic: any site that exposes a compatible
-// read API (the karaya.group /api/v1/news surface in contracts/openapi.news.yaml)
+// read API described by docs/platform-contract.md
 // plugs in by declaring config.platform. The four tools here are a mechanical
 // projection of that HTTP surface, so the MCP tools cannot drift from the API
 // they wrap: same list filters, same slug lookup, same topics feed.

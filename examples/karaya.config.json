@@ -1,7 +1,0 @@
-{
-  "platform": {
-    "name": "Karaya Group Industry News",
-    "siteUrl": "https://karaya.group",
-    "apiBase": "https://karaya.group/api/v1/news"
-  }
-}

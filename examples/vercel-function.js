@@ -13,9 +13,9 @@ import { createHttpHandler } from 'citewire/transports/http';
 // process.env (e.g. siteUrl) instead of hardcoding.
 const server = createCitewire({
   platform: {
-    name: 'Karaya Group Industry News',
-    siteUrl: 'https://karaya.group',
-    apiBase: 'https://karaya.group/api/v1/news',
+    name: 'Example Newswire',
+    siteUrl: 'https://news.example.org',
+    apiBase: 'https://news.example.org/api/v1/news',
   },
 });
 

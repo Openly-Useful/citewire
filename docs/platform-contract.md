@@ -8,9 +8,9 @@ in the config:
 ```json
 {
   "platform": {
-    "name": "Karaya Group Industry News",
-    "siteUrl": "https://karaya.group",
-    "apiBase": "https://karaya.group/api/v1/news"
+    "name": "Example Newswire",
+    "siteUrl": "https://news.example.org",
+    "apiBase": "https://news.example.org/api/v1/news"
   }
 }
 ```
@@ -19,9 +19,8 @@ in the config:
 are a mechanical projection of these endpoints, so the MCP surface cannot drift
 from the API it wraps.
 
-Reference implementation: the Karaya OpenAPI contract at
-the first deployment's OpenAPI document (`contracts/openapi.news.yaml` in the
-Karaya Group platform repository), of which this page is the public statement.
+Implementations should publish an OpenAPI document for the three read-only
+endpoints so operators can verify the contract independently.
 
 All three endpoints are read-only `GET` requests and return JSON. citewire sends
 `Accept: application/json` and a descriptive `User-Agent`, and applies a 15
