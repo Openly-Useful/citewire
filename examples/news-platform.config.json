@@ -1,0 +1,7 @@
+{
+  "platform": {
+    "name": "Example Newswire",
+    "siteUrl": "https://news.example.org",
+    "apiBase": "https://news.example.org/api/v1/news"
+  }
+}

@@ -4,13 +4,13 @@ Working examples for running citewire and wiring it into MCP clients.
 
 ## Files
 
-- `karaya.config.json` — a minimal config pointing at the Karaya Group Industry
-  News platform (the first production deployment).
+- `news-platform.config.json` — a minimal config pointing at an example news
+  platform.
 - `vercel-function.js` — mounting citewire as a serverless function.
 
 ## About the config
 
-`karaya.config.json` sets only the `platform` block: the display name, the site
+`news-platform.config.json` sets only the `platform` block: the display name, the site
 URL, and the API base the tools read from. There is no `providers` block. JSON
 has no comments, so note it here: with providers absent, citewire runs with its
 built-in defaults and does not enable any optional provider integration. Add a
@@ -21,7 +21,7 @@ built-in defaults and does not enable any optional provider integration. Add a
 stdio is the default transport. This is how MCP clients launch the server.
 
 ```
-npx citewire --config examples/karaya.config.json
+npx citewire --config examples/news-platform.config.json
 ```
 
 The process reads newline-delimited JSON-RPC on stdin and writes responses on
@@ -37,7 +37,7 @@ Add citewire to your MCP client config (Claude Desktop:
   "mcpServers": {
     "citewire": {
       "command": "npx",
-      "args": ["citewire", "--config", "examples/karaya.config.json"]
+      "args": ["citewire", "--config", "examples/news-platform.config.json"]
     }
   }
 }
@@ -51,7 +51,7 @@ project directory.
 To serve over HTTP instead of stdio:
 
 ```
-npx citewire --config examples/karaya.config.json --http 8722
+npx citewire --config examples/news-platform.config.json --http 8722
 ```
 
 The default port is 8722. The endpoint accepts JSON-RPC over `POST /`.
