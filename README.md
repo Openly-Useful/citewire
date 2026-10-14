@@ -254,9 +254,9 @@ These boundaries are maintained through the
 
 ## Project origin
 
-citewire was shaped through its first deployment for
-[Karaya Group Industry News](https://karaya.group/industry-news). The public
-platform contract is generic and can wrap any compatible read API.
+citewire is built and maintained by
+[Openly Useful](https://openlyuseful.org). The public platform contract is
+generic and can wrap any compatible read API.
 
 ## Contributing
 

@@ -7,6 +7,11 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+### Changed
+
+- The README and `citewire.org` landing page credit Openly Useful as the
+  project's maintainer. The Karaya Group Industry News origin link is removed.
+
 ## [0.2.0] - 2026-08-23
 
 ### Added
