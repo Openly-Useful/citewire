@@ -33,7 +33,6 @@ public record and verification date.
 | Official MCP Registry | `io.github.Openly-Useful/citewire@0.2.0` | `VERIFIED` | [Registry API record](https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.Openly-Useful%2Fcitewire&version=0.2.0), active and checked 2026-08-23 |
 | Website | `citewire.org` | `VERIFIED` | [CiteWire](https://citewire.org), checked 2026-08-23 |
 | License | MIT | `VERIFIED` | Repository [LICENSE](../LICENSE) and npm package metadata |
-| First deployment context | Karaya Group Industry News | `VERIFIED` | [Industry News](https://karaya.group/industry-news), checked 2026-08-12. This is deployment context, not an MCP catalog listing. |
 
 The table does not claim a hosted MCP endpoint, support availability, service
 level, or acceptance by any MCP catalog.
@@ -61,7 +60,7 @@ Complete these items before broad catalog submission:
 - [x] The prepared npm manifest requires `--config` and explains the absolute
   config path. An empty citewire config intentionally advertises no tools.
 - [x] Distribution metadata describes only the npm stdio package. `server.json`
-  has no generic remote entry, and the Karaya reference deployment is not used
+  has no generic remote entry, and no reference deployment is used
   as one.
 - [x] Record a maintainer-approved support URL or support policy if a catalog
   requires one.

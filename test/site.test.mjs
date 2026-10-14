@@ -28,13 +28,13 @@ test('landing page connects the verified public surfaces', () => {
     'https://github.com/Openly-Useful/citewire',
     'https://www.npmjs.com/package/citewire',
     'https://openlyuseful.org',
-    'https://karaya.group/industry-news',
   ]) {
     assert.match(html, new RegExp(href.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   }
   assert.equal(packageJson.homepage, 'https://citewire.org');
   assert.equal(serverJson.websiteUrl, 'https://citewire.org');
   assert.doesNotMatch(html, /github\.com\/MeekPhills\/citewire/);
+  assert.doesNotMatch(html, /karaya/i);
   assert.match(html, /aria-label="CiteWire home"/);
   assert.match(html, /<span>CiteWire<\/span>/);
 });
